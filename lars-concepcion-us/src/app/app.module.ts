@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './main/footer/footer.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
