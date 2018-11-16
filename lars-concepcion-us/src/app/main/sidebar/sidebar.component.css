@@ -11,24 +11,20 @@
 .sidebar .gallery {
     border: 1px solid green;
     margin-top: 30px;
-    padding: 0px 0px 5px 20px;
+    padding: 0px 4px 10px 4px;
 }
 
+/* container name */
 .sidebar .gallery .containerName {
     padding: 10px;
 }
 
-.sidebar .gallery tbody tr td{
+.sidebar .gallery .container {
+    background-color: gray;
+}
+
+.sidebar .gallery .container .gallery_row .gallery_col {
     border: 1px solid black;
-    height: 110px;
-    width: 105px;
+    height: 100px;
 }
 
-.sidebar .gallery tbody tr .vertical {
-    border: 1px solid white;
-}
-
-.sidebar .gallery tbody tr .horizontal {
-    border: 1px solid white;
-    padding: 
-}

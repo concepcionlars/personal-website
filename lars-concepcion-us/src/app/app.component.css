@@ -2,3 +2,30 @@ header {
     border: 1px solid black;
     height: 300px;
 }
+
+/* 2/2 */
+.twooftwo {
+    border: 1px solid red;
+    background-color: gray;
+    height: 615px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+}
+
+.twooftwo .portfolio_container {
+    border: 1px solid blue;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.twooftwo .containerName {
+    padding: 10px;
+}
+
+.twooftwo .portfolio_container .alt {
+    border: 1px solid black;
+    margin: 5px 3px 0px 3px;
+    height: 180px;
+}
