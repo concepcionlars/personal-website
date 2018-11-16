@@ -5,13 +5,17 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { SidebarComponent } from './main/sidebar/sidebar.component';
+import { CenterbarComponent } from './main/centerbar/centerbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent,
+    CenterbarComponent
   ],
   imports: [
     BrowserModule
