@@ -1,0 +1,21 @@
+nav {
+    /* border: 1px solid rgba(204, 201, 201, 0.224); */
+    background-color: white;
+}
+
+nav .navigation {
+    /* border: 1px solid blue; */
+}
+
+nav .navigation .nav {
+    width: 100%;
+}
+
+nav .navigation .nav .nav-item {
+    position: relative;
+    left: 14rem;
+}
+
+nav .navigation .nav .nav-item .nav-link {
+    font-weight: 600;
+}
