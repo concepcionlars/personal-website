@@ -9,7 +9,7 @@
 }
 
 .sidebar .gallery {
-    border: 1px solid green;
+    background-color: rgba(204, 201, 201, 0.224);
     margin-top: 30px;
     padding: 0px 4px 10px 4px;
 }
@@ -20,11 +20,11 @@
 }
 
 .sidebar .gallery .container {
-    background-color: gray;
+    background-color: white;
 }
 
 .sidebar .gallery .container .gallery_row .gallery_col {
-    border: 1px solid black;
+    border: 2px solid rgba(204, 201, 201, 0.224);
     height: 100px;
 }
 

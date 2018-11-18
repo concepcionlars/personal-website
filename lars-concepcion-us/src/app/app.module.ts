@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
@@ -18,7 +19,8 @@ import { CenterbarComponent } from './main/centerbar/centerbar.component';
     CenterbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgScrollbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
