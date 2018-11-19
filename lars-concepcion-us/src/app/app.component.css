@@ -2,6 +2,12 @@
     
 }
 
+fa {
+    color: green;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
 header {
     padding: 0px;
     margin: 0px;
@@ -74,6 +80,11 @@ header .info .owner-space .summaryText {
 
 .twooftwo .containerName {
     padding: 10px;
+}
+
+.fa-briefcase {
+    color: rgba(163, 71, 10, 0.646);
+    margin: 5px 10px 5px 10px;
 }
 
 .twooftwo .portfolio {

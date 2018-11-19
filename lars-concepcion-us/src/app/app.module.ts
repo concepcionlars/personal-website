@@ -20,7 +20,7 @@ import { CenterbarComponent } from './main/centerbar/centerbar.component';
   ],
   imports: [
     BrowserModule,
-    NgScrollbarModule
+    NgScrollbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
