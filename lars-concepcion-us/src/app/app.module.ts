@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
+import { RightSidebarComponent } from './right-sidebar/right-sidebar.component'
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './main/sidebar/sidebar.component';
@@ -13,6 +14,7 @@ import { CenterbarComponent } from './main/centerbar/centerbar.component';
   declarations: [
     AppComponent,
     MainComponent,
+    RightSidebarComponent,
     NavComponent,
     FooterComponent,
     SidebarComponent,

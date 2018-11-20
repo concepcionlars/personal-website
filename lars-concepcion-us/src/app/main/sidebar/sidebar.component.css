@@ -94,5 +94,10 @@ fa {
 .sidebar .gallery .container .gallery_row .gallery_col {
     border: 2px solid white;
     height: 100px;
+    padding: 0px;
 }
 
+.sidebar .gallery .container .gallery_row .gallery_col .image {
+    width: 100%;
+    height: 100%;
+}
