@@ -1,12 +1,12 @@
-fa {
-    color: green;
-    font-size: 1.2rem;
-    margin-right: 10px;
+.oneoftwo {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
 }
 
 header {
     padding: 0px;
-    margin: 0px;
+    margin: 0px 0px 20px 0px; 
     box-shadow: 0px 0px 3px 0px black;
 }
 
@@ -23,16 +23,17 @@ header .info .owner-space .wallpaper {
     background-repeat: no-repeat;
     background-size: 100% 300px;
     height: 300px;
+    box-shadow: 0px 0px 5px 0px black;
 }
 
 header .info .owner-space .wallpaper .profile {
-    border: 5px solid rgba(73, 67, 67, 0.693);
-    box-shadow: 0px 0px 1px 0px black;
+    border: 5px solid rgba(73, 67, 67, 0.673);
+    box-shadow: 0px 0px 5px 0px black;
     width: 160px;
     height: 160px;
     position: absolute;
     top: 11rem;
-    left: 2.5rem;
+    left: 5rem;
     border-radius: 100px;
 }
 

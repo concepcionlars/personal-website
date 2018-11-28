@@ -1,8 +1,11 @@
 .centerbar {
-    margin: 20px 0px 0px 0px;
     background-color: white;
     box-shadow: 0px 0px 3px 0px black;
 }
+
+/* .centerbar .blogPost {
+    border: 1px solid red;
+} */
 
 .centerbar .blogPost .blogger {
     margin: 0px;

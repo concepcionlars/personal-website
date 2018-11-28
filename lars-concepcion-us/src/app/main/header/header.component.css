@@ -1,0 +1,35 @@
+.information {
+    background-color: white;
+    padding: 30px 0px 5px 0px;
+}
+
+.information .name {
+    color: rgb(51, 47, 47);
+
+}
+
+.information .headline {
+    color: rgb(73, 67, 67);
+}
+
+.information .location {
+    color: rgba(73, 67, 67, 0.693);
+}
+
+.information .ra {
+    padding-left: 30px;
+}
+
+.summaryText {
+    border-top: 1px solid rgba(126, 126, 126, 0.449);
+    background-color: white;
+    font-size: 0.95rem;
+    padding: 15px 10px 0px 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.summaryText .paragraph {
+    /* height: 50px; */
+}
+

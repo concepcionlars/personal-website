@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-right-sidebar',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./right-sidebar.component.css']
 })
 export class RightSidebarComponent implements OnInit {
+
+  constructor(private router: Router) { }
 
     // all image is just a sample
     image5 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTglGBWRUI4Dh9dJi_ZDN_krt3GdgoGuDuJsPHKo-ZPiHMTCPkISA';
@@ -15,8 +18,6 @@ export class RightSidebarComponent implements OnInit {
     image1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn2mfQa0q941jagIJeMAmDWT67v5tMjYLV7oD_9PvFFzXI-skz';
     image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoSS-J71MsJN8sgouv1KRM4G_VMRg4Vfv1i8wV_2aajaVHSSc7Dg';
     profile = 'assets/m.jpg';
-
-  constructor() { }
 
   ngOnInit() {
   }

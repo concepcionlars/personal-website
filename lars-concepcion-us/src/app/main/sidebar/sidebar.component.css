@@ -1,6 +1,6 @@
 .sidebar {
     border: 1px solid rgba(255, 255, 255, 0.0);
-    margin: 20px -20px 0px 0px;
+    margin: 0px 0px 0px 0px;
     height: auto;
 }
 
@@ -21,13 +21,13 @@
 
 .sidebar .owner_information .intro {
     border-bottom: 1px solid rgba(204, 201, 201, 0.612);
-    width: 90%;
+    width: 100%;
     margin: auto;
     text-align: center;
 }
 
 .sidebar .owner_information .intro .introduction {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .sidebar .owner_information .additional_information {
@@ -72,7 +72,7 @@
 
 .sidebar .gallery {
     background-color: white;
-    margin-top: 30px;
+    margin-top: 23px;
     box-shadow: 0px 0px 3px 0px black;
     padding: 0px 4px 10px 4px;
 }
@@ -93,7 +93,7 @@
 
 .sidebar .gallery .container .gallery_row .gallery_col {
     border: 2px solid white;
-    height: 100px;
+    height: 90px;
     padding: 0px;
 }
 

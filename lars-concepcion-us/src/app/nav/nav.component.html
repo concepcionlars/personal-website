@@ -1,20 +1,25 @@
 <nav>
-  <div class ="navigation">
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" href="/timeline">Timeline</a>
+  <div class =" navigation">
+    <ul class=" nav nav-tabs">
+      <li class ="nav-item brand_logo">
+        <a class ="navbar-brand">
+          <img src="assets/l.gif" alt="" class ="logo">
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/portfolio">Portfolio</a>
+        <a class="nav-link" routerLinkActive ="active" [routerLinkActiveOptions] ="{exact: true}" routerLink="/">Timeline</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
+        <a class="nav-link" routerLinkActive ="active" routerLink="/portfolio">Portfolio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" routerLinkActive ="active" routerLink="/about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="blog">Blog</a>
+        <a class="nav-link contact" routerLinkActive ="active" (click) ="openContactDialog()">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive ="active" href="https://www.facebook.com">Blog</a>
       </li>
     </ul>
   </div>

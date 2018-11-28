@@ -1,10 +1,11 @@
 nav {
-   background-color: rgba(255, 255, 255, 0.829);
-   padding: 5px 0px 5px 0px;
+   background-color: rgb(92, 211, 24);
+   padding: 5px 0px 3px 0px;
+   width: 100%;
 }
 
 nav .navigation {
-    /* border: 1px solid blue; */
+    
 }
 
 nav .navigation .nav {
@@ -14,8 +15,52 @@ nav .navigation .nav {
 nav .navigation .nav .nav-item {
     position: relative;
     left: 14rem;
+    /* margin: 0px 2.5px 0px 2.5px; */
+    color: white;
+}
+
+nav .navigation .nav .brand_logo {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    left: 20px;
+    top: 1px;
+}
+
+nav .navigation .nav .nav-item .navbar-brand {
+    margin: 0px;
+    padding: 0px;
+}
+
+nav .navigation .nav .nav-item .navbar-brand .logo {
+    width: 35px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
 }
 
 nav .navigation .nav .nav-item .nav-link {
     font-weight: 600;
+}
+
+li {
+    margin-left: 5px;
+}
+
+a {
+    color: white;
+}
+
+nav .navigation .nav .nav-item .contact {
+    cursor: pointer;
+}
+
+nav .navigation .nav .active {
+    color: rgb(238, 238, 238);
+    background-color: rgb(92, 211, 24);
+    border-bottom: 1px solid rgb(92, 211, 24);
+}
+
+.nav-link:hover {
+    border-bottom: 1px solid rgb(92, 211, 24);
 }
