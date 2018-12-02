@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppComponent } from './app.component';
@@ -30,11 +31,13 @@ import { AboutComponent } from './webpage/about/about.component';
     CenterbarComponent,
     TimelineComponent,
     PortfolioComponent,
-    ContactComponent,
     AboutComponent,
+    ContactComponent, 
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgScrollbarModule,
     BrowserAnimationsModule,
     MatDialogModule,
@@ -43,6 +46,9 @@ import { AboutComponent } from './webpage/about/about.component';
       { path: 'portfolio', component: PortfolioComponent },
       { path: 'about', component: AboutComponent },
     ])
+  ],
+  entryComponents: [
+    ContactComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

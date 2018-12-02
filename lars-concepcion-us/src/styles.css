@@ -2,3 +2,7 @@
 body {
     background-color: rgba(204, 201, 201, 0.224);
 }
+
+.custom-modalbox .mat-dialog-container{
+    padding: 0px;
+}

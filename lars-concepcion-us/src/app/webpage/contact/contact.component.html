@@ -1,3 +1,50 @@
-<div class ="contact">
-    <h4>Contact Dialog Popup Window</h4>
+<div class ="custom-modalbox">
+    <div class ="row">
+        <!-- left content -->
+        <div class ="col-4 contact-header">
+            <div class ="wallpaper">
+                <div class ="brand-container">
+                    <span class ="logo"><img src="" alt="" class ="brand"></span>
+                </div>
+                <div class ="headers">
+                    <h6>
+                        Interested on working with me? or 
+                        just to say something fill up the form and
+                        you're good to go
+                    </h6>
+                    <span class ="button">Watch my video</span>
+                </div>
+                <div class ="social-link">
+                    <ul class ="item">
+                        <li class ="list">
+                            <a href="" class ="link">
+                                <img src="" alt="" class ="social-media-logo">
+                            </a>
+                        </li>
+                        <li class ="list">
+                            <a href="" class ="link">
+                                <img src="" alt="" class ="social-media-logo">
+                            </a>
+                        </li>
+                        <li class ="list">
+                            <a href="" class ="link">
+                                <img src="" alt="" class ="social-media-logo">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+        
+        <!-- form -->
+        <div class ="col-8 contact-form">
+            <form [formGroup] ="contactForm" (ngSubmit) ="OnSend()">
+                <input type="text" placeholder ="fullname" formControlName ="fullname">
+                <input type="email" placeholder ="email" formControlName ="email"> 
+                <input type="text" placeholder ="subjesct" formControlName ="subject">
+                <textarea id="" cols="30" rows="10" formControlName ="message"></textarea>
+                <button>submit</button>
+            </form>
+        </div>
+    </div>
 </div>

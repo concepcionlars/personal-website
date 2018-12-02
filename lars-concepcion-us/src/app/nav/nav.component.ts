@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ContactComponent } from '../webpage/contact/contact.component';
 import { componentFactoryName } from '@angular/compiler';
 
 export interface DialogData {
@@ -18,9 +19,10 @@ export class NavComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   openContactDialog(): void{
-    const dialogRef = this.dialog.open(ContactComponent, {
-      width: '500px',
-      height: '500px'
+    let dialogRef = this.dialog.open(ContactComponent, {
+      width: '800px',
+      height: '600px',
+      panelClass: 'custom-modalbox'
     })
 
     dialogRef.afterClosed().subscribe(result => {
@@ -30,20 +32,7 @@ export class NavComponent implements OnInit {
 
 
   ngOnInit() {
+    // this.openContactDialog();
   }
 
-}
-
-//@contact dialog
-@Component({
-  selector: 'app-contact',
-  templateUrl: '../webpage/contact/contact.component.html',
-})
-export class ContactComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<ContactComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  ngOnInit() {}
 }
