@@ -1,7 +1,185 @@
-.wallpaper {
+.custom-modalbox {
+    border: 1px solid black;
+    height: 100%;
     width: 100%;
-    height: 150px;
 }
+
+/* =============== left header =============== */
+.custom-modalbox .headersWallpaper {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 0px;
+    height: 600px;
+}
+
+.custom-modalbox .headersWallpaper .contact-header  {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 10px;
+    width: 100%;
+    height: 600px;
+}
+
+/* personal logo */
+/* .custom-modalbox .headersWallpaper .contact-header .brand-container {
+    border: 1px solid black;
+} */
+
+.custom-modalbox .headersWallpaper .contact-header .brand-container .logo {
+    float: right;
+}
+
+.custom-modalbox .headersWallpaper .contact-header .brand-container .logo .brand {
+    width: 50px;
+    height: 50px;
+}
+
+/* headers */
+.custom-modalbox .headersWallpaper .contact-header .headers {
+    text-align: center;
+    height: 120px;
+    margin-top: 280px;
+    margin-left: 11px;
+    color: white;
+}
+
+.custom-modalbox .headersWallpaper .contact-header .headers h6 {
+    text-align: left;
+    font-weight: bold;
+}
+
+.custom-modalbox .headersWallpaper .contact-header .headers .button {
+    border: 2px solid white;
+    color: white;
+    outline-width: 0;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    position: relative;
+    top: 30px;
+}
+
+.button:hover {
+    border: 1px solid red;
+}
+
+/* social media link */
+.custom-modalbox .headersWallpaper .contact-header .social-link {
+    margin-top: 40px;
+    margin-left: 11px;
+    padding: 0px;
+}
+
+.custom-modalbox .headersWallpaper .contact-header .social-link .item {
+    margin: 0px;
+    padding: 0px;
+}
+
+.custom-modalbox .headersWallpaper .contact-header .social-link .item .list {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0px;
+    margin-right: 8px;
+}
+
+.custom-modalbox .headersWallpaper .contact-header .social-link .item .list .link .social-media-logo {
+    width: 40px;
+    height: 40px;
+}
+
+/* ============== form ============= */
+.custom-modalbox .contact-form {
+    height: 600px;
+    padding: 0px;
+}
+
+.custom-modalbox .contact-form form {
+    padding: 30px 0px 0px 0px; 
+    height: 100%;
+}
+
+.custom-modalbox .contact-form form input {
+    border: 1px solid rgba(73, 67, 67, 0.693);
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    outline-width: 0;
+    width: 90%;
+    position: relative;
+    left: 12px;
+    padding-top: 30px;
+    display: block;
+}
+
+.custom-modalbox .contact-form form input:focus {
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid  rgb(92, 211, 24);
+    transition: 0.3s;
+}
+
+.custom-modalbox .contact-form form .btn {
+    display: none;
+}
+
+.custom-modalbox .contact-form form  .messageLabel {
+    color: gray;
+    width: 90%;
+    position: relative;
+    top: 30px;
+    left: 12px;
+}
+
+.custom-modalbox .contact-form form .messageLabel textarea {
+    border: 1px solid gray;
+    outline-width: 0;
+    resize: none;
+    width: 100%;
+}
+
+.custom-modalbox .contact-form form .messageLabel textarea:focus {
+    border: 1px solid rgb(92, 211, 24);
+    transition: 0.3s;
+}
+
+.custom-modalbox .contact-form form .btn-group {
+    position: relative;
+    left: 12px;
+    padding: 0px;
+    margin: 0px;
+    top: 50px;
+    width: 90%;
+}
+
+/* .custom-modalbox .contact-form form .btn-group .btn-container {
+    border: 1px solid red;
+} */
+
+/* cancel */
+.custom-modalbox .contact-form form .btn-group .cancel {
+    border: 2px solid rgb(92, 211, 24);
+    color: rgb(92, 211, 24);
+    border-radius: 50px;
+    padding: 10px 30px;
+    position: relative;
+    left: 30px;
+    cursor: pointer;
+}
+
+/* send button */
+.custom-modalbox .contact-form form .btn-group .send {
+    background-color: rgb(92, 211, 24);
+    border: 2px solid rgb(92, 211, 24);
+    color: white;
+    border-radius: 50px;
+    padding: 10px 30px;
+    position: relative;
+    left: 30px;
+    cursor: pointer;
+}
+ 
+
 
 /* don't forget to put some thumbs up to his help */
 /* https://stackoverflow.com/questions/40595276/angular2-material-dialog-css-dialog-size */

@@ -5,4 +5,5 @@ body {
 
 .custom-modalbox .mat-dialog-container{
     padding: 0px;
+    overflow: hidden;
 }

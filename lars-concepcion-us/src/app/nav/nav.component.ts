@@ -20,8 +20,8 @@ export class NavComponent implements OnInit {
 
   openContactDialog(): void{
     let dialogRef = this.dialog.open(ContactComponent, {
-      width: '800px',
-      height: '600px',
+      width: '700px',
+      height: '500px',
       panelClass: 'custom-modalbox'
     })
 
