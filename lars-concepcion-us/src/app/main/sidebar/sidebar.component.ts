@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { fade } from '../../animationsDir/fade';
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class SidebarComponent implements OnInit {
 

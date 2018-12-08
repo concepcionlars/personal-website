@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { fade } from '../../animationsDir/fade';
+
 @Component({
   selector: 'app-centerbar',
   templateUrl: './centerbar.component.html',
-  styleUrls: ['./centerbar.component.css']
+  styleUrls: ['./centerbar.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class CenterbarComponent implements OnInit {
 

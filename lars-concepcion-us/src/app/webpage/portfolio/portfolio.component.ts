@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { fade } from '../../animationsDir/fade';
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.css']
+  styleUrls: ['./portfolio.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class PortfolioComponent implements OnInit {
   image5 = 'https://cdn.pixabay.com/photo/2018/07/13/23/03/planning-3536758__340.jpg';

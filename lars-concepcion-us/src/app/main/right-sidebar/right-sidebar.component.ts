@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { fade } from '../../animationsDir/fade';
 
 @Component({
   selector: 'app-right-sidebar',
   templateUrl: './right-sidebar.component.html',
-  styleUrls: ['./right-sidebar.component.css']
+  styleUrls: ['./right-sidebar.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class RightSidebarComponent implements OnInit {
 

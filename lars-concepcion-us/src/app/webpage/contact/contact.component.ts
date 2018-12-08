@@ -1,5 +1,7 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
 import { FormGroup, FormControlName, FormControl } from '@angular/forms';
+
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +10,13 @@ import { FormGroup, FormControlName, FormControl } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private dialogRef: MatDialogRef<ContactComponent>) {
+    dialogRef.disableClose = true;
+  }
+  //allow esc to close contact dialog
+  @HostListener('window:keyup.esc') onKeyUp() {
+    this.dialogRef.close();
+  }
 
   public wallpaper() {
     const source = 'assets/w.jpg';
