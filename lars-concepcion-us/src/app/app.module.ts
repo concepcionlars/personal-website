@@ -18,6 +18,7 @@ import { PortfolioComponent } from './webpage/portfolio/portfolio.component';
 import { HeaderComponent } from './main/header/header.component';
 import { ContactComponent } from './webpage/contact/contact.component';
 import { AboutComponent } from './webpage/about/about.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AboutComponent } from './webpage/about/about.component';
     FormsModule,
     ReactiveFormsModule,
     NgScrollbarModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
     RouterModule.forRoot([

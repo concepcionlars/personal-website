@@ -87,14 +87,44 @@
 }
 
 /* ============== form ============= */
+input {
+    padding: 0px 0px 0px 5px;
+    font-size: 0.85rem;
+}
+
+textarea {
+    padding: 0px 0px 0px 5px;
+    font-size: 0.85rem;
+}
+
 .custom-modalbox .contact-form {
     height: 600px;
     padding: 0px;
 }
 
+.custom-modalbox .contact-form .simpleFormHeader {
+    font-size: 0.85rem;
+    padding: 20px 25px 12px 10px;
+    margin: 0px;
+    text-align: center;
+}
+
 .custom-modalbox .contact-form form {
-    padding: 30px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px; 
+    margin: 0px;
     height: 100%;
+}
+
+.custom-modalbox .contact-form form .error {
+    font-size: 0.8rem;
+    color: red;
+    position: absolute;
+    left: 16px;
+    z-index: 1;
+}
+
+.custom-modalbox .contact-form form .error .example {
+    color: gray;
 }
 
 .custom-modalbox .contact-form form input {
@@ -106,7 +136,7 @@
     width: 90%;
     position: relative;
     left: 12px;
-    padding-top: 30px;
+    padding-top: 35px;
     display: block;
 }
 
@@ -122,22 +152,33 @@
     display: none;
 }
 
-.custom-modalbox .contact-form form  .messageLabel {
+.custom-modalbox .contact-form form #messageFieldError {
+    top: 18rem;
+    right: 12px;
+}
+
+.custom-modalbox .contact-form form .messageLabel {
     color: gray;
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.9rem;
+    position: relative;
+    top: 30px;
+    left: 17px;
+}
+
+.custom-modalbox .contact-form form textarea {
+    border: 1px solid gray;
+    outline-width: 0;
+    resize: none;
+    width: 100%;
     width: 90%;
     position: relative;
     top: 30px;
     left: 12px;
 }
 
-.custom-modalbox .contact-form form .messageLabel textarea {
-    border: 1px solid gray;
-    outline-width: 0;
-    resize: none;
-    width: 100%;
-}
-
-.custom-modalbox .contact-form form .messageLabel textarea:focus {
+.custom-modalbox .contact-form form textarea:focus {
     border: 1px solid rgb(92, 211, 24);
     transition: 0.3s;
 }
@@ -147,7 +188,7 @@
     left: 12px;
     padding: 0px;
     margin: 0px;
-    top: 50px;
+    top: 65px;
     width: 90%;
 }
 
@@ -156,29 +197,24 @@
 } */
 
 /* cancel */
-.custom-modalbox .contact-form form .btn-group .cancel {
+.custom-modalbox .contact-form form .btn-group .btn-container .cancel {
     border: 2px solid rgb(92, 211, 24);
     color: rgb(92, 211, 24);
     border-radius: 50px;
-    padding: 10px 30px;
+    padding: 5px 20px;
     position: relative;
-    left: 30px;
+    left: 38px;
     cursor: pointer;
 }
 
 /* send button */
-.custom-modalbox .contact-form form .btn-group .send {
+.custom-modalbox .contact-form form .btn-group .btn-container .send {
     background-color: rgb(92, 211, 24);
     border: 2px solid rgb(92, 211, 24);
     color: white;
     border-radius: 50px;
-    padding: 10px 30px;
+    padding: 5px 20px;
     position: relative;
-    left: 30px;
+    left: 38px;
     cursor: pointer;
 }
- 
-
-
-/* don't forget to put some thumbs up to his help */
-/* https://stackoverflow.com/questions/40595276/angular2-material-dialog-css-dialog-size */
