@@ -1,14 +1,28 @@
 import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
 import { FormGroup, FormControlName, FormControl, Validators } from '@angular/forms';
-import { ContactService } from './contact.service';;
-
 import { MatDialogRef } from '@angular/material';
+
+import { ContactService } from './contact.service';
+import { Data } from 'src/app/customTSFIle/formValue';
+
+//=====================
+// JSON OBJECT
+//=====================
+const filesData = ({
+  metadata: {
+    Fullname: String,
+    Email: String,
+    Subject: String,
+    Message: String
+  }
+})
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
 })
+
 export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
@@ -55,10 +69,29 @@ export class ContactComponent implements OnInit {
     return this.contactForm.get('Message');
   }
 
-  // send the form
-  OnSend() {
-    console.log(this.contactForm.value);
-    this.contactForm.reset();
+  //validate form on submit
+  public validateWhenSubmit(send) {
+    if(!this.contactForm.valid) {
+      this.contactForm.controls['Fullname'].markAsTouched();
+      this.contactForm.controls['Email'].markAsTouched();
+      this.contactForm.controls['Subject'].markAsTouched();
+      this.contactForm.controls['Message'].markAsTouched();
+    } else {
+      send.click();
+    }
+  }
+
+  // send the form to server and validate
+  OnSend(cancel) {
+    const metadata: Data = {
+      Fullname: this.contactForm.value.Fullname,
+      Email: this.contactForm.value.Email,
+      Subject: this.contactForm.value.Subject,
+      Message: this.contactForm.value.Message,
+    }
+    this._contactService.sendForm(metadata).subscribe(res => alert('Send Successfully'))
+    
+    cancel.click();
   }
 
   ngOnInit() {
@@ -68,4 +101,4 @@ export class ContactComponent implements OnInit {
 
 }
 // =================================================================
-// i've done creating a validators to email and to all form input 
+// front end validation to my contact form successfully implemented

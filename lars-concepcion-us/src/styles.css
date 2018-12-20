@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     background-color: rgba(204, 201, 201, 0.224);
+    min-width: 755px;
 }
 
 .custom-modalbox .mat-dialog-container{

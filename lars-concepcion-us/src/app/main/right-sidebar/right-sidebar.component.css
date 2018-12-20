@@ -40,3 +40,9 @@
     width: 100%;
     height: 100%;
 }
+
+@media (max-width: 1010px) {
+    .twooftwo .portfolio .portfolio_container .alt {
+        height: 150px;
+    }
+}

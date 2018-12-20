@@ -140,6 +140,14 @@ textarea {
     display: block;
 }
 
+.custom-modalbox .contact-form form input.ng-invalid.ng-touched {
+    border-bottom: 1px solid red;
+}
+
+.custom-modalbox .contact-form form input.ng-valid {
+    border-bottom: 1px solid rgb(92, 211, 24);
+}
+
 .custom-modalbox .contact-form form input:focus {
     border-top: 0px;
     border-right: 0px;
@@ -178,6 +186,14 @@ textarea {
     left: 12px;
 }
 
+.custom-modalbox .contact-form form textarea.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+.custom-modalbox .contact-form form textarea.ng-valid {
+    border: 1px solid rgb(92, 211, 24);
+}
+
 .custom-modalbox .contact-form form textarea:focus {
     border: 1px solid rgb(92, 211, 24);
     transition: 0.3s;
@@ -188,16 +204,12 @@ textarea {
     left: 12px;
     padding: 0px;
     margin: 0px;
-    top: 65px;
+    top: 55px;
     width: 90%;
 }
 
-/* .custom-modalbox .contact-form form .btn-group .btn-container {
-    border: 1px solid red;
-} */
-
 /* cancel */
-.custom-modalbox .contact-form form .btn-group .btn-container .cancel {
+.custom-modalbox .contact-form form .btn-group .btn-container #cancel {
     border: 2px solid rgb(92, 211, 24);
     color: rgb(92, 211, 24);
     border-radius: 50px;
@@ -208,7 +220,7 @@ textarea {
 }
 
 /* send button */
-.custom-modalbox .contact-form form .btn-group .btn-container .send {
+.custom-modalbox .contact-form form .btn-group .btn-container #send {
     background-color: rgb(92, 211, 24);
     border: 2px solid rgb(92, 211, 24);
     color: white;
@@ -217,4 +229,12 @@ textarea {
     position: relative;
     left: 38px;
     cursor: pointer;
+}
+
+.custom-modalbox .contact-form form .btn-group .btn-container .button:hover {
+    box-shadow: 0px 0px 3px 0px rgb(92, 211, 24);
+}
+
+input:invalid {
+    border-bottom: 1px solid red;
 }

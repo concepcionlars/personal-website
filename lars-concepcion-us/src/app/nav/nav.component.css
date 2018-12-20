@@ -1,53 +1,58 @@
 nav {
-   background-color: rgb(92, 211, 24);
-   padding: 5px 0px 3px 0px;
-   width: 100%;
+    width: 100%;
+    background-color: rgb(92, 211, 24);
+    background-color: rgb(30, 200, 10);
+    padding: 5px 0px 3px 0px;
+    position: relative;
+    z-index: 1;
 }
+
 
 nav .navigation {
-    /* border: 1px solid black; */
+    width: 100%
 }
 
-nav .navigation .nav {
-    width: 100%;
+/* unordered list */
+/* nav .navigation .nav {
+    margin-left: 20px;   
+} */
+
+/* logo container */
+nav .navigation .nav .brand_logo {
+    float: left;
+    margin-right: 2rem;
+    width: 25%;
+}
+
+/* logo href */
+nav .navigation .nav .brand_logo .navbar-brand {
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+/* logo image property */
+nav .navigation .nav .brand_logo .navbar-brand .logo {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 2px;
+    left: 2.5rem;
 }
 
 nav .navigation .nav .nav-item {
-    position: relative;
-    left: 14rem;
-    /* margin: 0px 2.5px 0px 2.5px; */
     color: white;
-}
-
-nav .navigation .nav .brand_logo {
-    position: relative;
-    padding: 0px;
-    margin: 0px;
-    left: 20px;
-    top: 1px;
-}
-
-nav .navigation .nav .nav-item .navbar-brand {
-    margin: 0px;
-    padding: 0px;
-}
-
-nav .navigation .nav .nav-item .navbar-brand .logo {
-    width: 35px;
-    height: 30px;
-    margin: 0px;
-    padding: 0px;
+    margin-right: 5px;
+    text-align: right;
 }
 
 nav .navigation .nav .nav-item .nav-link {
     font-weight: 600;
+    width: 100%;
+    position: none;
 }
 
-li {
-    margin-left: 5px;
-}
-
-a {
+ a {
     color: white;
 }
 
@@ -57,10 +62,33 @@ nav .navigation .nav .nav-item .contact {
 
 nav .navigation .nav .active {
     color: rgb(238, 238, 238);
-    background-color: rgb(92, 211, 24);
+    background-color: rgba(30, 200, 10, 0.9);
     border-bottom: 1px solid rgb(92, 211, 24);
 }
 
 .nav-link:hover {
     border-bottom: 1px solid rgb(92, 211, 24);
+}
+
+
+/* media query */
+@media (max-width: 1125px) {
+    nav .navigation .nav .brand-logo {
+        margin-right: 6rem;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 1041px) {
+    
+    nav .navigation .nav .brand-logo {
+        margin-right: 20rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
 }

@@ -1,47 +1,49 @@
-<div *ngIf= "router.url !== '/portfolio'">
-  <div @fade class ="twooftwo">
-    <h5 class ="containerName"><i class="fas fa-briefcase"></i>Portfolio</h5>
-    <div class ="portfolio">
-      <ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
-        <div class ="container portfolio_container">
-          <div class ="row">
-            <div class ="col alt">
-              <img src="{{ image }}" alt="" class ="image">
+<div *ngIf ="router.url !== '/admin'">
+  <div *ngIf= "router.url !== '/portfolio'">
+    <div @fade class ="twooftwo">
+      <h5 class ="containerName"><i class="fas fa-briefcase"></i>Portfolio</h5>
+      <div class ="portfolio">
+        <ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
+          <div class ="container portfolio_container">
+            <div class ="row">
+              <div class ="col alt">
+                <img src="{{ image }}" alt="" class ="image">
+              </div>
+            </div>
+            <div class ="row">
+              <div class ="col alt">
+                <a href="http://www.google.com" class ="thumbnail">
+                  <img src="{{ image1 }}" alt="" class ="image">
+                </a>
+              </div>
+            </div>
+            <div class ="row">
+              <div class ="col alt">
+                <img src="{{ image2 }}" alt="" class ="image">
+              </div>
+            </div>
+            <div class ="row">
+              <div class ="col alt">
+                <img src="{{ image3 }}" alt="" class ="image">
+              </div>
+            </div>
+            <div class ="row">
+              <div class ="col alt">
+                <img src="{{ image4 }}" alt="" class ="image">
+              </div>
+            </div>
+            <div class ="row">
+              <div class ="col alt">
+                <img src="{{ image5 }}" alt="" class ="image">
+              </div>
             </div>
           </div>
-          <div class ="row">
-            <div class ="col alt">
-              <a href="http://www.google.com" class ="thumbnail">
-                <img src="{{ image1 }}" alt="" class ="image">
-              </a>
-            </div>
-          </div>
-          <div class ="row">
-            <div class ="col alt">
-              <img src="{{ image2 }}" alt="" class ="image">
-            </div>
-          </div>
-          <div class ="row">
-            <div class ="col alt">
-              <img src="{{ image3 }}" alt="" class ="image">
-            </div>
-          </div>
-          <div class ="row">
-            <div class ="col alt">
-              <img src="{{ image4 }}" alt="" class ="image">
-            </div>
-          </div>
-          <div class ="row">
-            <div class ="col alt">
-              <img src="{{ image5 }}" alt="" class ="image">
-            </div>
-          </div>
-        </div>
-      </ng-scrollbar>
+        </ng-scrollbar>
+      </div>
     </div>
   </div>
-</div>
-
-<div *ngIf ="router.url == '/portfolio'">
-  <app-sidebar></app-sidebar>
+  
+  <div *ngIf ="router.url == '/portfolio'">
+    <app-sidebar></app-sidebar>
+  </div>
 </div>

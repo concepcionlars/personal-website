@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HashLocationStrategy, PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { HeaderComponent } from './main/header/header.component';
 import { ContactComponent } from './webpage/contact/contact.component';
 import { AboutComponent } from './webpage/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     TimelineComponent,
     PortfolioComponent,
     AboutComponent,
-    ContactComponent, 
+    ContactComponent,
+    AuthenticationComponent, 
   ],
   imports: [
     BrowserModule,
@@ -45,14 +48,16 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     RouterModule.forRoot([
       { path: '', component: TimelineComponent },
+      // { path: '', redirectTo: 'admin', pathMatch: 'full' },
       { path: 'portfolio', component: PortfolioComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'admin', component: AuthenticationComponent }
     ])
   ],
   entryComponents: [
     ContactComponent,
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

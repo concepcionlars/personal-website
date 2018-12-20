@@ -1,18 +1,38 @@
-<div @fade class ="oneoftwo">
-  <header class ="col-md-12">
-    <div class ="col-md-12 info">
-      <div class ="owner-space">
-        <div class ="wallpaper">
-          <img src="{{ profile }}" alt="profile_img" class ="profile">
-        </div>
-        <app-nav></app-nav>
-        <div *ngIf="router.url == '/'">
-          <app-header></app-header>
+<div *ngIf ="router.url !== '/admin'">
+  <div class ="row">
+    <div class ="main col-lg-9 col-sm-12">
+      <div>
+        <div @fade class ="oneoftwo">
+          <header class ="col-md-12 ">
+            <div class ="col-md-12 info">
+              <div class ="owner-space">
+                <div class ="wallpaper_container">
+                  <img src ="{{ wallpaper }}" alt ="wallpaper" class ="wallpaper">
+                  <div class ="col-12 responsive-image">
+                    <img src="{{ profile }}" alt="profile_img" class ="profile">
+                  </div>
+                </div>
+                <app-nav></app-nav>
+                <div *ngIf="router.url == '/'">
+                  <app-header></app-header>
+                </div>
+              </div>
+            </div>
+          </header>
+          
+          <router-outlet></router-outlet>
+          <!-- Up to this point -->
         </div>
       </div>
     </div>
-  </header>
+    <div class ="right-sidebar col-lg-3 col-md-4 col-sm-0">
+      <app-right-sidebar></app-right-sidebar>
+    </div>
+  </div>
+</div>
 
-  <router-outlet></router-outlet>
-  <!-- Up to this point -->
+<div *ngIf ="router.url == '/admin'">
+  <div class ="col-md-12">
+      <router-outlet></router-outlet>
+  </div>
 </div>
