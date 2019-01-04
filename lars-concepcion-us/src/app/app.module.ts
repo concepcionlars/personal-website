@@ -21,6 +21,9 @@ import { ContactComponent } from './webpage/contact/contact.component';
 import { AboutComponent } from './webpage/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { HeadersEditorComponent } from './webpage/webEditor/headers-editor/headers-editor.component';
+import { EducationInputFieldComponent } from './webpage/webEditor/headers-editor/education-input-field/education-input-field.component';
+import { AlertBoxComponent } from './popup_module/alert-box/alert-box.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     PortfolioComponent,
     AboutComponent,
     ContactComponent,
-    AuthenticationComponent, 
+    AuthenticationComponent,
+    HeadersEditorComponent,
+    EducationInputFieldComponent,
+    AlertBoxComponent, 
   ],
   imports: [
     BrowserModule,
@@ -56,6 +62,9 @@ import { AuthenticationComponent } from './authentication/authentication.compone
   ],
   entryComponents: [
     ContactComponent,
+    HeadersEditorComponent,
+    EducationInputFieldComponent,
+    AlertBoxComponent
   ],
   providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]

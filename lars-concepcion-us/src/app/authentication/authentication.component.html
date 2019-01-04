@@ -7,7 +7,7 @@
           <img src="{{wallpaper}}" alt="" class ="wallpaper">
           <img src="{{profile}}" alt="" class ="profile">
         </div>
-        <form [formGroup] ="AuthForm">
+        <form [formGroup] ="AuthForm" (ngSubmit) ="Authenticate()">
           <div class ="input_container">
             <label for="username" class ="label">Username</label>
             <input type="text" class ="input" formControlName ="Username">

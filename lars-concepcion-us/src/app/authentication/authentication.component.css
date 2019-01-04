@@ -43,7 +43,7 @@
 .login-form .row .headers_container .profile {
     width: 120px;
     height: 120px;
-    border: 3px solid white;
+    border: 3px solid rgba(197, 197, 197, 1);
     box-shadow: 0px 0px 3px 0px black;
     border-radius: 100px;
     position: absolute;

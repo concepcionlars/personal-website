@@ -1,18 +1,22 @@
 .information {
     background-color: white;
-    padding: 30px 0px 5px 0px;
+    padding: 0px 0px 5px 0px;
 }
 
-.information .name {
+.information .context {
+    padding: 20px 0px 10px 0px;
+}
+
+.information .context .name {
     color: rgb(51, 47, 47);
 
 }
 
-.information .headline {
+.information .context .headline {
     color: rgb(73, 67, 67);
 }
 
-.information .location {
+.information .context .location {
     color: rgba(73, 67, 67, 0.693);
 }
 
@@ -31,4 +35,22 @@
 
 .summaryText .paragraph {
     /* height: 50px; */
+}
+
+.information .edit {
+    margin: 20px 20px 0px 0px;
+    float: right;
+}
+
+.information .edit .fas {
+    border-radius: 100px;
+    cursor: pointer;
+    background-color: rgba(168, 167, 167, 0.17);
+    color: rgba(126, 126, 126, 0.449);
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.information .edit .fas:hover {
+    color: rgb(30, 200, 10)
 }

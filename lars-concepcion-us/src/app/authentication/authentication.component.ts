@@ -1,6 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControlName, FormControl, Validators } from '@angular/forms';
 
+import { AuthenticateService } from './authenticate.service';
+import { AuthData } from 'src/app/customTSFIle/AuthData';
+
+//=====================
+// JSON OBJECT
+//=====================
+const value = ({
+  data: {
+    Username: String,
+    Password: String,
+  }
+})
+
 @Component({
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
@@ -13,7 +26,7 @@ export class AuthenticationComponent implements OnInit {
   wallpaper = 'assets/c.png';
   AuthForm: FormGroup;
 
-  constructor() {
+  constructor(private _authenticate: AuthenticateService) {
     this.AuthForm = this.createAuthGroup();
    }
 
@@ -30,6 +43,15 @@ export class AuthenticationComponent implements OnInit {
 
   get password() {
     return this.AuthForm.get('Password');
+  }
+
+  Authenticate() {
+    const data: AuthData = {
+      Username: this.AuthForm.value.Username,
+      Password: this.AuthForm.value.Password,
+    }
+
+    this._authenticate.sendAuth(data).subscribe(res => console.log(res));
   }
 
   ngOnInit() {

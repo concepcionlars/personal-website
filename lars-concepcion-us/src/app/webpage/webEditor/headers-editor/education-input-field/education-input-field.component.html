@@ -1,0 +1,67 @@
+<ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
+  <div class ="educationInputField">
+
+    <div class ="header">
+      <h5>Add Education</h5>
+    </div>
+
+    <form FormGroup ="educationInformation" (ng-submit) ="value()">
+      <div class ="col-12 containers">
+        <h6>School</h6>
+        <input type="text" placeholder ="Ex: Boston University">
+      </div>
+  
+      <div class ="col-12 containers">
+        <h6>Degree</h6>
+        <input type="text" placeholder ="Ex: Bachelor's">
+      </div>
+  
+      <div class ="col-12 containers">
+        <h6>Field of study</h6>
+        <input type="text" placeholder ="Ex: Business">
+      </div>
+  
+      <div class ="containers row">
+        <div class ="col-6">
+          <h6>From year</h6>
+          <select name="fromYear" class ="dropdown" id="">
+            <option value="year">Year</option>
+            <option value="1980">1980</option>
+            <option value="1981">1981</option>
+          </select>
+        </div>
+  
+        <div class ="col-6">
+          <h6>To Year (Or Expected)</h6>
+          <select name="toYear" class ="dropdown" id="">
+            <option value="year">Year</option>
+            <option value="1984">1984</option>
+            <option value="1985">1985</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class ="col-12 containers">
+        <h6>Description</h6>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+      </div>
+  
+      <div class ="col-12 containers">
+        <h6>Activities and societies</h6>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <span class ="sample">Ex: Alpha Phi Omega, Volleyball, Marching Band</span>
+      </div>
+  
+      <div class ="ng-ghozt">
+        <input type="submit">
+        <button (click) ="openAlertBox()" #cancel></button>
+      </div>
+    </form>
+
+    <div class ="span_button">
+      <span class ="btn">save</span>
+      <span class ="btn cancel" (click) ="cancel.click()">cancel</span>    
+    </div>
+    
+  </div>
+</ng-scrollbar>

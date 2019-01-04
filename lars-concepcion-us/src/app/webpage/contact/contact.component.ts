@@ -26,8 +26,6 @@ const filesData = ({
 export class ContactComponent implements OnInit {
 
   contactForm: FormGroup;
-  errorMessage = "your message";
-  submitted = false;
 
   constructor(private _contactService: ContactService, private renderer: Renderer2, private dialogRef: MatDialogRef<ContactComponent>) {
     dialogRef.disableClose = true;
