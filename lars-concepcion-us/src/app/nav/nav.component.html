@@ -1,0 +1,26 @@
+<nav>
+  <div class ="w-100 navigation">
+    <ul class="w-100 nav nav-tabs">
+      <div class ="brand_logo">
+        <a class ="navbar-brand">
+          <img src="assets/l.gif" alt="" class ="logo">
+        </a>
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive ="active" [routerLinkActiveOptions] ="{exact: true}" routerLink="/">Timeline</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive ="active" routerLink="/portfolio">Portfolio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive ="active" routerLink="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link contact" routerLinkActive ="active" (click) ="openContactDialog()">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive ="active" href="https://www.facebook.com">Blog</a>
+      </li>
+    </ul>
+  </div>
+</nav>       

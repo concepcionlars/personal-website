@@ -1,0 +1,135 @@
+.main {
+    width: 100%;   
+}
+
+.oneoftwo {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+header {
+    padding: 0px;
+    margin: 0px 0px 20px 0px; 
+    box-shadow: 0px 0px 3px 0px black;
+}
+
+header .info {
+    padding: 0px;
+    margin: 0px;
+}
+
+header .info .owner-space {
+    /* border: 1px solid red; */
+}
+
+header .info .owner-space .wallpaper_container {
+    width: 100%;
+    height: 300px;
+    box-shadow: 0px 0px 5px 0px black;
+}
+
+/* wallpaper */
+header .info .owner-space .wallpaper_container .wallpaper {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+}
+
+/* profile */
+header .info .owner-space .wallpaper_container .responsive-image {
+    position: relative;
+    top: 11rem;
+    height: 150px;
+}
+
+header .info .owner-space .wallpaper_container .responsive-image .profile {
+    border: 4px solid #ffffff;
+    box-shadow: 0px 0px 5px 0px black;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    margin-left: 8%;
+    position: relative;
+    z-index: 2;
+}
+
+header .info .owner-space .information {
+    background-color: white;
+    padding: 30px 0px 5px 0px;
+}
+
+header .info .owner-space .information .name {
+    color: rgb(51, 47, 47);
+
+}
+
+header .info .owner-space .information .headline {
+    color: rgb(73, 67, 67);
+}
+
+header .info .owner-space .information .location {
+    color: rgba(73, 67, 67, 0.693);
+}
+
+header .info .owner-space .information .ra {
+    padding-left: 30px;
+}
+
+header .info .owner-space .summaryText {
+    border-top: 1px solid rgba(126, 126, 126, 0.449);
+    background-color: white;
+    font-size: 0.95rem;
+    padding: 15px 10px 0px 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+header .info .owner-space .summaryText .paragraph {
+    /* height: 50px; */
+}
+
+
+/* media query */
+@media (max-width: 1115px) {
+    header .info .owner-space .wallpaper_container .responsive-image {
+        top: 12rem;
+    }
+
+    header .info .owner-space .wallpaper_container .responsive-image .profile {
+        width: 140px;
+        height: 140px;
+        margin-left: 7%;
+    }
+}
+
+/* media query */
+@media (max-width: 992px) {
+    header .info .owner-space .wallpaper_container .responsive-image {
+        top: 11rem;
+    }
+
+    header .info .owner-space .wallpaper_container .responsive-image .profile {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 991px) {
+    .row .right-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 888px) {
+    header .info .owner-space .wallpaper_container .responsive-image {
+        top: 12rem;
+    }
+
+    header .info .owner-space .wallpaper_container .responsive-image .profile {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* MAX WIDTH MUST BE 755PX */

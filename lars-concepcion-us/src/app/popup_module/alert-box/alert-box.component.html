@@ -1,0 +1,12 @@
+<div class ="alert-box-container">
+    <div class ="errorMessage">
+        <p>Discard Changes?</p>
+    </div>
+    <div class ="ng-ghozt">
+        <button [mat-dialog-close] ="true" #close></button>
+    </div>
+    <div class ="btn-group">
+        <span class ="btn" (click) ="discardChanges(close)">Discard</span>
+        <span class ="btn highlight" (click) ="reject(close)" >No Thanks</span>
+    </div>
+</div>
