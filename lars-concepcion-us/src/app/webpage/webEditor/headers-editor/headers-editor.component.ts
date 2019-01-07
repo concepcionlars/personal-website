@@ -4,10 +4,7 @@ import { MatDialogRef, MatDialog } from '@angular/material';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { summaryFileName } from '@angular/compiler/src/aot/util';
 
-<<<<<<< HEAD
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
-=======
->>>>>>> f89cf6f69ce440b4b8a38c64c2ae7e36897e2273
 import { EducationInputFieldComponent } from '../headers-editor/education-input-field/education-input-field.component';
 
 
@@ -18,11 +15,7 @@ import { EducationInputFieldComponent } from '../headers-editor/education-input-
 })
 export class HeadersEditorComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor(private alertservice: AlertBoxService, private dialog: MatDialog, private dialogRef: MatDialogRef<HeadersEditorComponent>) {
-=======
-  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<HeadersEditorComponent>) {
->>>>>>> f89cf6f69ce440b4b8a38c64c2ae7e36897e2273
+  constructor(private alertservice:AlertBoxService, private dialog: MatDialog, private dialogRef: MatDialogRef<HeadersEditorComponent>) {
     this.profileInformation = this.createFormGroup();
     dialogRef.disableClose = true;
   }
@@ -64,10 +57,7 @@ export class HeadersEditorComponent implements OnInit {
   get Brand() {
     return this.profileInformation.get('brand');
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> f89cf6f69ce440b4b8a38c64c2ae7e36897e2273
   // owners personal information getter
   get Firstname() {
     return this.profileInformation.get('Firstname');
@@ -79,13 +69,10 @@ export class HeadersEditorComponent implements OnInit {
   //=================
   // FUNCTIONS
   //=================
-<<<<<<< HEAD
   openAlertBox() {
     this.alertservice.showAlertBox();
   }
 
-=======
->>>>>>> f89cf6f69ce440b4b8a38c64c2ae7e36897e2273
   openDialogBox(): void{
     const dialogRef = this.dialog.open(EducationInputFieldComponent, {
       width: '700px',
