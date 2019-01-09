@@ -1,6 +1,43 @@
-/* .headers-Editor {
+.header {
+    background-color: rgb(167, 162, 162);
+    z-index: 5;
+    height: auto;
+    color: #ffffff;
+    overflow-y: hidden;
+    padding-top: 5px;
+}
 
-} */
+.header .header-container {
+    float: left;
+    width: 50%;
+}
+
+.header .header-container h5 {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.header .removeBtn_container {
+    padding: 10px;
+    width: 50%;
+    float: right;
+}
+
+.header .removeBtn_container .remove-icon {
+    float: right;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.header .removeBtn_container .remove-icon:hover {
+    text-shadow: 1px 1px 1px rgb(20, 300, 10);
+}
+
+.headers-Editor {
+    height: 1200px;
+}
 
 .headers-Editor .OwnersprofileandWallpaper {
     height: 200px;
@@ -11,12 +48,12 @@
 /* ========= Cover Image ========= */
 /* =============================== */
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container {
-    /* border: 1px solid black; */
+    /* border: 1px solid blue; */
 }
 
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .wallpaper {
     width: 100%;
-    height: 250px;
+    height: 200px;
     position: absolute;
 }
 
@@ -31,7 +68,7 @@
 /* ================================================== */
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image {
     width: 100%;
-    top: 10rem;
+    top: 7rem;
     position: relative;
 }
 
@@ -70,6 +107,10 @@
     margin-top: 10px;
 }
 
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .logo:hover {
+    box-shadow: 0px 0px 1px 1px rgb(30, 200, 10);
+}
+
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .fas {
     color: rgba(126, 126, 126, 0.449);
     font-size: 0.85rem;
@@ -81,7 +122,8 @@
 }
 
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .fas:hover {
-    color: rgb(30, 200, 10)
+    color: rgb(30, 200, 10);
+    box-shadow: 0px 0px 1px 1px rgb(30, 200, 10);
 }
 
 /* ====================================== */
@@ -89,7 +131,7 @@
 /* ====================================== */
 
 .headers-Editor form {
-    margin: 50px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
     padding: 10px 0 10px 10px;
 }
 
@@ -271,8 +313,7 @@
 .headers-Editor .span_button {
     border-top: 1px solid rgba(126, 126, 126, 0.449);
     height: 90px;
-    padding-top: 30px;
-    margin-top: 60px;
+    padding-top: 23px;
 }
 
 .headers-Editor .span_button .btn {

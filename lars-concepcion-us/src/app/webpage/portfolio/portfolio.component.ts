@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddPortfolioService } from 'src/app/webpage/webEditor/add-portfolio/add-portfolio.service';
 
 import { fade } from '../../animationsDir/fade';
 
@@ -18,9 +19,13 @@ export class PortfolioComponent implements OnInit {
   image1 = 'https://cdn.pixabay.com/photo/2018/03/01/09/33/laptop-3190194__340.jpg';
   image = 'https://cdn.pixabay.com/photo/2015/07/17/22/42/startup-849804__340.jpg';
 
-  constructor() { }
+  constructor(private addPortfolio: AddPortfolioService) { }
 
   ngOnInit() {
+  }
+
+  showDialogBox() {
+    this.addPortfolio.openDialogBox();
   }
 
 }

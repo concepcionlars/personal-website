@@ -13,11 +13,13 @@ body {
     padding: 0;
     border-top: 1px solid rgb(138, 136, 136);
     border-left: 1px solid rgb(138, 136, 136);
-    box-shadow: 0px 1px 1px 0px rgb(138, 136, 136);
+    overflow: hidden;
+    /* box-shadow: 0px 1px 1px 0px rgb(138, 136, 136); */
 }
 
 .education-input-field .mat-dialog-container {
     padding: 0;
+    overflow: hidden;
 }
 
 .customAlertBox .mat-dialog-container {

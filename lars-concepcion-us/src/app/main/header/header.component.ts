@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
-  showDialog():void {
+  showDialog() {
     const dialogRef = this.dialog.open(HeadersEditorComponent, {
       width: '700px',
       height: '500px',

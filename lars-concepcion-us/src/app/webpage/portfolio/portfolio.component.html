@@ -1,11 +1,12 @@
 <div @fade class ="col-md-12 portfolio">
     <div class ="row">
-        <div class ="cor col-md-4">
+        <div class ="btn cor col-md-4" (click) ="showDialogBox()">
             <div class ="portfolio_container">
-                <img src="{{ image }}" alt="" class ="wallpaper">
-                <div class ="content">
-                    <h5 class ="title">Lorem Ipsum is simply Lorem Ipsum is simply</h5>
-                    <span class ="date">08/13/2013</span>
+                <div class ="header">
+                    <span class ="plusIcon"><i class="fas fa-plus"></i></span>
+                    <div>
+                        <h6>Add Another Project</h6>
+                    </div>
                 </div>
             </div>
         </div>

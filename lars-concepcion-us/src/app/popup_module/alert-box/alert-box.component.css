@@ -1,8 +1,5 @@
-.alert-box-container {
-}
-
 .alert-box-container .errorMessage {
-    padding: 10px;
+    padding: 16px 10px 0px 10px;
     color: gray;
     font-weight: bold;
     font-size: 0.9rem;
@@ -33,5 +30,4 @@
 
 .alert-box-container .btn-group .btn:hover {
     box-shadow: 0px 0px 3px 0px rgb(30, 200, 10);
-    border: 1px solid black;
 }

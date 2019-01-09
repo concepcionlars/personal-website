@@ -1,9 +1,14 @@
+<div class ="header">
+  <div class ="header-container">
+    <h5>Add Education</h5>
+  </div>
+  <div class ="removeBtn_container">
+    <span><i class ="fas fa-times remove-icon" (click) ="openAlertBox()"></i></span>
+  </div>
+</div>
+
 <ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
   <div class ="educationInputField">
-
-    <div class ="header">
-      <h5>Add Education</h5>
-    </div>
 
     <form FormGroup ="educationInformation" (ng-submit) ="value()">
       <div class ="col-12 containers">
@@ -62,9 +67,7 @@
 
     <div class ="span_button">
       <span class ="btn">save</span>
-      <span class ="btn cancel" (click) ="openAlertBox(cancel)">cancel</span>    
-      <span class ="btn cancel" (click) ="cancel.click()">cancel</span>    
-
+      <span class ="btn cancel" (click) ="openAlertBox()">cancel</span>    
     </div>
     
   </div>

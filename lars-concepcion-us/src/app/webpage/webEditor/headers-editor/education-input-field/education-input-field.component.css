@@ -1,23 +1,48 @@
-/* .educationInputField {
-}
-*/
-
-.educationInputField .header {
-    padding: 20px 10px 10px 10px;
-    width: 100%;
+.header {
     background-color: rgb(167, 162, 162);
-    color: white;
-    position: absolute;
+    z-index: 5;
+    height: auto;
+    color: #ffffff;
+    overflow-y: hidden;
+    padding-top: 5px;
 }
 
-.educationInputField .header h5 {
+.header .header-container {
+    float: left;
+    width: 50%;
+}
+
+.header .header-container h5 {
+    padding: 10px;
     font-weight: bold;
+}
+
+.header .removeBtn_container {
+    padding: 10px;
+    width: 50%;
+    float: right;
+}
+
+.header .removeBtn_container .remove-icon {
+    float: right;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.header .removeBtn_container .remove-icon:hover {
+    text-shadow: 1px 1px 3px rgb(30, 200, 10);
+}
+
+/* ==================================== */
+
+.educationInputField {
+    height: 1300px;
 }
 
 .educationInputField form {
     padding: 15px 0px 15px 15px;
-    position: relative;
-    top: 50px;
 } 
 
 .educationInputField form .containers {
@@ -91,8 +116,8 @@ h6 {
 .educationInputField .span_button {
     border-top: 1px solid rgba(126, 126, 126, 0.449);
     height: 90px;
-    padding-top: 30px;
-    margin-top: 60px;
+    padding-top: 25px;
+    margin-top: 30px;
 }
 
 .educationInputField .span_button .btn {

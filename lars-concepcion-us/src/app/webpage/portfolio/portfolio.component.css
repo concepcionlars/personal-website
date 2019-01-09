@@ -11,6 +11,7 @@
 .portfolio .cor {
     padding: 0px;
     height: 270px;
+    cursor: pointer;
 }
 
 .portfolio .cor .portfolio_container {
@@ -36,6 +37,7 @@
 
 .portfolio .cor .portfolio_container .content:hover {
     background-color: rgba(0, 0, 0, 0.87);
+    box-shadow: 0px 0px 3px 0px black;
 }
 
 .portfolio .cor .portfolio_container .content .title {
@@ -46,4 +48,40 @@
 
 .portfolio .cor .portfolio_container .content .date {
     font-size: 0.8rem;
-} 
+}
+
+/* css of add button */
+
+.portfolio .cor .portfolio_container .header {
+    background-color: rgba(0, 0, 0, 0.87);
+    border: 2px dashed #ffffff;
+    height: 100%;
+    width: 100%;
+    color: #ffffff;
+}
+
+.portfolio .cor .portfolio_container .header .plusIcon {
+    position: relative;
+    top: 5rem;
+}
+
+.portfolio .cor .portfolio_container .header .plusIcon .fas {
+    border: 3px solid #ffffff;
+    border-radius: 5rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
+.portfolio .cor .portfolio_container .header div {
+    position: relative;
+    top: 6rem;
+}
+
+.portfolio .cor .portfolio_container .header div h6 {
+    font-weight: bold;
+    margin: auto;
+}
+
+.portfolio .cor .portfolio_container .header:hover {
+
+}

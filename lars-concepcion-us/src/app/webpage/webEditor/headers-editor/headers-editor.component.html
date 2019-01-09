@@ -1,6 +1,13 @@
+<div class ="header">
+  <div class ="header-container">
+    <h5>Edit Profile</h5>
+  </div>
+  <div class ="removeBtn_container">
+    <span><i class ="fas fa-times remove-icon" (click) ="openAlertBox()"></i></span>
+  </div>
+</div>
 <ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
   <div class ="headers-Editor">
-
     <div class ="OwnersprofileandWallpaper">
       <div class ="wallpaper_container">
         <img src="{{wallpaper}}" alt="wallpaper" class ="wallpaper">
@@ -87,12 +94,8 @@
 
     <div class ="span_button">
       <span class ="btn">save</span>
-<<<<<<< HEAD
-      <span class ="btn cancel" (click) ="openAlertBox()">cancel</span>    
-=======
-      <span class ="btn cancel" (click) ="cancel.click()">cancel</span>    
->>>>>>> f89cf6f69ce440b4b8a38c64c2ae7e36897e2273
+      <span class ="btn cancel" (click) ="openAlertBox()">cancel</span>      
     </div>
-  </div>
 
+  </div>
 </ng-scrollbar>
