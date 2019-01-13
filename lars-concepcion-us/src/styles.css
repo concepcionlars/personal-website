@@ -26,3 +26,13 @@ body {
     padding: 0;
     overflow: hidden;
 }
+
+.Add-Portfolio .mat-dialog-container {
+    padding: 0px;
+    overflow: hidden;
+}
+
+.Add-About .mat-dialog-container {
+    padding: 0;
+    overflow: hidden;
+}
