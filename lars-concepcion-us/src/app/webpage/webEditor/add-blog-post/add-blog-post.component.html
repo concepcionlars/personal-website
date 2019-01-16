@@ -1,0 +1,80 @@
+<div class ="row header">
+  <div class ="col-10 header-container">
+    <div class ="row blogger">
+      <div class ="image_container">
+          <img src="{{ profile }}" alt="profile" class ="profile">
+      </div>
+      <div class ="col-10 name_container">
+        <h4>Lars Concepcion</h4>
+        <h6>M.E.A.N Stack Web Developer</h6>
+      </div>
+    </div>
+  </div>
+  <div class ="col-2 removeBtn_container">
+    <span class ="col-12"><i class ="fas fa-times remove-icon" (click) ="openAlertBox()"></i></span>
+  </div>
+</div>
+
+<!-- ================== -->
+<!-- ng-scrollbar -->
+<ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
+  <div class ="add-project-container">
+    <form>
+      <!-- ================== -->
+      <!-- item description -->
+      <div class ="containers item-description-container">
+        <h6>Item Description</h6>
+        <textarea name="" id="" cols="30" rows="10" class ="item-description"></textarea>
+      </div>
+
+      <!-- ================== -->
+      <!-- image uploader -->
+      <div class ="containers file-image-container">
+        <div class ="example">
+          <h6>Upload File <span class ="note">(Allowed formats: JPG, PNG, GIF. Maximum file size: 10MB)</span></h6>
+          <span class ="upload-btn" (click) ="upload.click()">Add File</span>
+        </div>
+
+        <!-- files selector -->
+        <input type="file" class ="image_upload" #upload>
+
+        <!-- presentation -->
+        <div class ="container-fluid presentation">
+          <div class ="row">
+
+            <!-- add button -->
+            <div class ="col-3 additional-container" (click) ="upload.click()">
+              <div class ="dotted">
+                <span><i class ="fas fa-plus"></i></span>
+              </div>
+            </div>
+
+            <div class ="col-3 additional-container">
+                <div class ="icon">
+                    <span class ="remove"><i class ="fa fa-times"></i></span>
+                    <img src="{{ image5 }}" alt="" class ="bg-img">
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ================== -->
+      <!-- external link -->
+      <div class ="containers external-link-container">
+        <h6>Blog url <span class ="note">(https://www.Example.com) </span></h6>
+        <input type="text">
+      </div>
+
+      <div class ="ng-ghozt">
+        <input type="submit" class ="button">
+      </div>
+    </form>
+
+    <div class ="span_button">
+      <span class ="btn">Add</span>
+      <span class ="btn cancel" (click) ="openAlertBox()">cancel</span>      
+    </div>
+  </div>
+</ng-scrollbar>
