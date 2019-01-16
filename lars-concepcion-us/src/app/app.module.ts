@@ -26,6 +26,7 @@ import { EducationInputFieldComponent } from './webpage/webEditor/headers-editor
 import { AlertBoxComponent } from './popup_module/alert-box/alert-box.component';
 import { AddPortfolioComponent } from './webpage/webEditor/add-portfolio/add-portfolio.component';
 import { AddAboutComponent } from './webpage/webEditor/add-about/add-about.component';
+import { AddBlogPostComponent } from './webpage/webEditor/add-blog-post/add-blog-post.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AddAboutComponent } from './webpage/webEditor/add-about/add-about.compo
     EducationInputFieldComponent,
     AlertBoxComponent,
     AddPortfolioComponent,
-    AddAboutComponent, 
+    AddAboutComponent,
+    AddBlogPostComponent, 
   ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { AddAboutComponent } from './webpage/webEditor/add-about/add-about.compo
     EducationInputFieldComponent,
     AddPortfolioComponent,
     AddAboutComponent,
-    AlertBoxComponent   
+    AlertBoxComponent,
+    AddBlogPostComponent
   ],
   providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]

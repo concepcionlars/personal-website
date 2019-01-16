@@ -36,3 +36,8 @@ body {
     padding: 0;
     overflow: hidden;
 }
+
+.add-blog-post .mat-dialog-container {
+    padding: 0px;
+    overflow: hidden;
+}
