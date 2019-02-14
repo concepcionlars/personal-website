@@ -3,19 +3,19 @@ import { FormGroup, FormControlName, FormControl, Validators } from '@angular/fo
 import { MatDialogRef } from '@angular/material';
 
 import { ContactService } from './contact.service';
-import { Data } from 'src/app/customTSFIle/formValue';
+import { Data } from 'src/app/customTSFIle/contactFormValue';
 
-//=====================
-// JSON OBJECT
-//=====================
-const filesData = ({
-  metadata: {
-    Fullname: String,
-    Email: String,
-    Subject: String,
-    Message: String
-  }
-})
+// //=====================
+// // JSON OBJECT
+// //=====================
+// const filesData = ({
+//   metadata: {
+//     Fullname: String,
+//     Email: String,
+//     Subject: String,
+//     Message: String
+//   }
+// })
 
 @Component({
   selector: 'app-contact',

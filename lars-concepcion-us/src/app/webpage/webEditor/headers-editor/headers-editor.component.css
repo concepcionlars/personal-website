@@ -60,6 +60,7 @@
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .wallpaper_uploader {
    position: relative;
    float: right;
+   margin-right: 10px;
    top: 1rem;
 }
 
@@ -153,7 +154,6 @@
 
 .headers-Editor form .label {
     font-size: 0.85rem;
-    color: 
 }
 
 /* ====================== */
@@ -303,7 +303,7 @@
 }
 
 .headers-Editor form .btn-group .button {
-    dsiplay: none;
+    display: none;
 }
 
 /* ====================== */

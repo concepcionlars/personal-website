@@ -27,6 +27,9 @@ import { AlertBoxComponent } from './popup_module/alert-box/alert-box.component'
 import { AddPortfolioComponent } from './webpage/webEditor/add-portfolio/add-portfolio.component';
 import { AddAboutComponent } from './webpage/webEditor/add-about/add-about.component';
 import { AddBlogPostComponent } from './webpage/webEditor/add-blog-post/add-blog-post.component';
+import { ProfilePhotoComponent } from './webpage/webEditor/headers-editor/profile-photo/profile-photo.component';
+import { CoverPhotoComponent } from './webpage/webEditor/headers-editor/cover-photo/cover-photo.component';
+import { PersonalBrandComponent } from './webpage/webEditor/headers-editor/personal-brand/personal-brand.component';
 
 @NgModule({
   declarations: [
@@ -45,10 +48,13 @@ import { AddBlogPostComponent } from './webpage/webEditor/add-blog-post/add-blog
     AuthenticationComponent,
     HeadersEditorComponent,
     EducationInputFieldComponent,
+    ProfilePhotoComponent,
     AlertBoxComponent,
     AddPortfolioComponent,
     AddAboutComponent,
-    AddBlogPostComponent, 
+    AddBlogPostComponent,
+    CoverPhotoComponent,
+    PersonalBrandComponent, 
   ],
   imports: [
     BrowserModule,
@@ -59,10 +65,14 @@ import { AddBlogPostComponent } from './webpage/webEditor/add-blog-post/add-blog
     BrowserAnimationsModule,
     MatDialogModule,
     RouterModule.forRoot([
-      { path: '', component: TimelineComponent },
-      // { path: '', redirectTo: 'admin', pathMatch: 'full' },
+      { path: '', redirectTo: 'timeline', pathMatch: 'full'},
+      //localhost:4200/timeline
+      { path: 'timeline', component: TimelineComponent},
+      //localhost:4200/portfolio
       { path: 'portfolio', component: PortfolioComponent },
+      //localhost:4200/about
       { path: 'about', component: AboutComponent },
+      //localhost:4200/admin <== optional value
       { path: 'admin', component: AuthenticationComponent }
     ])
   ],
@@ -70,12 +80,17 @@ import { AddBlogPostComponent } from './webpage/webEditor/add-blog-post/add-blog
     ContactComponent,
     HeadersEditorComponent,
     EducationInputFieldComponent,
+    ProfilePhotoComponent,
     AddPortfolioComponent,
     AddAboutComponent,
     AlertBoxComponent,
-    AddBlogPostComponent
+    AddBlogPostComponent,
+    CoverPhotoComponent,
+    PersonalBrandComponent
   ],
-  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
