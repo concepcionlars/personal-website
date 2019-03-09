@@ -1,0 +1,95 @@
+<div class ="header">
+  <div class ="header-container">
+    <h5>Edit Profile</h5>
+  </div>
+  <div class ="removeBtn_container">
+    <span><i class ="fas fa-times remove-icon" (click) ="openAlertBox()"></i></span>
+  </div>
+</div>
+<ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
+  <div class ="headers-Editor">
+    <div class ="OwnersprofileandWallpaper">
+      <div class ="wallpaper_container">
+        <img src="{{wallpaper}}" alt="wallpaper" class ="wallpaper">
+        <span class ="wallpaper_uploader"><i class="fas fa-pen" data-toggle ="tooltip" title ="Change Cover" (click) ="changeCover()"></i></span>
+        <div class ="col-12 responsive-image">
+          <img src="{{profile}}" alt="profile" class ="profile">
+          <span class ="profile_uploader"><i class="fas fa-pen" data-toggle ="tooltip" title ="Change Profile Image" (click) ="profilePhotoUploader()"></i></span>
+        </div>
+        <div class ="logo_container" data-toggle ="tooltip" title ="upload logo" (click) ="personalBrand()">
+          <img src="{{logo}}" alt="logo" class ="logo">
+        </div>
+      </div>
+    </div>
+
+    <form [formGroup] ="profileInformation" (ngSubmit) ="OnSave()">
+
+      <div class ="OwnersPersonalInformation">
+        <!-- fullname -->
+        <div class ="fullname">
+          <input type="text" placeholder ="Firstname" formControlName ="firstname" class ="firstname">
+          <input type="text" placeholder ="Lastname" formControlName ="lastname" class ="lastname">
+        </div>
+        <!-- headline -->
+        <div class ="headline">
+          <input type="text" placeholder ="Headline" formControlName ="headline">
+        </div>
+      </div>
+
+      <!-- Address input field -->
+      <div class ="addressInformation" formGroupName ="address">
+        <h5>Address</h5>
+
+        <div class ="row">
+          <div class ="col-6 container">
+            <h6>Country</h6>
+            <select name="country" id="country" class ="country" formControlName ="country">
+              <option value="Philippines">Philippines</option>
+              <option value="America">America</option>
+            </select>
+          </div>
+
+          <div class ="col-6 container">
+            <h6>Region</h6>
+            <input type="number" id ="region" class ="region" placeholder ="zip code" formControlName ="zipCode">
+          </div>
+        </div>
+      </div>
+
+      <!-- Introduction input field -->
+      <div class ="introduction">
+        <h6>Introduction</h6>
+        <input type="text" class ="intro" placeholder ="intro" formControlName ="introduction">
+      </div>
+
+      <!-- Education input field -->
+      <div class ="educationInformation">
+        <h6>Education</h6>
+        <select name="Education" id="education" class ="education" formControlName ="schoolName">
+          <!-- <option value="{{schoolName}}">{{schoolName}}</option> -->
+          <option value="Codecademy">codecademy</option>
+          <option value="cademy">cademy</option>
+        </select>
+        <span class ="add" (click) ="openDialogBox()" class ="addBtn">Add new education</span>
+      </div>
+
+      <!-- Summary input field -->
+      <div class ="summary">
+        <h6>Summary</h6>
+        <textarea name="summary" id="summary" cols="30" rows="10" formControlName ="summary"></textarea>
+      </div>
+
+      <div class ="btn-group">
+        <input type="submit" value ="save" class ="button" #save>
+        <button class ="button" #cancel mat-dialog-close></button>
+      </div>
+
+    </form>
+
+    <div class ="span_button">
+      <span class ="btn" (click) ="save.click()">save</span>
+      <span class ="btn cancel" (click) ="openAlertBox()">cancel</span>      
+    </div>
+
+  </div>
+</ng-scrollbar>

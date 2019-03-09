@@ -1,0 +1,246 @@
+.header {
+    background-color: rgb(167, 162, 162);
+    z-index: 5;
+    height: auto;
+    color: #ffffff;
+    overflow-y: hidden;
+    padding-top: 5px;
+}
+
+.header .header-container {
+    float: left;
+    width: 50%;
+}
+
+.header .header-container h5 {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.header .removeBtn_container {
+    padding: 10px;
+    width: 50%;
+    float: right;
+}
+
+.header .removeBtn_container .remove-icon {
+    float: right;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.header .removeBtn_container .remove-icon:hover {
+    text-shadow: 1px 1px 1px rgb(20, 300, 10);
+}
+
+/*inside ng-scrollbar */
+.add-about-container {
+    /* border: 1px solid black; */
+    height: 845px;
+}
+
+.add-about-container form {
+    padding: 20px;
+}
+
+.add-about-container form .containers {
+    /* border: 1px solid black; */
+    margin-top: 50px;
+}
+
+.add-about-container form .containers h6 {
+    width: 480px;
+    font-size: 0.95rem;
+}
+
+.add-about-container form .containers .note {
+    font-size: 0.8rem;
+    color: rgba(129, 129, 129);
+}
+
+.add-about-container form .containers input {
+    width: 100%;
+    border: 0px;
+    border-bottom: 1px solid rgb(167, 162, 162);
+    padding: 0px 5px;
+    font-size: 0.85rem;
+}
+
+.add-about-container form .containers input:focus {
+    outline: 0;
+    border-bottom: 1px solid rgb(30, 200, 10);
+}
+
+.add-about-container form .containers textarea {
+    width: 100%;
+    resize: none;
+    padding: 5px 5px;
+    font-size: 0.85rem;
+}
+
+.add-about-container form .containers textarea:focus {
+    outline: 0;
+    border: 1px solid rgb(30, 200, 10);
+}
+
+/* image uploader */
+.add-about-container form .file-image-container {
+    border-bottom: 3px dotted rgba(129, 129, 129);
+    margin-bottom: 30px;
+}
+
+.add-about-container form .containers .example .upload-btn{
+    background-color: rgb(167, 162, 162);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    position: relative;
+    cursor: pointer;
+    top: -2.1rem;
+    padding: 5px;
+    float: right;
+}
+
+.add-about-container form .containers .example .upload-btn:hover {
+    box-shadow: 0px 0px 1px 1px rgb(167, 162, 162);
+}
+
+.add-about-container form .containers .image_upload {
+    display: none;
+}
+/* ================================== */
+/* presentation */
+/* ================================== */
+.add-about-container form .containers .presentation {
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    padding: 0px;
+}
+
+.add-about-container form .containers .presentation .row {
+    position: relative;
+    margin-bottom: 20px;
+    left: 15px;
+    width: 100%;
+}
+
+.add-about-container form .containers .presentation .row .additional-container {
+    padding: 5px;
+}
+
+.add-about-container form .containers .presentation .row .additional-container .icon {
+    box-shadow: 0px 0px 3px 0px black;
+    cursor: pointer;
+    height: 110px;
+    width: 100%;
+    margin: 0px;
+}
+
+.add-about-container form .containers .presentation .row .additional-container .icon:hover {
+    box-shadow: 0px 0px 5px 2px rgba(126, 126, 126, 0.449);
+}
+
+/* remove button */
+
+.add-about-container form .containers .presentation .row .additional-container .icon .remove {
+    position: absolute;
+    right: 1px;
+    top: -1px;
+    padding: 0;
+    margin: 0;
+}
+
+.add-about-container form .containers .presentation .row .additional-container .icon .remove .fa-times {
+    border: 1px solid rgba(126, 126, 126, 0.449);
+    background-color: white;
+    color: rgba(126, 126, 126, 0.449);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    padding: 3px 5px;
+    transition: 0.3s;
+}
+
+.add-about-container form .containers .presentation .row .additional-container .icon .remove .fa-times:hover {
+    box-shadow: 0px 0px 2px 1px rgba(126, 126, 126, 0.449);
+    padding: 4px 6px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+/* ================= */
+/* add button */
+/* ================= */
+.add-about-container form .containers .presentation .row .additional-container .dotted {
+    border: 2px dashed rgba(126, 126, 126, 0.449);
+    cursor: pointer;
+    height: 110px;
+    width: 100%;
+    margin: 0px;
+}
+
+.add-about-container form .containers .presentation .row .additional-container .dotted:hover {
+    box-shadow: 0px 0px 5px 2px rgba(126, 126, 126, 0.449);
+}
+
+.add-about-container form .containers .presentation .row .additional-container .dotted span {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    left: 2.85rem;
+    top: 1.4rem;
+}
+
+.add-about-container form .containers .presentation .row .additional-container .dotted span .fa-plus {
+    font-size: 1.2rem;
+    border: 2px dashed rgba(126, 126, 126, 0.449);
+    border-radius: 50px;
+    padding: 20px;
+    color: rgba(126, 126, 126, 0.449);
+}
+
+
+/* upload image */
+.add-about-container form .containers .presentation .row .additional-container .icon .bg-img {
+    width: 100%;
+    height: 100%;
+}
+
+.add-about-container form .ng-ghozt .button{
+    display: none;
+}
+
+
+/* ====================== */
+/* //custom button */
+/* ====================== */
+
+.add-about-container .span_button {
+    border-top: 1px solid rgba(126, 126, 126, 0.449);
+    height: 90px;
+    padding-top: 25px;
+    margin-top: 20px;
+}
+
+.add-about-container .span_button .btn {
+    background-color: rgb(30, 200, 10);
+    border: 2px solid rgb(30, 200, 10);
+    color: white;
+    border-radius: 50px;
+    padding: 3px 20px;
+    margin: 0px 60px 30px 0px;
+    font-size: 0.9rem;
+    float: right;
+}
+
+.add-about-container .span_button .cancel {
+    border: 1px solid rgb(30, 200, 10);
+    background-color: #ffffff;
+    color: rgb(30, 200, 10);
+}
+
+.add-about-container .span_button .btn:hover {
+    box-shadow: 0px 0px 3px 0px rgb(30, 200, 10);
+}

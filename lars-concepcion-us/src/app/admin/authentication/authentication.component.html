@@ -1,0 +1,38 @@
+<div class ="bg">
+  <div class ="blr">
+    <div class ="container login-form">
+      <a href="/" class ="cancel"><i class="fas fa-arrow-circle-left"></i></a>
+      <div class ="row">
+        <div class ="headers_container">
+          <img src="{{wallpaper}}" alt="" class ="wallpaper">
+          <img src="{{profile}}" alt="" class ="profile">
+        </div>
+        <form [formGroup] ="AuthForm" (ngSubmit) ="Authenticate()">
+          <div class ="input_container">
+            <label for="username" class ="label">Username</label>
+            <input type="text" class ="input" formControlName ="Username">
+            <div class ="error" *ngIf ="(username.dirty || username.touched) && username.invalid && username.errors.required">Username is Required</div>
+            <div class ="error" *ngIf ="(username.dirty || username.touched ) && username.invalid && username.errors.pattern">Invalid username</div>
+            <div class ="error" *ngIf ="(username.dirty || username.touched ) && username.invalid && username.errors.minlength">Must be atleast 5 characters long</div>
+            <div class ="error" *ngIf ="(username.dirty || username.touched ) && username.invalid && username.errors.maxlength">Maximum of 25 characters long</div>
+          </div>
+          <div class ="input_container">
+            <label for="password" class ="label">Password</label>
+            <input type="password" class ="input" formControlName ="Password">
+            <div class ="error" *ngIf ="(password.dirty || password.touched) && password.invalid && password.errors.required">Password is Required</div>
+            <div class ="error" *ngIf ="(password.dirty || password.touched ) && password.invalid && password.errors.minlength">Must be atleast 5 characters long</div>
+          </div>
+          <div class ="checkbox_container">
+            <input type="checkbox" class ="checkbox"><span> Remember Me</span>
+          </div>
+          <div class ="submit_container">
+            <input type="submit" class ="btn" value ="Login" [disabled] ="!AuthForm.valid">
+          </div>
+          <div class ="container">
+            <span>Forgot Password?</span> <a href=""> Request It</a>
+          </div>
+        </form>
+      </div>
+    </div> 
+  </div>
+</div>
