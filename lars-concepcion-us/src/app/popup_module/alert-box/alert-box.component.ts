@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material';
 
 import { AlertBoxService } from './alert-box.service';
-import { EducationInputFieldComponent } from 'src/app/webpage/webEditor/headers-editor/education-input-field/education-input-field.component';
+import { EducationInputFieldComponent } from 'src/app/admin/user_interface/headers-editor/education-input-field/education-input-field.component';
 
 
 @Component({

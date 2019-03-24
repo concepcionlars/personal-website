@@ -46,7 +46,7 @@
                 just to say something fill up the 
                 form and you're good to go 
             </h6>
-            <form [formGroup] ="contactForm" (ngSubmit) ="OnSend(cancel)">
+            <form [formGroup] ="contactForm" (ngSubmit) ="OnSend()">
                 <input type="text" placeholder ="Fullname" formControlName ="Fullname" class ="input">
                 <div class ="error" *ngIf ="(fullname.dirty || fullname.touched ) && fullname.invalid && fullname.errors.required">
                     Fullname is required

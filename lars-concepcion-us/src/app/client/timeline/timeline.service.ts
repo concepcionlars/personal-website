@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { profileSchema } from '../../customTSFIle/profileSchema';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +10,10 @@ export class TimelineService {
 
   constructor(private _http: HttpClient) { }
 
-  //get method
-  url = '/timeline';
+  getURL = '/timeline/node._src';
 
   getData() {
-    return this._http.get(this.url);
+    return this._http.get<profileSchema>(this.getURL)
   }
+  
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ContactComponent } from '../webpage/contact/contact.component';
+import { ContactComponent } from '../client/contact/contact.component';
 import { componentFactoryName } from '@angular/compiler';
 
 export interface DialogData {

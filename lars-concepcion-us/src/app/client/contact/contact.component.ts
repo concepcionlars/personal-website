@@ -88,8 +88,7 @@ export class ContactComponent implements OnInit {
       Message: this.message.value,
     }
     this._contactService.sendForm(metadata).subscribe(res => alert('Send Successfully'))
-    
-    cancel.click();
+    this.dialogRef.close()
   }
 
   ngOnInit() {

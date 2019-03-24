@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TimelineService } from '../../client/timeline/timeline.service';
+import { profileSchema } from '../../customTSFIle/profileSchema';
 import { fade } from '../../animationsDir/fade';
 
 @Component({
@@ -22,9 +24,16 @@ export class LeftSidebarComponent implements OnInit {
   image1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0q0eyCIKFtZLgUH1Lv_wAQvS5OxZfYimjg8AvBtmg01EnpnEZsQ';
   image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlVozO1ptft0uBp4vKsgx5RAQFX8E3eYQP0pGzP612EfQ4mgCu';
 
-  constructor() { }
+  constructor( private timelineService : TimelineService ) { }
+
+  prof : profileSchema;
+
+  get() {
+    this.timelineService.getData().subscribe((data: profileSchema) => this.prof = data);
+  }
 
   ngOnInit() {
+    this.get()
   }
 
 }

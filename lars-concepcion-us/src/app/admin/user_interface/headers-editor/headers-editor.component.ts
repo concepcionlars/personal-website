@@ -1,13 +1,15 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { FormControl, FormControlName, FormGroup, FormGroupName, FormArray } from '@angular/forms';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
+import { profileSchema } from '../../../customTSFIle/profileSchema';
 import { HeadersData } from 'src/app/customTSFIle/headersData/headersFormValue';
 import { ImagePreloaderService } from 'src/app/customTSFIle/image-preloader/image-preloader.service';
 import { HeadersEditorService } from './headers-editor.service';
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
 import { EducationInputFieldComponent } from '../headers-editor/education-input-field/education-input-field.component';
 import { ProfilePhotoComponent } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.component';
+import { ProfilePhotoService } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.service';
+import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
 import { CoverPhotoComponent } from 'src/app/admin/user_interface/headers-editor/cover-photo/cover-photo.component';
 import { PersonalBrandComponent } from 'src/app/admin/user_interface/headers-editor/personal-brand/personal-brand.component';
 import { TimelineService } from 'src/app/client/timeline/timeline.service';
@@ -17,10 +19,16 @@ import { TimelineService } from 'src/app/client/timeline/timeline.service';
   templateUrl: './headers-editor.component.html',
   styleUrls: ['./headers-editor.component.css']
 })
+
 export class HeadersEditorComponent implements OnInit {
 
-  constructor(private timelineService: TimelineService, private _headersService: HeadersEditorService, private preloaderService: ImagePreloaderService, private alertservice:AlertBoxService, private dialog: MatDialog, private dialogRef: MatDialogRef<HeadersEditorComponent>) {
-    this.profileInformation = this.createFormGroup();
+  constructor(
+    @Inject (MAT_DIALOG_DATA) private data: any,
+    private profilePhotoService: ProfilePhotoService,
+    private timelineService: TimelineService, private _headersService: HeadersEditorService, 
+    private preloaderService: ImagePreloaderService, private alertservice:AlertBoxService, 
+    private dialog: MatDialog, private dialogRef: MatDialogRef<HeadersEditorComponent>
+    ) {
     dialogRef.disableClose = true;
   }
 
@@ -31,88 +39,30 @@ export class HeadersEditorComponent implements OnInit {
   profile ="assets/m.jpg";
   wallpaper = "assets/c.png";
   logo = "assets/l.png";
-  profileInformation: FormGroup;
+  title = 'testing';
 
-  public createFormGroup() {
-    return new FormGroup({
-      // owners personal information
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      headline: new FormControl(''),
-      //owners address information
-      address: new FormGroup({
-        country: new FormControl(''),
-        // region: new FormControl(''),
-        zipCode: new FormControl('')
-      }),
-      //introduction
-      introduction: new FormControl(''),
-      //education
-      schoolName: new FormControl(''),
-      //summary
-      summary: new FormControl('')
+  //==========================================================================
+  //========================= SERVER REQUEST HANDLER =========================
+  //==========================================================================
+  prof: profileSchema;
 
-    })
+  get() {
+    return this._headersService.getData().subscribe((data: profileSchema) => this.prof = data)
   }
 
-  //======================
-  // Forms Getter
-  //======================
-  // owners personal information getter
-  get Firstname() {
-    return this.profileInformation.get('firstname');
-  }
-  get Lastname() {
-    return this.profileInformation.get('lastname');
-  }
-  get Headline() {
-    return this.profileInformation.get('headline');
-  }
-  get Address() {
-    return this.profileInformation.get('address') as FormArray;
-  }
-  get Country() {
-    return this.Address.get('country');
-  }
-  get Zip() {
-    return this.Address.get('zipCode');
-  }
-  get Introduction() {
-    return this.profileInformation.get('introduction');
-  }
-  get schoolName() {
-    return this.profileInformation.get('schoolName');
-  }
-  get Summary() {
-    return this.profileInformation.get('summary');
-  }
-
-  //==================================
-  //ON SAVE SEND A REQUEST TO A SERVER
-  //==================================
-  OnSave() {
+  OnSave(e) {
     //==============================================
     //COLLECT ALL USER INPUT AND SAVE TO JSON SCHEMA 
     //==============================================
-    const userInformation: HeadersData = {
-      firstname: this.Firstname.value,
-      lastname: this.Lastname.value,
-      headline: this.Headline.value,
-      introduction: this.Introduction.value,
-      summary: this.Summary.value,
-      schoolName: this.schoolName.value,
-      address: {
-        country: this.Country.value,
-        zip: this.Zip.value
-      }
-    }
-    this._headersService.sendForm(userInformation).subscribe(res => console.log(res))
+    console.log(e.value)
   }
 
   //=====================
   // DIALOG BOX FUNCTIONS
   //=====================
+  profilePhotoData: Object;
 
+  //popup alert
   openAlertBox() {
     this.alertservice.showAlertBox();
   }
@@ -151,14 +101,14 @@ export class HeadersEditorComponent implements OnInit {
       height: '500px',
       panelClass: 'education-input-field'
     })
-
     EducationInputComponent.afterClosed().subscribe(result => {
       console.log('The Dialog was Closed')
     })
   }
 
   ngOnInit() {
-    this.createFormGroup();
+    this.get();
+    console.log(Math.random() * 10)
   }
 
 }

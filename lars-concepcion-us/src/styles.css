@@ -14,6 +14,8 @@ body {
     border-top: 1px solid rgb(138, 136, 136);
     border-left: 1px solid rgb(138, 136, 136);
     overflow: hidden;
+    height: 500px;
+    width: 700px;
     /* box-shadow: 0px 1px 1px 0px rgb(138, 136, 136); */
 }
 

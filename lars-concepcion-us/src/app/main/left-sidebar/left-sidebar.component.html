@@ -3,16 +3,13 @@
     <h5 class ="containerName"><i class="fas fa-globe-asia"></i>Intro</h5>
 
     <div class ="intro">
-      <p class ="introduction">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+      <p class ="introduction">{{ prof?.introduction }}</p>
     </div>
 
     <div class ="additional_information">
       <ul class ="personal_information">
         <li class ="row list">
-          <div class ="la Education"><i class="fas fa-graduation-cap"></i>Studied Web Dev Bootcamp @ <a href ="#">Udemy</a></div>
-        </li>
-        <li class ="list">
-          <div class ="la municipality"><i class="fas fa-home"></i>Lives in <a href ="#">Lebak, Sultan Kudarat, Philippines</a></div>
+          <div class ="la Education"><i class="fas fa-graduation-cap"></i>{{ ' Studied ' + prof?.education[0].degree +  ' @ '  }}<a href ="#">{{prof?.education[0].schoolname}}</a></div>
         </li>
         <li class ="list">
           <div class ="la from"><i class="fas fa-map-marker-alt"></i>From <a href ="#">Marikina City</a></div>

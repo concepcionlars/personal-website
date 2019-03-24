@@ -11,25 +11,25 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './main/sidebar/sidebar.component';
+import { LeftSidebarComponent } from './main/left-sidebar/left-sidebar.component';
 import { RightSidebarComponent } from './main/right-sidebar/right-sidebar.component';
 import { CenterbarComponent } from './main/centerbar/centerbar.component';
-import { TimelineComponent } from './webpage/timeline/timeline.component';
-import { PortfolioComponent } from './webpage/portfolio/portfolio.component';
+import { TimelineComponent } from './client/timeline/timeline.component';
+import { PortfolioComponent } from './client/portfolio/portfolio.component';
 import { HeaderComponent } from './main/header/header.component';
-import { ContactComponent } from './webpage/contact/contact.component';
-import { AboutComponent } from './webpage/about/about.component';
+import { ContactComponent } from './client/contact/contact.component';
+import { AboutComponent } from './client/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { HeadersEditorComponent } from './webpage/webEditor/headers-editor/headers-editor.component';
-import { EducationInputFieldComponent } from './webpage/webEditor/headers-editor/education-input-field/education-input-field.component';
+import { AuthenticationComponent } from './admin/authentication/authentication.component';
+import { HeadersEditorComponent } from './admin/user_interface/headers-editor/headers-editor.component';
+import { EducationInputFieldComponent } from './admin/user_interface/headers-editor/education-input-field/education-input-field.component';
 import { AlertBoxComponent } from './popup_module/alert-box/alert-box.component';
-import { AddPortfolioComponent } from './webpage/webEditor/add-portfolio/add-portfolio.component';
-import { AddAboutComponent } from './webpage/webEditor/add-about/add-about.component';
-import { AddBlogPostComponent } from './webpage/webEditor/add-blog-post/add-blog-post.component';
-import { ProfilePhotoComponent } from './webpage/webEditor/headers-editor/profile-photo/profile-photo.component';
-import { CoverPhotoComponent } from './webpage/webEditor/headers-editor/cover-photo/cover-photo.component';
-import { PersonalBrandComponent } from './webpage/webEditor/headers-editor/personal-brand/personal-brand.component';
+import { AddPortfolioComponent } from './admin/user_interface/add-portfolio/add-portfolio.component';
+import { AddAboutComponent } from './admin/user_interface/add-about/add-about.component';
+import { AddBlogPostComponent } from './admin/user_interface/add-blog-post/add-blog-post.component';
+import { ProfilePhotoComponent } from './admin/user_interface/headers-editor/profile-photo/profile-photo.component';
+import { CoverPhotoComponent } from './admin/user_interface/headers-editor/cover-photo/cover-photo.component';
+import { PersonalBrandComponent } from './admin/user_interface/headers-editor/personal-brand/personal-brand.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { PersonalBrandComponent } from './webpage/webEditor/headers-editor/perso
     RightSidebarComponent,
     NavComponent,
     FooterComponent,
-    SidebarComponent,
+    LeftSidebarComponent,
     CenterbarComponent,
     TimelineComponent,
     PortfolioComponent,

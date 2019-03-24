@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
-import { AddBlogPostComponent } from 'src/app/webpage/webEditor/add-blog-post/add-blog-post.component';
+import { AddBlogPostComponent } from 'src/app/admin/user_interface/add-blog-post/add-blog-post.component';
 import { fade } from '../../animationsDir/fade';
 
 @Component({

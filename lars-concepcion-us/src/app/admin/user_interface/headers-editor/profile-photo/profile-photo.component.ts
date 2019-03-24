@@ -1,10 +1,12 @@
 import { Component, OnInit, Renderer2, ChangeDetectorRef} from '@angular/core';
 import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
+import { HeadersEditorService } from 'src/app/admin/user_interface/headers-editor/headers-editor.service';
 import { ProfilePhotoService } from './profile-photo.service';
-import { ProfilePhotoData } from 'src/app/customTSFIle/headersData/profile-photo-data';
+import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
 
 @Component({
   selector: 'app-profile-photo',
@@ -13,7 +15,7 @@ import { ProfilePhotoData } from 'src/app/customTSFIle/headersData/profile-photo
 })
 export class ProfilePhotoComponent implements OnInit {
 
-  constructor(private _renderer: Renderer2, private _alertBoxService: AlertBoxService, private _profilePhotoService: ProfilePhotoService) { 
+  constructor(private dialogRef: MatDialogRef<ProfilePhotoComponent>, private _renderer: Renderer2, private _alertBoxService: AlertBoxService, private _headerEditorService: HeadersEditorService, private _profilePhotoService: ProfilePhotoService) { 
     this.imageProperty = this.createFormGroup();
   }
 
@@ -57,6 +59,22 @@ export class ProfilePhotoComponent implements OnInit {
   }
 
   //====================================
+  //========= zoom and rotate ==========
+  //====================================
+
+  setRotatePropertyValue() {
+    const rotateElement = document.querySelector('.profile-photo')
+    this._renderer.setStyle(rotateElement, 'transform', 'rotate(' + this.Rotate.value + 'deg)')
+    this.button()
+  }
+
+  setZoomPropertyValue() {
+    const zoomElement = document.querySelector('.photo-container')
+    this._renderer.setStyle(zoomElement, 'transform', 'scale(' + this.Zoom.value + ',' + this.Zoom.value + ')')
+    this.button()
+  }
+
+    //====================================
   //============ On Change =============
   //====================================
 
@@ -115,22 +133,6 @@ export class ProfilePhotoComponent implements OnInit {
     }
   }
 
-  //====================================
-  //========= zoom and rotate ==========
-  //====================================
-
-  setRotatePropertyValue() {
-    const rotateElement = document.querySelector('.profile-photo')
-    this._renderer.setStyle(rotateElement, 'transform', 'rotate(' + this.Rotate.value + 'deg)')
-    this.button()
-  }
-
-  setZoomPropertyValue() {
-    const zoomElement = document.querySelector('.photo-container')
-    this._renderer.setStyle(zoomElement, 'transform', 'scale(' + this.Zoom.value + ',' + this.Zoom.value + ')')
-    this.button()
-  }
-
   //============================
   //========= On Save ==========
   //============================
@@ -142,16 +144,18 @@ export class ProfilePhotoComponent implements OnInit {
       alert('Stop Doing Some Malicious scripting at the console')
       this.disableButton();
     } else {
-    //create a json schema to be sent in server
-    //include rotate, straight, and the metadata of selected image
-    const imageSetting: ProfilePhotoData = {
-      rotate: this.Rotate.value,
-      zoom: this.Zoom.value,
-      schemaType: 'personal_photo',
-      imageProperty: this.metadata
-    }
+      //create a json schema to be sent in server
+      //include rotate, straight, and the metadata of selected image
+      const imageSetting: imageFileData = {
+        rotate: this.Rotate.value,
+        zoom: this.Zoom.value,
+        schemaType: 'profile_photo',
+        imageProperty: this.metadata
+      }
 
-    this._profilePhotoService.saveImageSetting(imageSetting).subscribe(res => console.log(res))
+      //Send A post Request
+      this._headerEditorService.saveImageSetting(imageSetting).subscribe(res => {const data = res})
+      this.dialogRef.close();
     }
   }
 

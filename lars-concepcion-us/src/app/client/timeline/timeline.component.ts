@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
+import { TimelineService } from './timeline.service';
 
 @Component({
   selector: 'app-timeline',
@@ -21,9 +22,16 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 })
 export class TimelineComponent implements OnInit {
 
-  constructor() { }
+  schema: Object = {};
+
+  constructor(private timelineService: TimelineService) { }
+
+  get() {
+    this.timelineService.getData().subscribe(res => this.schema = res);
+  }
 
   ngOnInit() {
+    this.get()
   }
 
 }
