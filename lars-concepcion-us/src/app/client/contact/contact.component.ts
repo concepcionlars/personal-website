@@ -97,5 +97,3 @@ export class ContactComponent implements OnInit {
   }
 
 }
-// =================================================================
-// front end validation to my contact form successfully implemented

@@ -1,5 +1,6 @@
 .main {
-    width: 100%;   
+    width: 100%;
+    overflow: hidden;
 }
 
 .oneoftwo {
@@ -10,7 +11,7 @@
 
 header {
     padding: 0px;
-    margin: 0px 0px 20px 0px; 
+    margin: 1px 0px 20px 0px; 
     box-shadow: 0px 0px 3px 0px black;
 }
 
@@ -26,32 +27,61 @@ header .info .owner-space {
 header .info .owner-space .wallpaper_container {
     width: 100%;
     height: 300px;
-    box-shadow: 0px 0px 5px 0px black;
+}
+
+header .info .owner-space .wallpaper_container .dynamic {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+}
+
+header .info .owner-space .wallpaper_container .dynamic_container {
+    top: -1.1rem;
+    position: relative;
+    width: 100%;
+    height: 600px;
 }
 
 /* wallpaper */
-header .info .owner-space .wallpaper_container .wallpaper {
+header .info .owner-space .wallpaper_container .dynamic_container .wallpaper {
     width: 100%;
-    height: 300px;
+    height: 600px;
+    z-index: -1;
     position: absolute;
 }
 
 /* profile */
 header .info .owner-space .wallpaper_container .responsive-image {
     position: relative;
-    top: 11rem;
+    top: -8rem;
     height: 150px;
 }
 
-header .info .owner-space .wallpaper_container .responsive-image .profile {
-    border: 4px solid #ffffff;
-    box-shadow: 0px 0px 5px 0px black;
-    width: 150px;
-    height: 150px;
+header .info .owner-space .wallpaper_container .responsive-image .border-radius {
+    border: 4px solid white;
     border-radius: 100px;
+    box-shadow: 0px 0px 5px 0px black;
+    width: 160px;
+    height: 160px;
     margin-left: 8%;
-    position: relative;
+    overflow: hidden;
+    position: absolute;
     z-index: 2;
+}
+
+header .info .owner-space .wallpaper_container .responsive-image .border-radius .image-container {
+    padding: 0px;
+    width: 180px;
+    height: 180px;
+    margin-top: -15px;
+    margin-left: -1rem;
+}
+
+header .info .owner-space .wallpaper_container .responsive-image .border-radius .profile {
+    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 header .info .owner-space .information {

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MAT_DIALOG_DATA } from '@angular/material';
 
 import { profileSchema } from '../../../customTSFIle/profileSchema';
 import { HeadersData } from 'src/app/customTSFIle/headersData/headersFormValue';
@@ -27,7 +26,6 @@ export class HeadersEditorService {
   //======== SEND A POST REQUEST TO A SERVER =========
   //==================================================
 
-  postHandlerURL = '/headersFormHandler';
   httpOptions = {
     headers: new HttpHeaders({
       'content-type': 'application/json',
@@ -35,11 +33,14 @@ export class HeadersEditorService {
     })
   }
   
+  postHandlerURL = '/headersFormHandler';
+
   sendForm(Data: HeadersData): Observable<HeadersData> {
     return this._http.post<HeadersData>(this.postHandlerURL, Data, this.httpOptions)
   }
 
   saveUrl = '/imageSettingHandler';
+
   saveImageSetting(setting :imageFileData): Observable<imageFileData>{
     return this._http.post<imageFileData>(this.saveUrl, setting, this.httpOptions)
   }

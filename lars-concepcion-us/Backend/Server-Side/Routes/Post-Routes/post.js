@@ -13,16 +13,16 @@ const m0ng0db                       = require('mongodb');
             if(err) {
                 throw err;
             } else {
-                foundSchema.firstname = data.firstname;
-                foundSchema.lastname = data.lastname;
+                foundSchema.fullname.firstname = data.firstname;
+                foundSchema.fullname.lastname = data.lastname;
                 foundSchema.headline = data.headline;
                 foundSchema.introduction = data.introduction;
                 foundSchema.summary = data.summary;
-                foundSchema.address.country = data.address.country;
+                foundSchema.address.country = data.country;
                 // foundSchema.address.region = data.address.region;
-                foundSchema.address.zip = data.address.zip;
+                foundSchema.address.zip = data.zip;
                 foundSchema.save()
-                console.log(foundSchema)
+                console.log(foundSchema);
             }
         })
     })

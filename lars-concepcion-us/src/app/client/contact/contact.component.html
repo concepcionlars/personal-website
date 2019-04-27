@@ -47,6 +47,7 @@
                 form and you're good to go 
             </h6>
             <form [formGroup] ="contactForm" (ngSubmit) ="OnSend()">
+                <!-- fullname -->
                 <input type="text" placeholder ="Fullname" formControlName ="Fullname" class ="input">
                 <div class ="error" *ngIf ="(fullname.dirty || fullname.touched ) && fullname.invalid && fullname.errors.required">
                     Fullname is required
@@ -54,6 +55,7 @@
                 <div class ="error" *ngIf ="(fullname.dirty || fullname.touched ) && fullname.invalid && fullname.errors.pattern">
                     Must be alphabet / Include middle name with dot : <span class ="example">John D. Doe</span>
                 </div>
+                <!-- email -->
                 <input type="email" placeholder ="Email" formControlName ="Email" >
                 <div class ="error" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required">
                     Email is required
@@ -61,17 +63,19 @@
                 <div class ="error" *ngIf ="(email.dirty || email.touched) && email.invalid && email.errors.pattern && email.errors.email">
                     Invalid email
                 </div>
+                <!-- subject -->
                 <input type="text" placeholder ="Subject" formControlName ="Subject" >
                 <div class ="error" *ngIf ="(subject.dirty || subject.touched) && subject.invalid && subject.errors.required">
                     Subject is required
                 </div>
+                <!-- message -->
                 <label for="message" class ="messageLabel">Message</label>
                 <textarea cols="30" rows="6" id ="message" formControlName ="Message"></textarea>
                 <div class ="error" id ="messageFieldError" *ngIf ="(message.dirty || message.touched) && message.invalid && message.errors.required">
                     Your message is required
                 </div>
+                <!-- buttons -->
                 <input [disabled]="!contactForm.valid" type="submit" id ="send" class ="btn" #send>
-                <button type ="reset" class ="btn" id ="reset" #reset></button>
                 <button class="btn" mat-dialog-close #cancel></button>
                 <div class ="row btn-group">
                     <div class ="btn-container col-6">

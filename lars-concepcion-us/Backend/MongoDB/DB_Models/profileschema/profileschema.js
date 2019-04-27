@@ -2,14 +2,15 @@ var m0ng00se = require('mongoose');
 
 var profileSchema = {
     primary: Boolean,
-    firstname: String,
-    lastname: String,
+    fullname : {
+        firstname: String,
+        lastname: String
+    },
     headline: String,
     introduction: String,
     summary: String,
     address: {
         country: String,
-        // region: String,
         zip: Number
     },
     education: [{

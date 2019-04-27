@@ -78,7 +78,6 @@ import { PersonalBrandComponent } from './admin/user_interface/headers-editor/pe
   ],
   entryComponents: [
     ContactComponent,
-    HeadersEditorComponent,
     EducationInputFieldComponent,
     ProfilePhotoComponent,
     AddPortfolioComponent,

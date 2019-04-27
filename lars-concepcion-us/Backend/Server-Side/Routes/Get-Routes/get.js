@@ -8,8 +8,8 @@ const file                                   = path.join(__dirname, '../../../..
 //==========================================================================
 
 router.get('/', (req, res) => {
-    res.sendFile(file);
-    // res.redirect('/admin')
+    // res.sendFile(file);
+    res.redirect('/timeline')
 })
 
 router.get('/timeline', (req, res) => {

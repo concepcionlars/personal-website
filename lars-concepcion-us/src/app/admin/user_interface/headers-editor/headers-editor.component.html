@@ -1,95 +1,176 @@
-<div class ="header">
-  <div class ="header-container">
-    <h5>Edit Profile {{ firstname }} {{ lastname }}</h5>
-  </div>
-  <div class ="removeBtn_container">
-    <span><i class ="fas fa-times remove-icon" (click) ="openAlertBox()"></i></span>
-  </div>
-</div>
-<ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
-  <div class ="headers-Editor">
-    <div class ="OwnersprofileandWallpaper">
-      <div class ="wallpaper_container">
-        <img src="{{wallpaper}}" alt="wallpaper" class ="wallpaper">
-        <span class ="wallpaper_uploader"><i class="fas fa-pen" data-toggle ="tooltip" title ="Change Cover" (click) ="changeCover()"></i></span>
-        <div class ="col-12 responsive-image">
-          <img src="{{profile}}" alt="profile" class ="profile">
-          <span class ="profile_uploader"><i class="fas fa-pen" data-toggle ="tooltip" title ="Change Profile Image" (click) ="profilePhotoUploader()"></i></span>
+<div class ="headers-Editor">
+  <div class ="OwnersprofileandWallpaper">
+    <!-- cover photo / wallpaper -->
+    <div class ="wallpaper_container">
+      <div class ="dynamic_wallpaper" *ngIf ="(metadata?.coverPhoto | json ) == '[]'; else dynamicProfilePhoto">
+        <div class ="e_dynamic_wallpaper">
+          <img src="{{ profilePhoto }}" alt="wallpaper" class ="wallpaper">
         </div>
-        <div class ="logo_container" data-toggle ="tooltip" title ="upload logo" (click) ="personalBrand()">
-          <img src="{{logo}}" alt="logo" class ="logo">
+        <ng-template #dynamicProfilePhoto>
+          <div class ="e_dynamic_wallpaper">
+            <img [ngStyle] ="markTwo(metadata?.coverPhoto[0].zoom)" src="/node._src/{{ metadata?.coverPhoto[0].filename }}/{{metadata?.coverPhoto[0]._id}}/{{metadata?.coverPhoto[0].chunkSize}}/{{metadata?.coverPhoto[0].length}}/{{metadata?.coverPhoto[0].schemaType}}" alt="wallpaper" class ="wallpaper">
+          </div>
+        </ng-template>
+      </div>
+      <!-- profile photo -->
+      <span class ="wallpaper_uploader"><i class="fas fa-pen" data-toggle ="tooltip" title ="Change Cover" (click) ="changeCover()"></i></span>
+      <div class ="col-12 responsive-image">
+        <div class ="dynamic_profilePhoto">
+          <div class ="e_dynamic_profilePhoto" [ngStyle] ="markOne(metadata?.profilePhoto[0].rotation)">
+              <img [ngStyle] ="markTwo(metadata?.profilePhoto[0].zoom)" src="/node._src/{{ metadata?.profilePhoto[0].filename }}/{{metadata?.profilePhoto[0]._id}}/{{metadata?.profilePhoto[0].chunkSize}}/{{metadata?.profilePhoto[0].length}}/{{metadata?.profilePhoto[0].schemaType}}" alt="profile" class ="profile">
+          </div>
+        </div>
+        <span class ="profile_uploader"><i class="fas fa-pen" data-toggle ="tooltip" title ="Change Profile Image" (click) ="profilePhotoUploader()"></i></span>
+      </div>
+      <!-- logo -->
+      <div class ="logo_container" data-toggle ="tooltip" title ="upload logo" (click) ="personalBrand()">
+        <div class ="dynamic_logo">
+          <div class ="e_dynamic_logo" [ngStyle] ="markTwo(metadata?.logo[0].zoom)">
+            <img [ngStyle] ="markOne(metadata?.logo[0].rotation)" src="/node._src/{{ metadata?.logo[0].filename }}/{{metadata?.logo[0]._id}}/{{metadata?.logo[0].chunkSize}}/{{metadata?.logo[0].length}}/{{metadata?.logo[0].schemaType}}" alt="logo" class ="logo">
+          </div>
+        </div>
+      </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       z
+    </div>
+  </div>
+
+  <form (ngSubmit) ="OnSave(profileForm)" #profileForm ="ngForm" class ="form">
+
+    <div class ="OwnersPersonalInformation">
+      <h5>Fullname</h5>
+      <!-- fullname -->
+      <div class ="box-model fullname">
+        <div class ="inline">
+          <!-- firstname -->
+          <div class ="input-container">
+            <input  class ="firstname" type="text" placeholder ="Firstname" value ="{{ prof?.firstname }}" [(ngModel)] ="prof.firstname" #firstname ="ngModel" 
+             name ="firstname" autocomplete="off" required minlength ="3" maxlength="30">
+          </div>
+          <div class ="errorContainer">
+            <span class ="errorMessage" *ngIf ="(firstname.dirty || firstname.touched) && firstname.invalid && firstname.errors?.required">Firstname is required</span>
+            <span class ="errorMessage" *ngIf ="(firstname.dirty || firstname.touched) && firstname.invalid && firstname.errors?.minlength">Firstname must have atleast 3 length long</span>
+          </div>
+        </div>
+        <!-- lastname -->
+        <div class ="inline">
+          <div class ="input-container">
+            <input  class ="lastname" type="text" placeholder ="Lastname" value ="{{ prof?.lastname }}" [(ngModel)] ="prof.lastname" #lastname ="ngModel" 
+             name ="lastname" autocomplete="off" required minlength ="1" maxlength="30">
+          </div>
+          <div class ="errorContainer">
+            <span class ="errorMessage" *ngIf ="(lastname.dirty || lastname.touched) && lastname.invalid && lastname.errors?.required">Lastname is required</span>
+            <span class ="errorMessage" *ngIf ="(lastname.dirty || lastname.touched) && lastname.invalid && lastname.errors?.minlength">Lastname must have atleast 3 length long</span>
+          </div>
+        </div>
+      </div>
+      <!-- headline -->
+      <div class ="box-model headline">
+        <div class ="">
+          <input type="text" placeholder ="Headline" value ="{{ prof?.headline }}" [(ngModel)] ="prof.headline" #headline ="ngModel" 
+          name ="headline" autocomplete="off" required  minlength ="30" maxlength="100">
+          <span class ="errorMessage" *ngIf ="(headline.dirty || headline.touched) && headline.invalid  && headline.errors?.required">Headline is required</span>
+          <span class ="errorMessage" *ngIf ="(headline.dirty || headline.touched) && headline.invalid  && headline.errors?.minlength">Headline must have atleast 30 character length long</span>
         </div>
       </div>
     </div>
 
-    <form (ngSubmit) ="OnSave(profileForm)" #profileForm ="ngForm" class ="form">
+    <!-- =================== -->
+    <!-- This input optional -->
+    <!-- Address input field -->
+    <div class ="addressInformation" >
+      <h5>Address <span>(optional)</span></h5>
 
-      <div class ="OwnersPersonalInformation">
-        <!-- fullname -->
-        <div class ="fullname">
-          <input type="text" placeholder ="Firstname" value ="{{ prof?.firstname }}" [(ngModel)] ="firstname" name ="firstname" class ="firstname">
-          <input type="text" placeholder ="Lastname" value ="{{ prof?.lastname }}" [(ngModel)] ="lastname" name ="lastname" class ="lastname">
-        </div>
-        <!-- headline -->
-        <div class ="headline">
-          <input type="text" placeholder ="Headline" value ="{{ prof?.headline }}" >
-        </div>
-      </div>
-
-      <!-- Address input field -->
-      <div class ="addressInformation" >
-        <h5>Address</h5>
-
-        <div class ="row">
-          <div class ="col-6 container">
+      <div class ="row">
+        <div class ="col-6 dropdown">
+          <div class ="input_container">
+            <!-- country -->
             <h6>Country</h6>
-            <select name="country" id="country" class ="country" >
+            <select name="country" id="country" class ="country" [(ngModel)] ="prof.country" name ="country">
+              <option disabled ="disabled">{{prof?.country}}</option>
               <option value="Philippines">Philippines</option>
               <option value="America">America</option>
             </select>
           </div>
+          <!-- <div class ="errorContainer">
+            <span class ="errorMessage">Country is required</span>
+          </div> -->
+        </div>
 
-          <div class ="col-6 container">
-            <h6>Region</h6>
-            <input type="number" id ="region" class ="region" placeholder ="zip code" >
+        <div class ="col-6 zip_container">
+          <!-- zip code -->
+          <div class ="input_container">
+              <input type="number" id ="region" class ="zip" placeholder ="zip code" value ="{{prof?.zip}}" [(ngModel)] ="prof.zip" name ="zip" >
           </div>
+          <!-- <div class ="errorContainer">
+            <span class ="errorMessage">Zip is required</span>
+          </div> -->
         </div>
       </div>
+    </div>
 
-      <!-- Introduction input field -->
-      <div class ="introduction">
-        <h6>{{firstname}}</h6>
-        <input type="text" class ="intro" placeholder ="intro" value ="{{ prof?.introduction }}" >
-      </div>
+    <!-- Introduction input field -->
+    <div class ="introduction">
+      <h5>Introduction</h5>
+      <input type="text" class ="intro" placeholder ="intro" value ="{{ prof?.introduction }}" [(ngModel)] ="prof.introduction" name ="introduction" autocomplete="off" minlength ="3" maxlength="1000">
+      <!-- <span class ="errorMessage">Introduction is required</span> -->
+    </div>
 
-      <!-- Education input field -->
-      <div class ="educationInformation">
+    <!-- Education input field -->
+    <div class ="educationInformation">
+      <div class ="input_container">
         <h6>Education</h6>
-        <select name="Education" id="education" class ="education" >
+        <select name="Education" id="education" class ="education" [(ngModel)] ="prof.schoolname" #schoolname ="ngModel" name ="schoolname" required>
           <!-- <option value="{{schoolName}}">{{schoolName}}</option> -->
           <option value="Codecademy">codecademy</option>
           <option value="cademy">cademy</option>
         </select>
-        <span class ="add" (click) ="openDialogBox()" class ="addBtn">Add new education</span>
       </div>
-
-      <!-- Summary input field -->
-      <div class ="summary">
-        <h6>Summary</h6>
-        <textarea name="summary" id="summary" cols="30" rows="10" value ="{{ prof?.summary }}" ></textarea>
+      <div class ="errorContainer">
+        <span class ="errorMessage" *ngIf ="(schoolname.dirty || schoolname.touched) && schoolname.invalid && schoolname.errors?.required">Please select any school you provided to be display at your timeline</span>
       </div>
-
-      <div class ="btn-group">
-        <input type="submit" value ="save" class ="button" #save>
-        <button class ="button" #cancel mat-dialog-close></button>
-      </div>
-
-    </form>
-
-    <div class ="span_button">
-      <span class ="btn" (click) ="save.click()">save</span>
-      <span class ="btn cancel" (click) ="openAlertBox()">cancel</span>      
+      <!-- open education input field modal on click -->
+      <span class ="addBtn" data-toggle ="modal" data-target ="#education">Add new education</span>
     </div>
 
+    <!-- Summary input field -->
+    <div class ="summary">
+      <h6>Summary</h6>
+      <div class ="input_container">
+        <textarea class ="summary" name="summary" id="summary" cols="30" rows="10" value ="{{ prof?.summary }}" [(ngModel)] ="prof.summary" name ="summary" minlength ="3" maxlength="1000"></textarea>
+      </div>
+      <!-- <div>
+        <span class ="errorMessage">Summary is required</span>
+      </div> -->
+    </div>
+
+    <div class ="btn-group">
+      <input type="submit" value ="save" class ="button" #save [disabled] ="!profileForm.valid">
+      <button class ="button" #cancel mat-dialog-close></button>
+    </div>
+
+  </form>
+
+  <div class ="span_button">
+    <div>
+        <span class ="btn cancel" data-dismiss ="modal" (click) ="onRedo(profileForm)">cancel</span>
+        <span class ="btn" (click) ="validateOnSubmit(save, profileForm)">save</span>
+    </div>
   </div>
-</ng-scrollbar>
+
+</div>
+
+<!-- Education Input Field Modal -->
+<div class="modal fade" id="education" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop ="false">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <app-headers-editor (sharedData) ="parentListener($event)"></app-headers-editor> -->
+      </div>
+    </div>
+  </div>
+</div>

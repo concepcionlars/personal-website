@@ -2,11 +2,18 @@ import { Component, OnInit, Renderer2, ChangeDetectorRef} from '@angular/core';
 import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
 import { MatDialogRef } from '@angular/material';
-
+//==============================================
+//========= Customize TypeScript Files =========
+//==============================================
+import { ProfileImageMetadata } from 'src/app/customTSFIle/profileImageMetadata';
+import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
+//==============================================
+//============= Injected Service ===============
+//==============================================
+import { MainService } from '../../../../main/main.service';
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
 import { HeadersEditorService } from 'src/app/admin/user_interface/headers-editor/headers-editor.service';
 import { ProfilePhotoService } from './profile-photo.service';
-import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
 
 @Component({
   selector: 'app-profile-photo',
@@ -15,12 +22,31 @@ import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
 })
 export class ProfilePhotoComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<ProfilePhotoComponent>, private _renderer: Renderer2, private _alertBoxService: AlertBoxService, private _headerEditorService: HeadersEditorService, private _profilePhotoService: ProfilePhotoService) { 
+  constructor(
+    private mainService: MainService,
+    private dialogRef: MatDialogRef<ProfilePhotoComponent>, 
+    private _renderer: Renderer2,
+    private _alertBoxService: AlertBoxService, 
+    private _headerEditorService: HeadersEditorService, 
+    private _profilePhotoService: ProfilePhotoService) { 
+    this.dialogRef.disableClose = true;
     this.imageProperty = this.createFormGroup();
   }
 
-  profile_photo = 'src/assets/m.jpg';
-  metadata = {
+  //==========================================================================
+  //===================== DISPLAY IMAGE FROM DATABASE ========================
+  //==========================================================================
+  metadata: ProfileImageMetadata;
+
+  get() {
+    return this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data)
+  }
+
+
+  //==========================================================================
+  //================= COMPONENT FUNCTION AND CONFIGURATION ===================
+  //==========================================================================
+  property = {
     name: String,
     size: Number,
     type: String,
@@ -113,7 +139,7 @@ export class ProfilePhotoComponent implements OnInit {
     if(file.type === 'image/jpg' || file.type === 'image/jpeg' ) {
       blobs = result.slice(22, result.length)
 
-      this.metadata = {
+      this.property = {
         name: file.name,
         size: file.size,
         type: file.type,
@@ -123,7 +149,7 @@ export class ProfilePhotoComponent implements OnInit {
     } else if(file.type === 'image/png' || file.type === 'image/gif') {
       blobs = result.slice(22, result.length);
 
-      this.metadata = {
+      this.property = {
         name: file.name,
         size: file.size,
         type: file.type,
@@ -150,7 +176,7 @@ export class ProfilePhotoComponent implements OnInit {
         rotate: this.Rotate.value,
         zoom: this.Zoom.value,
         schemaType: 'profile_photo',
-        imageProperty: this.metadata
+        imageProperty: this.property
       }
 
       //Send A post Request
@@ -182,6 +208,7 @@ export class ProfilePhotoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.get();
     this.createFormGroup();
     this.disableButton()
   }

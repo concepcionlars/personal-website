@@ -2,8 +2,16 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
-import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
+//========================================================================
+//==================== INJECTED CUSTOMIZE TYPESCRIPT =====================
+//========================================================================
 import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
+import { ProfileImageMetadata } from '../../../../customTSFIle/profileImageMetadata';
+//===========================================================
+//==================== INJECTED SERVICE =====================
+//===========================================================
+import { MainService } from '../../../../main/main.service';
+import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
 import { HeadersEditorService } from 'src/app/admin/user_interface/headers-editor/headers-editor.service';
 
 @Component({
@@ -13,12 +21,30 @@ import { HeadersEditorService } from 'src/app/admin/user_interface/headers-edito
 })
 export class CoverPhotoComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<CoverPhotoComponent>, private _renderer: Renderer2, private _alertBoxService: AlertBoxService, private _headerEditorService: HeadersEditorService) {
+  constructor(
+    private mainService: MainService,
+    private dialogRef: MatDialogRef<CoverPhotoComponent>, 
+    private _renderer: Renderer2, 
+    private _alertBoxService: AlertBoxService, 
+    private _headerEditorService: HeadersEditorService)
+    {
+    this.dialogRef.disableClose = true;
     this.coverProperty = this.createFormGroup();
   }
 
-  cover_photo = 'src/assets/c.png'
-  metadata = {
+  //==========================================================================
+  //===================== DISPLAY IMAGE FROM DATABASE ========================
+  //==========================================================================
+  metadata: ProfileImageMetadata;
+
+  get() {
+    return this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data)
+  }
+
+  //==========================================================================
+  //================= COMPONENT FUNCTION AND CONFIGURATION ===================
+  //==========================================================================
+  property = {
     name: String,
     size: Number,
     type: String,
@@ -49,7 +75,7 @@ export class CoverPhotoComponent implements OnInit {
     }
   
     get Zoom() {
-      return this.coverProperty.get('zoom')
+      return this.coverProperty.get('zoom');
     }
   
     get Rotate() {
@@ -61,13 +87,13 @@ export class CoverPhotoComponent implements OnInit {
   //====================================
 
   setRotatePropertyValue() {
-    const rotateElement = document.querySelector('.cover-photo')
-    this._renderer.setStyle(rotateElement, 'transform', 'rotate(' + this.Rotate.value + 'deg)')
+    const rotateElement = document.querySelector('.cover-photo');
+    this._renderer.setStyle(rotateElement, 'transform', 'rotate(' + this.Rotate.value + 'deg)');
   }
 
   setZoomPropertyValue() {
-    const zoomElement = document.querySelector('.cover-container')
-    this._renderer.setStyle(zoomElement, 'transform', 'scale(' + this.Zoom.value + ',' + this.Zoom.value + ')')
+    const zoomElement = document.querySelector('.cover-container');
+    this._renderer.setStyle(zoomElement, 'transform', 'scale(' + this.Zoom.value + ',' + this.Zoom.value + ')');
   }
 
   //====================================
@@ -81,18 +107,17 @@ export class CoverPhotoComponent implements OnInit {
     try {
       const filereader = new FileReader()
       filereader.onload = () => {
-        this.filesMetadataProcessor(selectedImage, filereader.result)
+        this.filesMetadataProcessor(selectedImage, filereader.result);
       }
       filereader.readAsDataURL(selectedImage);
     }
     catch(e) {
       try {
-        const objectUrl = URL.createObjectURL(selectedImage)
-
-        this.filesMetadataProcessor(selectedImage, objectUrl)
+        const objectUrl = URL.createObjectURL(selectedImage);
+        this.filesMetadataProcessor(selectedImage, objectUrl);
       }
       finally {
-        alert('all web api for this file upload is not supported')
+        alert('all web api for this file upload is not supported');
       }
     }
 
@@ -103,13 +128,13 @@ export class CoverPhotoComponent implements OnInit {
     const imageElement = document.querySelector('.cover-photo');
     var blobs;
 
-    this._renderer.setAttribute(imageElement, 'src', result)
+    this._renderer.setAttribute(imageElement, 'src', result);
 
     //create a function to dissect blob binary data
     if(file.type === 'image/jpg' || file.type === 'image/jpeg' ) {
       blobs = result.slice(22, result.length)
 
-      this.metadata = {
+      this.property = {
         name: file.name,
         size: file.size,
         type: file.type,
@@ -119,15 +144,15 @@ export class CoverPhotoComponent implements OnInit {
     } else if(file.type === 'image/png' || file.type === 'image/gif') {
       blobs = result.slice(22, result.length);
 
-      this.metadata = {
+      this.property = {
         name: file.name,
         size: file.size,
         type: file.type,
         blob: blobs
-      }
+      };
 
-    }
-  }
+    };
+  };
 
   //============================
   //========= On Save ==========
@@ -146,7 +171,7 @@ export class CoverPhotoComponent implements OnInit {
         rotate: this.Rotate.value,
         zoom: this.Zoom.value,
         schemaType: 'cover_photo',
-        imageProperty: this.metadata
+        imageProperty: this.property
       }
 
       //Send A post Request
@@ -178,6 +203,7 @@ export class CoverPhotoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.get();
     this.createFormGroup();
   }
 

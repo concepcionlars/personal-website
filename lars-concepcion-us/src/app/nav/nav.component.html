@@ -2,9 +2,12 @@
   <div class ="w-100 navigation">
     <ul class="w-100 nav nav-tabs">
       <div class ="brand_logo">
-        <a class ="navbar-brand">
-          <img src="assets/l.gif" alt="" class ="logo">
-        </a>
+        <!-- brand logo  -->
+        <div>
+          <a class ="navbar-brand" [ngStyle] ="markTwo(metadata?.logo[0].zoom)">
+           <img [ngStyle] ="markOne(metadata?.logo[0].rotation)" src="/node._src/{{ metadata?.logo[0].filename }}/{{metadata?.logo[0]._id}}/{{metadata?.logo[0].chunkSize}}/{{metadata?.logo[0].length}}/{{metadata?.logo[0].schemaType}}" alt ="{{ metadata?.logo[0].filename }}" alt="" class ="logo">
+          </a>
+        </div>
       </div>
       <li class="nav-item">
         <a class="nav-link" routerLinkActive ="active" [routerLinkActiveOptions] ="{exact: true}" routerLink="/">Timeline</a>

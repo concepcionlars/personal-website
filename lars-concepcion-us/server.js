@@ -20,6 +20,8 @@ const express                                                     = require('exp
 //======================================================================================
 //=============================== Require All Custom Modules ===========================
 //======================================================================================
+const myLeftSidebarRoutes                                         = require('./Backend/Server-Side/Routes/Get-Routes/leftSidebarGetter.js')
+const myPreloaderRoutes                                           = require('./Backend/Server-Side/Routes/Get-Routes/myPreloader.js');
 const myPostRoutes                                                = require('./Backend/Server-Side/Routes/Post-Routes/post.js');
 const myGetRoutes                                                 = require('./Backend/Server-Side/Routes/Get-Routes/get.js')
 const mySchemaGetter                                              = require('./Backend/Server-Side/Routes/Get-Routes/mySchemaGetter.js')
@@ -64,6 +66,7 @@ const file = path.join(__dirname, 'dist/lars-concepcion-us/index.html');
 //==========================================================================
 server.use(myGetRoutes);
 server.use(mySchemaGetter);
+server.use(myLeftSidebarRoutes);
 //==========================================================================
 //====================== HTTP POST METHOD CONTAINER ========================
 //==========================================================================
@@ -78,17 +81,10 @@ server.use(myImageFileRoutes);
 //====================== HTTP UPDATE METHOD CONTAINER ======================
 //==========================================================================
 
-function cdr() {
-    profileSchema.find({primary: true}, (err, foundImage) => {
-        if(err) {
-            throw err;
-        } else {
-            console.log(foundImage)
-        }
-    })
-}
-
-// cdr()
+//==========================================================================
+//====================== APPS IMAGE AND VIDEO PRELOADER ====================
+//==========================================================================
+server.use(myPreloaderRoutes);
 
 // ============================= SERVER LISTENER ===========================
 // =========================================================================

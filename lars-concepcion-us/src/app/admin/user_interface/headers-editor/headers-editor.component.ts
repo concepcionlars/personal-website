@@ -1,18 +1,28 @@
-import { Component, OnInit, HostListener, Inject } from '@angular/core';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { MatDialog} from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
+//=================================================
+//========= Customize TypeScript Files ============
+//=================================================
+import { ProfileImageMetadata } from '../../../customTSFIle/profileImageMetadata';
 import { profileSchema } from '../../../customTSFIle/profileSchema';
-import { HeadersData } from 'src/app/customTSFIle/headersData/headersFormValue';
+//==============================================
+//============= Injected Component =============
+//==============================================
+import { ProfilePhotoComponent } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.component';
+import { CoverPhotoComponent } from 'src/app/admin/user_interface/headers-editor/cover-photo/cover-photo.component';
+import { PersonalBrandComponent } from 'src/app/admin/user_interface/headers-editor/personal-brand/personal-brand.component';
+//==============================================
+//============= Injected Service ===============
+//==============================================
+import { MainService } from '../../../main/main.service';
+import { TimelineService } from 'src/app/client/timeline/timeline.service';
 import { ImagePreloaderService } from 'src/app/customTSFIle/image-preloader/image-preloader.service';
 import { HeadersEditorService } from './headers-editor.service';
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
-import { EducationInputFieldComponent } from '../headers-editor/education-input-field/education-input-field.component';
-import { ProfilePhotoComponent } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.component';
 import { ProfilePhotoService } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.service';
-import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
-import { CoverPhotoComponent } from 'src/app/admin/user_interface/headers-editor/cover-photo/cover-photo.component';
-import { PersonalBrandComponent } from 'src/app/admin/user_interface/headers-editor/personal-brand/personal-brand.component';
-import { TimelineService } from 'src/app/client/timeline/timeline.service';
+import { ImageStyleService } from '../../../customTSFIle/image_setter/image-style.service';
+
 
 @Component({
   selector: 'app-headers-editor',
@@ -23,43 +33,94 @@ import { TimelineService } from 'src/app/client/timeline/timeline.service';
 export class HeadersEditorComponent implements OnInit {
 
   constructor(
-    @Inject (MAT_DIALOG_DATA) private data: any,
+    private mainService: MainService,
     private profilePhotoService: ProfilePhotoService,
-    private timelineService: TimelineService, private _headersService: HeadersEditorService, 
-    private preloaderService: ImagePreloaderService, private alertservice:AlertBoxService, 
-    private dialog: MatDialog, private dialogRef: MatDialogRef<HeadersEditorComponent>
-    ) {
-    dialogRef.disableClose = true;
+    private timelineService: TimelineService, 
+    private _headersService: HeadersEditorService, 
+    private preloaderService: ImagePreloaderService, 
+    private alertservice:AlertBoxService, 
+    private dialog: MatDialog,
+    private imageSetter: ImageStyleService,                                                                                                                                      
+    ) {}
+
+    profilePhoto = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ8AAACfCAMAAADQxfvSAAAAMFBMVEXk5ueutLfd3+CqsbTn6erh4+S1u73X2tvO0dOzuLu9wsTHy826v8HEyMrS1tfLz9BpC6ihAAADuklEQVR4nO2b27KrIAxAFQLKRfz/v91Y2117sYYgwQfWzDkP+2lNMBBC2nWNRqPRaDQajUaj0Wg0Go1G4xqo2gJ7ACgR5sla7611cxAd1FbaADA4b/oFefu/N9aJyxiKWcu71xMp9Shqm0Wgc/rd7W7Y+xFqB1GN/UfoNoomVLUDYfflVpyqGMLxyC6ih2p6DqEXCZUiiNTrzVhFcELqRSoIgvuRt59LzO6HSY3NEjN/gzCYJL/eMJcOO2fGLnJiFUz6+FY4cyR1dW/w6YEn6MmZzW9IX92I4TrolCX59Y7JL5Ds4grzpDAkHGyvfjwprGirG9EcAYRA9uPJkMOSeR+ODBGpR9sTaRn8Bnr4WKqEtMLqLYAMHyB1d7n5ld9hlCen71JllfejlC7/fvbafr0urdeJHL3L+5XfYERGerD4XT1+eX6l9TqV5Vc+P/L8fPkK9eLnR0e8HK1+rrwftuv31Y+hj0W9vd1geHEg9TbucFyQFKW5cWcqr5fYOH2FpY1KP4ENz4MX9QInOZY3MlP9mBpY1Buw59GLAaR9gSOXX0exk5atQw6UM47r61sg7NGSobR6kt6E0ayP/cmHCEfl8sKUJshQ+L2iTIIgY+4+AIXfpVn6kh8MGhlBqavMSAD2nONf3DsCdVdiqlq+oQ4PEsl46n4Bhp/XYRnXtvKEk3L7G43U4QITgWo232awlvGwC9gtiGDfFGVvplB7aZ9Ap8K0TCiuc4DGuriwl7FbiY5KDBER1S7mtox4vlFb6MkStjBPk/daaxP/aW8nNy5xrJsf0EUxZ+N3Jxe26bH+QfspatZabTFajegVaTsNzHEEJcbJfM7s7m3T8RiZB7bdBrrB6l9TsV8xemQxVMGiA/cexmUiuqgjqNEnR25j2GsnCmaLyOk9P4JoC93TQThsQX8QxDKGc9bD7yvnV/zhlNg9kP18ZjKDyhmK+I4/b5FhTLmLoznr3nR8CaIRM/mMNc6YZzrkhKZRODFtP3GZiQw500wIMjszKuOtCCnoc/qWiU0+kmDGm2Hx6N0gR5BHLy4xKYKlU2MDZaeGrHfyNCgPhyW35U/Sf77Cqpc8mAAjT278k1gR5gxB0Egbjc6YwaaSsMJA+4FHFkmjqczJsYIvqPl25i3oTVBV+Pr6hF83MJ4cW7DDd5AzQZcFMn6V7HqJO+VyfkCRBy5Dzr+LY0HNKIiM+blcMBnMW1i9gnnrrLS7LKB2mDqHx4o+9gOGO+U+CD8rK4L4/pSoCMKv0Wg0Go1G49r8AYBYLcR6wymPAAAAAElFTkSuQmCC';
+
+  @Input() ngStyle = String;
+  @Output() sharedData = new EventEmitter<any>();
+  @ViewChild('profileForm') ngForm : NgForm;
+
+  metadata: ProfileImageMetadata;
+
+  GetMetadata() {
+    return this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
   }
 
-  @HostListener('window:keyup.esc') onkeyup(){
-    this.dialogRef.close();
+  //set the zoom and rotation of an element dynamically
+  markOne(value: number) {
+    return this.imageSetter.rotationStyle(value);
   }
-
-  profile ="assets/m.jpg";
-  wallpaper = "assets/c.png";
-  logo = "assets/l.png";
-  title = 'testing';
+  markTwo(value: number) {
+    return this.imageSetter.zoomStyle(value);
+  }
 
   //==========================================================================
   //========================= SERVER REQUEST HANDLER =========================
   //==========================================================================
-  prof: profileSchema;
+  redoValue: profileSchema;
+  prof: profileSchema = {
+    firstname : '',
+    lastname : '',
+    primary : false,
+    headline : '',
+    introduction : '',
+    summary : '',
+    country : '',
+    zip : null,
+    education : [],
+    profilePhoto : [],
+    coverPhoto : [],
+    logo : []
+  };
 
   get() {
     return this._headersService.getData().subscribe((data: profileSchema) => this.prof = data)
   }
 
-  OnSave(e) {
-    //==============================================
-    //COLLECT ALL USER INPUT AND SAVE TO JSON SCHEMA 
-    //==============================================
-    console.log(e.value)
+  getRedoValue() {
+    return this._headersService.getData().subscribe((data: profileSchema) => this.redoValue = data)
   }
 
-  //=====================
-  // DIALOG BOX FUNCTIONS
-  //=====================
+  //when the user click cancel or close the modal
+  //run this function
+  onRedo(f) {
+    this.sharedData.emit(this.redoValue);
+    f.resetForm(this.redoValue);
+  }
+
+  validateOnSubmit(s, f) {
+    if(!f.valid) {
+      alert('something wrong with your form')
+      f.controls.firstname.markAsTouched();
+      f.controls.lastname.markAsTouched();
+      f.controls.headline.markAsTouched();
+      f.controls.schoolname.markAsTouched();
+      // console.log(f.value);
+    } else {
+      s.click();
+    }
+  }
+
+  OnSave(e) {
+    console.log(e.value)
+    //==============================================
+    //========= SEND ALL DATA TO SERVER ============
+    //==============================================
+    this._headersService.sendForm(e.value).subscribe(res => console.log(res));
+  }
+
+  //============================================
+  //========== DIALOG BOX FUNCTIONS ============
+  //============================================
   profilePhotoData: Object;
 
   //popup alert
@@ -94,21 +155,13 @@ export class HeadersEditorComponent implements OnInit {
     })
   }
 
-  //Education Input Field
-  openDialogBox(): void{
-    const EducationInputComponent = this.dialog.open(EducationInputFieldComponent, {
-      width: '700px',
-      height: '500px',
-      panelClass: 'education-input-field'
-    })
-    EducationInputComponent.afterClosed().subscribe(result => {
-      console.log('The Dialog was Closed')
-    })
-  }
-
   ngOnInit() {
+    this.GetMetadata();
     this.get();
-    console.log(Math.random() * 10)
+    this.getRedoValue();
+    this.ngForm.form.valueChanges.subscribe(x => {
+      this.sharedData.emit(x)
+    })
   }
 
 }

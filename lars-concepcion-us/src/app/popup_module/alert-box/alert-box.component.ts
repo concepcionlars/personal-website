@@ -15,7 +15,7 @@ export class AlertBoxComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
   discardChanges(close) {
-    close.click();
+    close.click()
     const dialogBox = this.dialog.openDialogs.length-2;
     this.dialog.openDialogs[dialogBox].close();
   }

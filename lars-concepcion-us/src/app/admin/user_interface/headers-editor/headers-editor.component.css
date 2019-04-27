@@ -1,59 +1,41 @@
-.header {
-    background-color: rgb(167, 162, 162);
-    z-index: 5;
-    height: auto;
-    color: #ffffff;
-    overflow-y: hidden;
-    padding-top: 5px;
-}
-
-.header .header-container {
-    float: left;
-    width: 50%;
-}
-
-.header .header-container h5 {
-    padding: 10px;
-    font-weight: bold;
-}
-
-.header .removeBtn_container {
-    padding: 10px;
-    width: 50%;
-    float: right;
-}
-
-.header .removeBtn_container .remove-icon {
-    float: right;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.header .removeBtn_container .remove-icon:hover {
-    text-shadow: 1px 1px 1px rgb(20, 300, 10);
-}
-
 .headers-Editor {
-    height: 1200px;
+    border: 1px solid red;
 }
 
-.headers-Editor .OwnersprofileandWallpaper {
-    height: 200px;
-    width: 100%;
+.headers-Editor .OwnersprofileWallpaper {
+    border: 1px solid blue;
 }
 
 /* =============================== */
 /* ========= Cover Image ========= */
 /* =============================== */
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container {
-    /* border: 1px solid blue; */
+    width: 100%;
+    height: 250px;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    top: -0.5rem;
 }
 
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .wallpaper {
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .dynamic_wallpaper {
     width: 100%;
-    height: 200px;
+    height: 250px;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .dynamic_wallpaper .e_dynamic_wallpaper{
+    width: 100%;
+    height: 500px;
+    top: -1.1rem;
+    position: relative;
+}
+
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .dynamic_wallpaper .wallpaper {
+    width: 100%;
+    height: 100%;
     position: absolute;
 }
 
@@ -61,7 +43,8 @@
    position: relative;
    float: right;
    margin-right: 10px;
-   top: 1rem;
+   top: -14.7rem;
+   right: 0.5rem;
 }
 
 /* ================================================== */
@@ -69,26 +52,37 @@
 /* ================================================== */
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image {
     width: 100%;
-    top: 7rem;
+    top: -5rem;
     position: relative;
 }
 
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .profile_uploader {
-    /* border: 1px solid red; */
-    position: relative;
-    padding: 0px;
-    margin: 0px;
-    left: -1.5rem;
-    top: 3rem;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .profile {
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .dynamic_profilePhoto {
     width: 120px;
     height: 120px;
     border-radius: 100px;
     border: 4px solid #ffffff;
+    overflow: hidden;
+    z-index: 4;
+}
+
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .dynamic_profilePhoto .e_dynamic_profilePhoto {
+    width: 100%;
+    height: 120px;
     position: relative;
-    left: 20px;
+    top: -0.5rem;
+}
+
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .dynamic_profilePhoto .e_dynamic_profilePhoto .profile {
+    width: 100%;
+    height: 100%;
+}
+
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .profile_uploader {
+    position: relative;
+    top: -2rem;
+    left: 5rem;
+    padding: 0px;
+    margin: 0px;
 }
 
 /* ================================== */
@@ -96,16 +90,28 @@
 /* ================================== */
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container {
     cursor: pointer;
-    width: 100px;
-    top: -7.5rem;
+    width: 75px;
+    height: 75px;
+    padding: 10px;
+    margin-left: 5px;
     position: relative;
+    top: -25rem;
 }
 
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .logo {
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .dynamic_logo {
+    overflow: hidden;
     width: 50px;
     height: 50px;
-    margin-left: 10px;
-    margin-top: 10px;
+}
+
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .dynamic_logo .e_dynamic_logo {
+    width: 50px;
+    height: 50px;
+}
+
+.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .dynamic_logo .e_dynamic_logo .logo {
+    width: 50px;
+    height: 50px;
 }
 
 .headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .logo:hover {
@@ -132,8 +138,8 @@
 /* ====================================== */
 
 .headers-Editor form {
-    margin: 10px 10px 10px 10px;
-    padding: 10px 0 10px 10px;
+    margin: 10px 20px 10px 20px;
+    padding: 4rem 10px 10px 10px;
 }
 
 .headers-Editor form input {
@@ -143,6 +149,10 @@
     border-right: 0px;
     font-size: 0.85rem;
     outline-width: 0;
+    padding: 10px 5px 2px 5px;
+    width: 100%;
+    font-weight: bold;
+    color: rgba(36, 34, 34, 0.842);
 }
 
 .headers-Editor form input:focus {
@@ -152,196 +162,236 @@
     border-right: 0px;
 }
 
-.headers-Editor form .label {
-    font-size: 0.85rem;
+.form select {
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgba(36, 34, 34, 0.719);
 }
 
-/* ====================== */
-/* //hidden file INPUT */
-/* ====================== */
-.headers-Editor form .ng-ghozt .ghozt {
-    display: none;
+.form select:focus {
+    border: 1px solid rgba(30, 200, 10);
+    outline-color: rgba(30, 200, 10);
 }
 
-/* ================================ */
-/* // Fullname and Headline INPUT*/
-/* ================================ */
-.headers-Editor .OwnersPersonalInformation .fullname {
-    width: 100%;
+.form textarea {
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgba(36, 34, 34, 0.698);
 }
 
-.headers-Editor .OwnersPersonalInformation .fullname input {
-    margin-top: 50px;
+.form textarea:focus {
+    outline-color: rgba(30, 200, 10);
+    outline-width: 1px;
 }
 
-.headers-Editor .OwnersPersonalInformation .fullname .firstname {
-    width: 45%;
-    float: left;
+.form .errorContainer {
+    height: 20px;
+    width: 90%;
+    position: absolute;
 }
 
-.headers-Editor .OwnersPersonalInformation .fullname .lastname {
-    width: 45%;
-    float: right;
+.form .errorMessage {
+    font-size: 0.7rem;
+    padding-left: 5px;
+    color: red;
 }
 
-.headers-Editor .OwnersPersonalInformation .headline input {
-    margin-top: 50px;
-}
+/* Onwners information inputs including fullname and headline */
 
-
-/* ================================ */
-/* // ADDRESS INPUT FIELD*/
-/* ================================ */
-.headers-Editor form .addressInformation {
-    margin: 50px 0px 0px 0px;
-}
-
-.headers-Editor form .addressInformation .row {
-    width: 100%;
-    padding: 10px 0px;
-    border: 1px solid rgba(126, 126, 126, 0.278);
-    margin: 0px;
-}
-
-.headers-Editor form .addressInformation .row .container {
-    width: 50%;
-}
-
-.headers-Editor form .addressInformation .container h6 {
-    font-size: 0.9rem;
-    color: rgba(73, 67, 67, 0.693);
-}
-
-.headers-Editor form .addressInformation .container .country {
-    width: 100%;
-    padding: 5px;
-    font-size: 0.9rem;;
-    line-height: 1;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
-    -webkit-appearance: none;
-    box-shadow: 0px 0px 1px 0px rgba(126, 126, 126, 0.449);
-    background-position-x: 95%;
-    background-color: white;
-}
-
-.headers-Editor form .addressInformation .container .country:focus {
-    outline-width: 0;
-    border: 1px solid rgb(30, 200, 10);
-}
-
-/* ================================== */
-/* INTRODUCTION INPUT FIELD */
-/* ================================== */
-.headers-Editor form .introduction {
-    margin: 50px 0px 0px 0px;
-}
-
-/* ================================ */
-/* // EDUCATION INPUT FIELD*/
-/* ================================ */
-.headers-Editor form .educationInformation {
-    border: 1px solid rgba(0, 0, 0, 0);
-    margin: 50px 0px 50px 0px;
-    height: auto;
-}
-
-.headers-Editor form .educationInformation .education {
-    width: 100%;
-    padding: 5px;
-    font-size: 0.9rem;;
-    line-height: 1;
-    height: 34px;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
-    -webkit-appearance: none;
-    box-shadow: 0px 0px 1px 0px rgba(126, 126, 126, 0.449);
-    background-position-x: 95%;
-    background-color: white;
-}
-
-.headers-Editor form .educationInformation .education:focus {
-    outline-width: 0;
-    border: 1px solid rgb(30, 200, 10);
-}
-
-.headers-Editor form .educationInformation .addBtn {
-    float: right;
-    font-size: 0.85rem;
-    letter-spacing: -1px;
-    color: rgb(30, 200, 10);
-    cursor: pointer;
-    margin-top: 2px;
-}
-
-.headers-Editor form .educationInformation .addBtn:hover {
-    border-bottom: 1px solid rgb(30, 200, 10);
-}
-
-/* =========================== */
-/* SUMMARY INPUT FIELD */
-/* =========================== */
-/* .headers-Editor form .summary {
-    border: 1px solid black;
-} */
-
-.headers-Editor form .summary textarea {
-    width: 100%;
-    resize: none;
-    font-size: 0.85rem;
+.form .OwnersPersonalInformation {
     padding: 10px;
 }
 
-.headers-Editor form .summary textarea:focus {
-    outline: 0;
-    border: 1px solid rgb(30, 200, 10);
+.form .OwnersPersonalInformation .box-model {
+    height: 70px;
 }
 
-/* ====================== */
-/* //hidden button */
-/* ====================== */
-.headers-Editor form .btn-group {
-    display: none;
+.form .OwnersPersonalInformation .box-model .inline {
+    width: 50%;
+    padding-right: 20px;
+    display: inline-block;
 }
 
-.headers-Editor form .btn-group .button {
-    display: none;
+.form .OwnersPersonalInformation .box-model .inline div {
+    display: block
 }
 
-/* ====================== */
-/* //custom button */
-/* ====================== */
+/* Address information input including country and zip */
 
-.headers-Editor .span_button {
-    border-top: 1px solid rgba(126, 126, 126, 0.449);
-    height: 90px;
-    padding-top: 23px;
+.form .addressInformation {
+    height: 150px;
+    padding: 10px;
 }
 
-.headers-Editor .span_button .btn {
-    background-color: rgb(30, 200, 10);
-    border: 2px solid rgb(30, 200, 10);
-    color: white;
-    border-radius: 50px;
-    padding: 3px 20px;
-    margin: 0px 60px 30px 0px;
+.form .addressInformation h5 span {
     font-size: 0.9rem;
-    float: right;
 }
 
-.headers-Editor .span_button .cancel {
+.form .addressInformation h6 {
+    width: 100%;
+    font-size: 0.9rem;
+    color: gray;
+}
+
+.form .addressInformation .row .dropdown{
+    padding-left: 20px;
+    width: 100%;
+}
+
+.form .addressInformation .row .dropdown .country {
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 1.0);
+}
+
+.form .addressInformation .zip_container {
+    margin-top: 20px;
+}
+
+/* introduction input */
+.form .introduction {
+    padding: 10px;
+}
+
+/* schoolname input including dropdown */
+.form .educationInformation {
+    padding: 10px;
+    width: 100%;
+}
+
+.form .educationInformation .education {
+    width: 100%;
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+.form .educationInformation .addBtn {
+    position: relative;
+    float: right;
+    right: 5px;
+    font-size: 0.7rem;
+    color: rgb(30, 200, 10);
+    cursor: pointer;
+}
+
+/* summary */
+.form .summary {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.form .summary .input_container {
+    width: 100%;
+}
+
+.form .summary .input_container .summary {
+    width: 100%;
+    resize: none;
+}
+
+/* btn-group */
+.form .btn-group {
+    display: none;
+}
+
+/* span_button */
+.span_button {
+    width: 50%;
+    padding: 10px;
+    height: 60px;
+    float: right;
+    text-align: right;
+}
+
+.span_button div {
+    padding-right: 40px;
+}
+
+.span_button div .btn {
+    background-color: rgb(30, 200, 10);
     border: 1px solid rgb(30, 200, 10);
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 2px 20px;
+    position: relative;
+    margin-left: 20px;
+    cursor: pointer;
+    width: 90px;
+}
+
+.span_button div .cancel {
     background-color: #ffffff;
     color: rgb(30, 200, 10);
+    border: 2px solid rgb(30, 200, 10);
 }
 
-.headers-Editor .span_button .btn:hover {
+.span_button div .btn:hover{
     box-shadow: 0px 0px 3px 0px rgb(30, 200, 10);
 }
 
+/* ================================================ */
+/* ============= Form Inputs Webkits ============== */
+/* ================================================ */
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+/* form input.ng-invalid {
+    border-bottom: 1px solid red;
+} */
+
+form select.ng-valid {
+    border: 1px solid rgb(30, 200, 10);
+}
+
+textarea.ng-valid {
+    border: 1px solid rgb(30, 200, 10);
+}
+
+input.ng-valid {
+    border-bottom: 1px solid rgb(30, 200, 10);
+}
+
+input:valid {
+    border-bottom: 1px solid rgba(30, 200. 10)
+}
+
+/* input number webkits */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+/* ================================================================ */
+/* ================ Education Modal StyleSheet ==================== */
+/* ================================================================ */
+/* modal */
+.modal {
+    background-color: rgba(000, 000, 000, 0.6);
+    z-index: 2;
+}
+
+/* .modal-dialog {
+    border: 1px solid red;
+} */
+
+.modal-body {
+    padding: 0px;
+}
+
+.modal-header {
+    background-color : rgb(167, 162, 162);
+    color: white;
+}
+
+.modal-header #exampleModalLabel {
+    font-size: bold;
+    color: white;
+}
+
+.modal-header .close .times {
+    color: white;
 }

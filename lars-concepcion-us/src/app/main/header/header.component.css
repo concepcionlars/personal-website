@@ -9,7 +9,6 @@
 
 .information .context .name {
     color: rgb(51, 47, 47);
-
 }
 
 .information .context .headline {
@@ -33,10 +32,6 @@
     overflow: hidden;
 }
 
-.summaryText .paragraph {
-    /* height: 50px; */
-}
-
 .information .edit {
     margin: 20px 20px 0px 0px;
     float: right;
@@ -55,4 +50,32 @@
     color: rgb(30, 200, 10);
     transition: 0.3s;
     box-shadow: 0px 0px 1px 1px rgb(30, 200, 10);
+}
+
+/* modal */
+.modal {
+    background-color: rgba(000, 000, 000, 0.6);
+    z-index: 2;
+}
+
+/* .modal-dialog {
+    border: 1px solid red;
+} */
+
+.modal-body {
+    padding: 0px;
+}
+
+.modal-header {
+    background-color : rgb(167, 162, 162);
+    color: white;
+}
+
+.modal-header #exampleModalLabel {
+    font-size: bold;
+    color: white;
+}
+
+.modal-header .close .times {
+    color: white;
 }

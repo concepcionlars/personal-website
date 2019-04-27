@@ -31,13 +31,16 @@ span {
 .header .removeBtn_container .remove-icon {
     float: right;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-right: 10px;
     cursor: pointer;
+    color: black;
+    opacity: 0.7;
+    text-shadow: 1px 1px 1px #ffffff;
 }
 
 .header .removeBtn_container .remove-icon:hover {
-    text-shadow: 1px 1px 1px rgb(20, 300, 10);
+    opacity: 1;
 }
 
 .draggable-container {
@@ -76,13 +79,13 @@ span {
     border: 2px solid white;
     overflow: hidden;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 13px;
     z-index: 2;
     box-shadow: 0px 0px 0px 200px rgba(0, 0, 0, 0.562);
 }
 
 .draggable-container .secondary-container .drag-container  .limiter .guideline td {
-    height: 70px;
+    height: 84px;
     width: 20rem;
     overflow: hidden;
 }
@@ -102,7 +105,7 @@ span {
     position: absolute;
     /* margin: 25px auto 0 30px; */
     width: 245px;
-    height: 280px;
+    height: 260px;
 }
 
 /* profile-photo-container */

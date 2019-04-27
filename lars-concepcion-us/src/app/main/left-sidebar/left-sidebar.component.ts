@@ -1,8 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { TimelineService } from '../../client/timeline/timeline.service';
-import { profileSchema } from '../../customTSFIle/profileSchema';
+//========================================================
+//========= INJECTED CUSTOMIZE ANIMATIONS FILES ==========
+//========================================================
 import { fade } from '../../animationsDir/fade';
+//========================================================
+//========= INJECTED CUSTOMIZE TYPESCRIPT FILES ==========
+//========================================================
+import { profileSchema } from '../../customTSFIle/profileSchema';
+import { ImageFileSchema } from '../../customTSFIle/imageFIleSchema';
+//========================================================
+//=================== INJECTED SERVICE ===================
+//========================================================
+import { TimelineService } from '../../client/timeline/timeline.service';
+import { LeftSidebarService } from './left-sidebar.service';
+
+
 
 @Component({
   selector: 'app-left-sidebar',
@@ -24,8 +37,24 @@ export class LeftSidebarComponent implements OnInit {
   image1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0q0eyCIKFtZLgUH1Lv_wAQvS5OxZfYimjg8AvBtmg01EnpnEZsQ';
   image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlVozO1ptft0uBp4vKsgx5RAQFX8E3eYQP0pGzP612EfQ4mgCu';
 
-  constructor( private timelineService : TimelineService ) { }
+  constructor( 
+    private timelineService : TimelineService,
+    private leftSidebarService: LeftSidebarService
+    ) { }
 
+    @Input() function: string;
+
+  //=================================================================
+  //============ DISPLAY ALL UPLAODED IMAGE IN DATABASE =============
+  //=================================================================
+  metadata: ImageFileSchema;
+
+  getImage() {
+    this.leftSidebarService.getImageFile().subscribe((data: ImageFileSchema) => this.metadata = data)
+  }
+  //=================================================================
+  //============= DISPLAY SAVED DATA IN PROFILE SCHEMA ==============
+  //=================================================================
   prof : profileSchema;
 
   get() {
@@ -33,7 +62,8 @@ export class LeftSidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.get()
+    this.get();
+    this.getImage();
   }
 
 }

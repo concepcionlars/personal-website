@@ -1,22 +1,25 @@
-const m0ng00se                          = require('mongoose');
+const m0ng00se                                  = require('mongoose');
+const profileImageGenerator                     = require('./profileImageGenerator');
 //===========================
-//======== DB Schema ========
+//========= DB Model ========
 //===========================
-const profilePhotoSchema   = require('../../MongoDB/DB_Models/profileschema/profilePhotoSchema/profilePhotoSchema.js');
-const imageFileSchema      = require('../../MongoDB/DB_Models/imageFileSchema.js');
-const profileSchema        = require('../../MongoDB/DB_Models/profileschema/profileschema.js');
+const profilePhotoSchema                        = require('../../MongoDB/DB_Models/profileschema/profilePhotoSchema/profilePhotoSchema.js');
+const imageFileSchema                           = require('../../MongoDB/DB_Models/imageFileSchema.js');
+const profileSchema                             = require('../../MongoDB/DB_Models/profileschema/profileschema.js');
 
 //create a empty schema to be used in this site
 const schema = {
     primary: true,
-    firstname: 'unknown',
-    lastname: 'unknown',
-    headline: '',
-    introduction: '',
-    summary: '',
+    fullname : {
+        firstname: 'Firstname',
+        lastname: 'Lastname',
+    },
+    headline: 'Your Headline',
+    introduction: 'Your Introduction',
+    summary: 'Your Summary',
     address: {
-        country: 'unknown',
-        region: 'unknown',
+        country: 'Your Country',
+        // region: 'unknown',
         zip: null
     },
 }
@@ -27,14 +30,14 @@ function schemaGenerator() {
             console.log('server: ============>>>>>' + ' No Profile Schema Found');
             console.log('server: ===============>>>>>' + ' Creating a new one..');
             //create a temporary profileSchema to be used by a new user
-            //this schema will be used a preference for future use.
-            //if the user made a changes all you need to do is to update the schema
+            //if the user made a changes this model will updated
             //instead of creating a new one
             profileSchema.create(schema ,(err, data) => {
                 if(err) {
                     console.log('something went wrong creating a schema');
                     console.log(err);
                 } else {
+                    profileImageGenerator();
                     console.log('server: ===============>>>>>' + ' Profile Schema is Successfully Created');
                 }
             })

@@ -2,8 +2,16 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
-import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
+//======================================================================
+//================ INJECTED CUSTOMIZE TYPESCRIPT FILE ==================
+//======================================================================
+import { ProfileImageMetadata } from 'src/app/customTSFIle/profileImageMetadata';
 import { imageFileData } from 'src/app/customTSFIle/headersData/imageFileData';
+//======================================================================
+//========================= INJECTED SERVICE ===========================
+//======================================================================
+import { MainService } from 'src/app/main/main.service';
+import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
 import { HeadersEditorService } from 'src/app/admin/user_interface/headers-editor/headers-editor.service';
 
 @Component({
@@ -13,12 +21,29 @@ import { HeadersEditorService } from 'src/app/admin/user_interface/headers-edito
 })
 export class PersonalBrandComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<PersonalBrandComponent>, private _headerEditorService: HeadersEditorService, private _renderer: Renderer2, private _alertBoxService: AlertBoxService) {
+  constructor(
+    private mainService: MainService,
+    private dialogRef: MatDialogRef<PersonalBrandComponent>, 
+    private _headerEditorService: HeadersEditorService, 
+    private _renderer: Renderer2, 
+    private _alertBoxService: AlertBoxService) {
+    this.dialogRef.disableClose = true;
     this.personalBrandProperty = this.createFormGroup();
   }
 
-  personal_brand = 'src/assets/l.png';
-  metadata = {
+  //==========================================================================
+  //===================== DISPLAY IMAGE FROM DATABASE ========================
+  //==========================================================================
+  metadata: ProfileImageMetadata;
+
+  get() {
+    return this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
+  }
+
+  //==========================================================================
+  //================= COMPONENT FUNCTION AND CONFIGURATION ===================
+  //==========================================================================
+  property = {
     name: String,
     size: Number,
     type: String,
@@ -95,7 +120,6 @@ export class PersonalBrandComponent implements OnInit {
         alert('all web api for this file upload is not supported')
       }
     }
-
     this.button();
   }
 
@@ -109,7 +133,7 @@ export class PersonalBrandComponent implements OnInit {
     if(file.type === 'image/jpg' || file.type === 'image/jpeg' ) {
       blobs = result.slice(22, result.length)
 
-      this.metadata = {
+      this.property = {
         name: file.name,
         size: file.size,
         type: file.type,
@@ -119,7 +143,7 @@ export class PersonalBrandComponent implements OnInit {
     } else if(file.type === 'image/png' || file.type === 'image/gif') {
       blobs = result.slice(22, result.length);
 
-      this.metadata = {
+      this.property = {
         name: file.name,
         size: file.size,
         type: file.type,
@@ -146,7 +170,7 @@ export class PersonalBrandComponent implements OnInit {
         rotate: this.Rotate.value,
         zoom: this.Zoom.value,
         schemaType: 'logo',
-        imageProperty: this.metadata
+        imageProperty: this.property
       }
 
       //Send A post Request
@@ -178,6 +202,7 @@ export class PersonalBrandComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.get();
     this.createFormGroup();
   }
 
