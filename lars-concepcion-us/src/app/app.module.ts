@@ -30,6 +30,7 @@ import { AddBlogPostComponent } from './admin/user_interface/add-blog-post/add-b
 import { ProfilePhotoComponent } from './admin/user_interface/headers-editor/profile-photo/profile-photo.component';
 import { CoverPhotoComponent } from './admin/user_interface/headers-editor/cover-photo/cover-photo.component';
 import { PersonalBrandComponent } from './admin/user_interface/headers-editor/personal-brand/personal-brand.component';
+import { ProfileCoverComponent } from './main/header/profile-cover/profile-cover.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { PersonalBrandComponent } from './admin/user_interface/headers-editor/pe
     AddAboutComponent,
     AddBlogPostComponent,
     CoverPhotoComponent,
-    PersonalBrandComponent, 
+    PersonalBrandComponent,
+    ProfileCoverComponent, 
   ],
   imports: [
     BrowserModule,

@@ -43,25 +43,17 @@ export class HeadersEditorComponent implements OnInit {
     private imageSetter: ImageStyleService,                                                                                                                                      
     ) {}
 
-    profilePhoto = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ8AAACfCAMAAADQxfvSAAAAMFBMVEXk5ueutLfd3+CqsbTn6erh4+S1u73X2tvO0dOzuLu9wsTHy826v8HEyMrS1tfLz9BpC6ihAAADuklEQVR4nO2b27KrIAxAFQLKRfz/v91Y2117sYYgwQfWzDkP+2lNMBBC2nWNRqPRaDQajUaj0Wg0Go1G4xqo2gJ7ACgR5sla7611cxAd1FbaADA4b/oFefu/N9aJyxiKWcu71xMp9Shqm0Wgc/rd7W7Y+xFqB1GN/UfoNoomVLUDYfflVpyqGMLxyC6ih2p6DqEXCZUiiNTrzVhFcELqRSoIgvuRt59LzO6HSY3NEjN/gzCYJL/eMJcOO2fGLnJiFUz6+FY4cyR1dW/w6YEn6MmZzW9IX92I4TrolCX59Y7JL5Ds4grzpDAkHGyvfjwprGirG9EcAYRA9uPJkMOSeR+ODBGpR9sTaRn8Bnr4WKqEtMLqLYAMHyB1d7n5ld9hlCen71JllfejlC7/fvbafr0urdeJHL3L+5XfYERGerD4XT1+eX6l9TqV5Vc+P/L8fPkK9eLnR0e8HK1+rrwftuv31Y+hj0W9vd1geHEg9TbucFyQFKW5cWcqr5fYOH2FpY1KP4ENz4MX9QInOZY3MlP9mBpY1Buw59GLAaR9gSOXX0exk5atQw6UM47r61sg7NGSobR6kt6E0ayP/cmHCEfl8sKUJshQ+L2iTIIgY+4+AIXfpVn6kh8MGhlBqavMSAD2nONf3DsCdVdiqlq+oQ4PEsl46n4Bhp/XYRnXtvKEk3L7G43U4QITgWo232awlvGwC9gtiGDfFGVvplB7aZ9Ap8K0TCiuc4DGuriwl7FbiY5KDBER1S7mtox4vlFb6MkStjBPk/daaxP/aW8nNy5xrJsf0EUxZ+N3Jxe26bH+QfspatZabTFajegVaTsNzHEEJcbJfM7s7m3T8RiZB7bdBrrB6l9TsV8xemQxVMGiA/cexmUiuqgjqNEnR25j2GsnCmaLyOk9P4JoC93TQThsQX8QxDKGc9bD7yvnV/zhlNg9kP18ZjKDyhmK+I4/b5FhTLmLoznr3nR8CaIRM/mMNc6YZzrkhKZRODFtP3GZiQw500wIMjszKuOtCCnoc/qWiU0+kmDGm2Hx6N0gR5BHLy4xKYKlU2MDZaeGrHfyNCgPhyW35U/Sf77Cqpc8mAAjT278k1gR5gxB0Egbjc6YwaaSsMJA+4FHFkmjqczJsYIvqPl25i3oTVBV+Pr6hF83MJ4cW7DDd5AzQZcFMn6V7HqJO+VyfkCRBy5Dzr+LY0HNKIiM+blcMBnMW1i9gnnrrLS7LKB2mDqHx4o+9gOGO+U+CD8rK4L4/pSoCMKv0Wg0Go1G49r8AYBYLcR6wymPAAAAAElFTkSuQmCC';
-
-  @Input() ngStyle = String;
   @Output() sharedData = new EventEmitter<any>();
   @ViewChild('profileForm') ngForm : NgForm;
 
-  metadata: ProfileImageMetadata;
 
-  GetMetadata() {
-    return this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
-  }
+  metadata : ProfileImageMetadata;
 
-  //set the zoom and rotation of an element dynamically
-  markOne(value: number) {
-    return this.imageSetter.rotationStyle(value);
-  }
-  markTwo(value: number) {
-    return this.imageSetter.zoomStyle(value);
-  }
+  get() {
+    this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
+  };
+
+  logo = 'src/assets/l.png'
 
   //==========================================================================
   //========================= SERVER REQUEST HANDLER =========================
@@ -82,7 +74,7 @@ export class HeadersEditorComponent implements OnInit {
     logo : []
   };
 
-  get() {
+  getMetadata() {
     return this._headersService.getData().subscribe((data: profileSchema) => this.prof = data)
   }
 
@@ -156,7 +148,7 @@ export class HeadersEditorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.GetMetadata();
+    this.getMetadata()
     this.get();
     this.getRedoValue();
     this.ngForm.form.valueChanges.subscribe(x => {

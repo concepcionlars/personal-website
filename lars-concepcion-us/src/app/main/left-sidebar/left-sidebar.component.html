@@ -25,7 +25,7 @@
   <div class ="col-md-12 gallery">
     <h5 class ="containerName"><i class="fas fa-images"></i>Photos</h5>
     <div class ="container">
-      <div class ="col-4 col" *ngFor ="let property of metadata | slice:0:12; let i = index;">
+      <div class ="col-4 col" *ngFor ="let property of metadata | slice:1:13; let i = index;">
           <img class ="gallery_col" src ="/node._src/{{property?.filename }}/{{property?._id}}/{{property?.chunkSize}}/{{property?.length}}/{{property?.schemaType}}" alt="{{property?.filename }}" >
       </div>
     </div> 

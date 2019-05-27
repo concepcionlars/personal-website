@@ -31,13 +31,14 @@
     top: 0.5rem;
 }
 
-/* .login-form .row .headers_container {
-    border: 1px solid black;
-} */
+.login-form .row .headers_container {
+    height: 161px;
+    overflow: hidden;
+}
 
 .login-form .row .headers_container .wallpaper {
     width: 100%;
-    height: 100%;
+    height: 187%;
 }
 
 .login-form .row .headers_container .profile {

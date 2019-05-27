@@ -12,32 +12,8 @@ nav .navigation {
     width: 100%
 }
 
-/* unordered list */
-/* nav .navigation .nav {
-    margin-left: 20px;   
-} */
-
-/* logo container */
-nav .navigation .nav .brand_logo {
-    float: left;
-    margin-right: 2rem;
-    width: 25%;
-}
-
-/* logo href */
-nav .navigation .nav .brand_logo .navbar-brand {
-    width: 25px;
-    height: 25px;
-    margin: 0px;
-    padding: 0px;
-}
-/* logo image property */
-nav .navigation .nav .brand_logo .navbar-brand .logo {
-    width: 30px;
-    height: 30px;
-    position: relative;
-    top: 2px;
-    left: 2.5rem;
+nav .navigation .nav {
+    padding-left: 15rem;
 }
 
 nav .navigation .nav .nav-item {

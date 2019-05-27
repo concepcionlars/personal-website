@@ -21,16 +21,17 @@ router.get('/timeline/node._src', (req, res) => {
 })
 
 router.get('/headers/node._src', (req, res) => {
-    profileSchema.findOne({primary: true}).populate('profilePhoto').populate('coverPhoto').populate('logo').exec(
-        (err, populatedSchema) => {
+    profileSchema.findOne({primary: true}).populate('profilePhoto').populate('coverPhoto').populate('logo').exec(function(err, result) {
+        if(err) throw err;
+        else {
             const metadata = {
-                profilePhoto : populatedSchema.profilePhoto,
-                coverPhoto : populatedSchema.coverPhoto,
-                logo : populatedSchema.logo
+                profilePhoto: result.profilePhoto,
+                coverPhoto: result.coverPhoto,
+                logo: result.logo
             }
             res.send(metadata)
         }
-    )
+    })
 })
 
 module.exports = router;

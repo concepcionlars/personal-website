@@ -1,136 +1,40 @@
-.headers-Editor {
-    border: 1px solid red;
+.headers-Editor .cover {
+    position: absolute;
+    z-index: 10;
+    float: right;
+    top: 2rem;
+    right: 30px;
+}
+
+.headers-Editor .profile {
+    position: absolute;
+    left: 10rem;
+    z-index: 2;
+}
+
+.headers-Editor .logo {
+    z-index: 5;
+    position: absolute;
+    width: 60px;
+    height: 61px;
+    top: 1.2rem;
+    left: 1.59rem;
+    cursor: pointer;
 }
 
 .headers-Editor .OwnersprofileWallpaper {
     border: 1px solid blue;
 }
 
-/* =============================== */
-/* ========= Cover Image ========= */
-/* =============================== */
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container {
-    width: 100%;
-    height: 250px;
-    padding: 0px;
-    margin: 0px;
-    position: relative;
-    top: -0.5rem;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .dynamic_wallpaper {
-    width: 100%;
-    height: 250px;
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .dynamic_wallpaper .e_dynamic_wallpaper{
-    width: 100%;
-    height: 500px;
-    top: -1.1rem;
-    position: relative;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .dynamic_wallpaper .wallpaper {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .wallpaper_uploader {
-   position: relative;
-   float: right;
-   margin-right: 10px;
-   top: -14.7rem;
-   right: 0.5rem;
-}
-
-/* ================================================== */
-/* ============ Profile Photo Container =============*/
-/* ================================================== */
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image {
-    width: 100%;
-    top: -5rem;
-    position: relative;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .dynamic_profilePhoto {
-    width: 120px;
-    height: 120px;
+/* edit button */
+.fas {
     border-radius: 100px;
-    border: 4px solid #ffffff;
-    overflow: hidden;
-    z-index: 4;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .dynamic_profilePhoto .e_dynamic_profilePhoto {
-    width: 100%;
-    height: 120px;
-    position: relative;
-    top: -0.5rem;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .dynamic_profilePhoto .e_dynamic_profilePhoto .profile {
-    width: 100%;
-    height: 100%;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .responsive-image .profile_uploader {
-    position: relative;
-    top: -2rem;
-    left: 5rem;
-    padding: 0px;
-    margin: 0px;
-}
-
-/* ================================== */
-/* ========= Logo Container ========= */
-/* ================================== */
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container {
     cursor: pointer;
-    width: 75px;
-    height: 75px;
-    padding: 10px;
-    margin-left: 5px;
-    position: relative;
-    top: -25rem;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .dynamic_logo {
-    overflow: hidden;
-    width: 50px;
-    height: 50px;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .dynamic_logo .e_dynamic_logo {
-    width: 50px;
-    height: 50px;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .dynamic_logo .e_dynamic_logo .logo {
-    width: 50px;
-    height: 50px;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .logo_container .logo:hover {
-    box-shadow: 0px 0px 1px 1px rgb(30, 200, 10);
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .fas {
+    background-color: white;
+    box-shadow: 0px 0px 5px 0px black;
     color: rgba(126, 126, 126, 0.449);
-    font-size: 0.85rem;
-    background-color: #ffffff;
-    box-shadow: 0 2px 3px rgba(0,0,0,.2);
     padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.headers-Editor .OwnersprofileandWallpaper .wallpaper_container .fas:hover {
-    color: rgb(30, 200, 10);
-    box-shadow: 0px 0px 1px 1px rgb(30, 200, 10);
+    font-size: 1.2rem;
 }
 
 /* ====================================== */

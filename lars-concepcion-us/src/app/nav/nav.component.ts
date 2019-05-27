@@ -18,12 +18,14 @@ export interface DialogData {
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
+
 export class NavComponent implements OnInit {
 
   constructor(
     private imageSetter: ImageStyleService,
     private mainService: MainService, 
-    private dialog: MatDialog) { }
+    private dialog: MatDialog
+  ) { }
 
   @Input() ngStyle : String;
 

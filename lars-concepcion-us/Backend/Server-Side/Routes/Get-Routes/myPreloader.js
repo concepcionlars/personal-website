@@ -3,23 +3,23 @@ const m0ng0db = require('mongodb');
 
 router.get('/node._src/:filename/:id/:chunkSize/:length/:schemaType', (req, res) => {
     const filename = req.params.filename;
-    const id = req.params.id;
+    const files_id = req.params.id;
     const chunkSize = req.params.chunkSize;
     const length = req.params.length;
     const schematype = req.params.schemaType;
 
-	m0ng0db.connect('mongodb://localhost/27017', {useNewUrlParser : true}, (err, client)=>{
-		const db = client.db('mydb');
-		const bucket = new m0ng0db.GridFSBucket(db);
+    m0ng0db.connect('mongodb://localhost/27017', {useNewUrlParser : true}, (err, client)=>{
+      const db = client.db('mydb');
+      const bucket = new m0ng0db.GridFSBucket(db);
 
-		const downloadStream = bucket.openDownloadStreamByName(filename);
+      const downloadStream = bucket.openDownloadStreamByName(filename);
 
-		downloadStream.on('data', (data)=>{
-			// console.log(data)
-		})
+      downloadStream.on('data', (data)=>{
+        console.log('preloading images.....')
+      })
 
-		downloadStream.pipe(res);
-	})
+      downloadStream.pipe(res);
+    })
 })
 
 module.exports = router;

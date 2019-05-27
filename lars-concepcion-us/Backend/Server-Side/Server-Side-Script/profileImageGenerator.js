@@ -1,14 +1,12 @@
-const m0ng00se                              = require('mongoose');
 const m0ng0db                               = require('mongodb')
+const coverImageGenerator                   = require('./coverImageGenerator');
 //===========================
 //========= DB Model ========
 //===========================
-const profilePhotoSchema                    = require('../../MongoDB/DB_Models/profileschema/profilePhotoSchema/profilePhotoSchema.js');
 const imageFileSchema                       = require('../../MongoDB/DB_Models/imageFileSchema.js');
 const profileSchema                         = require('../../MongoDB/DB_Models/profileschema/profileschema.js');
-const path                                  = 'src/assets/image.png';
-const name                                  = 'default';
-
+const path                                  = 'src/assets/default_image/default_profile.jpeg';
+const name                                  = 'default_profile';
 
 function profileImageGenerator() {
     //create a function to upload files in mongodb gridfsbucket
@@ -48,15 +46,30 @@ function profileImageGenerator() {
             
                         chunksColl.listIndexes().toArray(function(error, indexes) {
                             const defaultImage = {
-                                filename: files.name,
+                                filename: files.filename,
                                 md5: files.md5,
                                 chunkSize: files.chunkSize,
                                 length: files.length,
-                                schematype: 'default', //<<<<<<< for expiremental purposes
+                                schemaType: 'profile_photo', //<<<<<<< for expiremental purposes
                                 rotation: 0,
                                 zoom: 0,
                                 uploadDate: files.uploadDate,
                             }
+                            imageFileSchema.create(defaultImage, (err, newImageFile) => {
+                                if(err) {
+                                    console.log(err);
+                                } else {
+                                    profileSchema.findOne({primary: true}, (err, foundSchema) => {
+                                        if(err) {
+                                            throw err;
+                                        } else {
+                                            foundSchema.profilePhoto = newImageFile.id;
+                                            foundSchema.save();
+                                            coverImageGenerator();
+                                        }
+                                    })
+                                }
+                            })
                         });
                     });
                 });

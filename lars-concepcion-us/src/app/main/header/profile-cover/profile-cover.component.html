@@ -1,0 +1,19 @@
+<div class ="wallpaper_container">
+  <div class ="dynamic">
+    <div class ="logo_container">
+        <img src ="/node._src/{{ metadata?.logo[0].filename }}/{{metadata?.logo[0]._id}}/{{metadata?.logo[0].chunkSize}}/{{metadata?.logo[0].length}}/{{metadata?.logo[0].schemaType}}" alt ="{{ metadata?.logo[0].filename }}" class ="logo">
+    </div>
+    <!-- cover -->
+    <div class ="dynamic_container">
+      <img src ="/node._src/{{ metadata?.coverPhoto[0].filename }}/{{metadata?.coverPhoto[0]._id}}/{{metadata?.coverPhoto[0].chunkSize}}/{{metadata?.coverPhoto[0].length}}/{{metadata?.coverPhoto[0].schemaType}}" alt ="{{ metadata?.coverPhoto[0].filename }}" class ="wallpaper">
+    </div>
+  </div>
+  <div class ="col-12 responsive-image">
+    <div class ="border-radius">
+      <!-- profile -->
+      <div class ="image-container">
+        <img src="/node._src/{{ metadata?.profilePhoto[0].filename }}/{{metadata?.profilePhoto[0]._id}}/{{metadata?.profilePhoto[0].chunkSize}}/{{metadata?.profilePhoto[0].length}}/{{metadata?.profilePhoto[0].schemaType}}" alt="profile_img" class ="profile">
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,8 +4,8 @@
       <a href="/" class ="cancel"><i class="fas fa-arrow-circle-left"></i></a>
       <div class ="row">
         <div class ="headers_container">
-          <img src="{{wallpaper}}" alt="" class ="wallpaper">
-          <img src="{{profile}}" alt="" class ="profile">
+          <img src ="/node._src/{{ metadata?.coverPhoto[0].filename }}/{{metadata?.coverPhoto[0]._id}}/{{metadata?.coverPhoto[0].chunkSize}}/{{metadata?.coverPhoto[0].length}}/{{metadata?.coverPhoto[0].schemaType}}" alt ="{{ metadata?.coverPhoto[0].filename }}" class ="wallpaper">
+          <img src="/node._src/{{ metadata?.profilePhoto[0].filename }}/{{metadata?.profilePhoto[0]._id}}/{{metadata?.profilePhoto[0].chunkSize}}/{{metadata?.profilePhoto[0].length}}/{{metadata?.profilePhoto[0].schemaType}}" alt="profile_img" class ="profile">
         </div>
         <form [formGroup] ="AuthForm" (ngSubmit) ="Authenticate()">
           <div class ="input_container">
@@ -23,7 +23,7 @@
             <div class ="error" *ngIf ="(password.dirty || password.touched ) && password.invalid && password.errors.minlength">Must be atleast 5 characters long</div>
           </div>
           <div class ="checkbox_container">
-            <input type="checkbox" class ="checkbox"><span> Remember Me</span>
+            <input type="checkbox" class ="checkbox"><span>Remember Me</span>
           </div>
           <div class ="submit_container">
             <input type="submit" class ="btn" value ="Login" [disabled] ="!AuthForm.valid">

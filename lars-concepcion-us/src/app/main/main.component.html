@@ -2,24 +2,11 @@
   <div class ="row">
     <div class ="main col-lg-9 col-sm-12">
       <div>
-        <div class ="oneoftwo"  @fade>
+        <div class ="oneoftwo" @fade>
           <header class ="col-md-12 ">
             <div class ="col-md-12 info">
               <div class ="owner-space">
-                <div class ="wallpaper_container">
-                  <div class ="dynamic">
-                    <div [ngStyle] ="markTwo(metadata?.coverPhoto[0].zoom)" class ="dynamic_container">
-                      <img [ngStyle] ="markOne(metadata?.coverPhoto[0].rotation)" src ="/node._src/{{ metadata?.coverPhoto[0].filename }}/{{metadata?.coverPhoto[0]._id}}/{{metadata?.coverPhoto[0].chunkSize}}/{{metadata?.coverPhoto[0].length}}/{{metadata?.coverPhoto[0].schemaType}}" alt ="{{ metadata?.coverPhoto[0].filename }}" class ="wallpaper">
-                    </div>
-                  </div>
-                  <div class ="col-12 responsive-image">
-                    <div class ="border-radius">
-                      <div class ="image-container" [ngStyle] ="markTwo(metadata?.profilePhoto[0].zoom)">
-                        <img [ngStyle] ="markOne(metadata?.profilePhoto[0].rotation)" src="/node._src/{{ metadata?.profilePhoto[0].filename }}/{{metadata?.profilePhoto[0]._id}}/{{metadata?.profilePhoto[0].chunkSize}}/{{metadata?.profilePhoto[0].length}}/{{metadata?.profilePhoto[0].schemaType}}" alt="profile_img" class ="profile">
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <app-profile-cover></app-profile-cover>
                 <app-nav></app-nav>
                 <div *ngIf="router.url == '/timeline'">
                   <app-header></app-header>

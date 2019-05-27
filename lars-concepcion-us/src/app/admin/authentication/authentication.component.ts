@@ -3,6 +3,9 @@ import { FormGroup, FormControlName, FormControl, Validators } from '@angular/fo
 
 import { AuthenticateService } from './authenticate.service';
 import { AuthData } from 'src/app/customTSFIle/AuthData';
+import { MainService } from '../../main/main.service'
+import { ProfileImageMetadata } from '../../customTSFIle/profileImageMetadata';
+import { ImageStyleService } from '../../customTSFIle/image_setter/image-style.service';
 
 //=====================
 // JSON OBJECT
@@ -22,14 +25,34 @@ const value = ({
 
 export class AuthenticationComponent implements OnInit {
 
-  profile = "assets/m.jpg";
-  wallpaper = 'assets/c.png';
   AuthForm: FormGroup;
 
-  constructor(private _authenticate: AuthenticateService) {
-    this.AuthForm = this.createAuthGroup();
+  constructor(
+    private imageSetter: ImageStyleService, 
+    private mainService: MainService,
+    private _authenticate: AuthenticateService
+    ) 
+    {
+      this.AuthForm = this.createAuthGroup();
    }
 
+  //  profile and cover
+   metadata : ProfileImageMetadata;
+
+   get() {
+     this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
+   };
+ 
+   //set the zoom and rotation of an element dynamically
+   markOne(value: number) {
+     return this.imageSetter.rotationStyle(value);
+   }
+   
+   markTwo(value: number) {
+     return this.imageSetter.zoomStyle(value);
+   }
+
+   //Form 
   createAuthGroup() {
     return new FormGroup({
       Username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(25), Validators.pattern('^[.-_a-zA-Z0-9]*$')]),
@@ -55,6 +78,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.get();
     this.createAuthGroup();
   }
 
