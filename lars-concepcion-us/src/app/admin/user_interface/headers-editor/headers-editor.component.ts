@@ -12,6 +12,7 @@ import { profileSchema } from '../../../customTSFIle/profileSchema';
 import { ProfilePhotoComponent } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.component';
 import { CoverPhotoComponent } from 'src/app/admin/user_interface/headers-editor/cover-photo/cover-photo.component';
 import { PersonalBrandComponent } from 'src/app/admin/user_interface/headers-editor/personal-brand/personal-brand.component';
+import { LeftSidebarComponent } from 'src/app/main/left-sidebar/left-sidebar.component';
 //==============================================
 //============= Injected Service ===============
 //==============================================
@@ -27,12 +28,14 @@ import { ImageStyleService } from '../../../customTSFIle/image_setter/image-styl
 @Component({
   selector: 'app-headers-editor',
   templateUrl: './headers-editor.component.html',
-  styleUrls: ['./headers-editor.component.css']
+  styleUrls: ['./headers-editor.component.css'],
+  providers: [LeftSidebarComponent]
 })
 
 export class HeadersEditorComponent implements OnInit {
 
   constructor(
+    private leftSidebarComponent : LeftSidebarComponent,
     private mainService: MainService,
     private profilePhotoService: ProfilePhotoService,
     private timelineService: TimelineService, 
@@ -107,7 +110,11 @@ export class HeadersEditorComponent implements OnInit {
     //==============================================
     //========= SEND ALL DATA TO SERVER ============
     //==============================================
-    this._headersService.sendForm(e.value).subscribe(res => console.log(res));
+    this._headersService.sendForm(e.value).subscribe(res => {
+      if(res['statusCode'] === 200) {
+        this.leftSidebarComponent.updateIntroduction();
+      }
+    });
   }
 
   //============================================
