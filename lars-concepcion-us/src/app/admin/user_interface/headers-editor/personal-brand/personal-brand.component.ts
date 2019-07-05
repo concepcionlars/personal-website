@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
+import { ProfileCoverComponent } from '../../../../main/header/profile-cover/profile-cover.component';
 //======================================================================
 //================ INJECTED CUSTOMIZE TYPESCRIPT FILE ==================
 //======================================================================
@@ -17,11 +18,13 @@ import { HeadersEditorService } from 'src/app/admin/user_interface/headers-edito
 @Component({
   selector: 'app-personal-brand',
   templateUrl: './personal-brand.component.html',
-  styleUrls: ['./personal-brand.component.css']
+  styleUrls: ['./personal-brand.component.css'],
+  providers: [ProfileCoverComponent]
 })
 export class PersonalBrandComponent implements OnInit {
 
   constructor(
+    private _profileCoverComponent: ProfileCoverComponent,
     private mainService: MainService,
     private dialogRef: MatDialogRef<PersonalBrandComponent>, 
     private _headerEditorService: HeadersEditorService, 
@@ -174,7 +177,11 @@ export class PersonalBrandComponent implements OnInit {
       }
 
       //Send A post Request
-      this._headerEditorService.saveImageSetting(imageSetting).subscribe(res => {const data = res})
+      this._headerEditorService.saveImageSetting(imageSetting).subscribe(res => {
+        if(res['statusCode'] === 200) {
+          this._profileCoverComponent.updateLogo();
+        }
+      })
       this.dialogRef.close();
     }
   }

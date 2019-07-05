@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
 
+import { ProfileCoverComponent } from '../../../../main/header/profile-cover/profile-cover.component';
 //========================================================================
 //==================== INJECTED CUSTOMIZE TYPESCRIPT =====================
 //========================================================================
@@ -17,11 +18,13 @@ import { HeadersEditorService } from 'src/app/admin/user_interface/headers-edito
 @Component({
   selector: 'app-cover-photo',
   templateUrl: './cover-photo.component.html',
-  styleUrls: ['./cover-photo.component.css']
+  styleUrls: ['./cover-photo.component.css'],
+  providers: [ProfileCoverComponent]
 })
 export class CoverPhotoComponent implements OnInit {
 
   constructor(
+    private _profileCoverComponent: ProfileCoverComponent,
     private mainService: MainService,
     private dialogRef: MatDialogRef<CoverPhotoComponent>, 
     private _renderer: Renderer2, 
@@ -170,12 +173,16 @@ export class CoverPhotoComponent implements OnInit {
       const imageSetting: imageFileData = {
         rotate: this.Rotate.value,
         zoom: this.Zoom.value,
-        schemaType: 'cover_photo',
+        schemaType: 'coverPhoto',
         imageProperty: this.property
       }
 
       //Send A post Request
-      this._headerEditorService.saveImageSetting(imageSetting).subscribe(res => {const data = res})
+      this._headerEditorService.saveImageSetting(imageSetting).subscribe(res => {
+        if(res['statusCode'] === 200) {
+          this._profileCoverComponent.updateCover();
+        }
+      })
       this.dialogRef.close();
     }
   }

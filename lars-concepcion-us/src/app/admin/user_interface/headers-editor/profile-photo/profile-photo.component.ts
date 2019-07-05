@@ -1,7 +1,8 @@
-import { Component, OnInit, Renderer2, ChangeDetectorRef} from '@angular/core';
+ import { Component, OnInit, Renderer2, ChangeDetectorRef} from '@angular/core';
 import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
 import { FormControl, FormGroup, Validators } from  '@angular/forms';
 import { MatDialogRef } from '@angular/material';
+import { map } from 'rxjs/operators'
 //==============================================
 //========= Customize TypeScript Files =========
 //==============================================
@@ -14,21 +15,23 @@ import { MainService } from '../../../../main/main.service';
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
 import { HeadersEditorService } from 'src/app/admin/user_interface/headers-editor/headers-editor.service';
 import { ProfilePhotoService } from './profile-photo.service';
+import { ProfileCoverComponent } from '../../../../main/header/profile-cover/profile-cover.component';
 
 @Component({
   selector: 'app-profile-photo',
   templateUrl: './profile-photo.component.html',
-  styleUrls: ['./profile-photo.component.css']
+  styleUrls: ['./profile-photo.component.css'],
+  providers: [ProfileCoverComponent]
 })
 export class ProfilePhotoComponent implements OnInit {
 
   constructor(
-    private mainService: MainService,
     private dialogRef: MatDialogRef<ProfilePhotoComponent>, 
     private _renderer: Renderer2,
     private _alertBoxService: AlertBoxService, 
-    private _headerEditorService: HeadersEditorService, 
-    private _profilePhotoService: ProfilePhotoService) { 
+    private _headerEditorService: HeadersEditorService,
+    private _profileCoverComponent: ProfileCoverComponent,
+    private _mainService : MainService) { 
     this.dialogRef.disableClose = true;
     this.imageProperty = this.createFormGroup();
   }
@@ -39,7 +42,7 @@ export class ProfilePhotoComponent implements OnInit {
   metadata: ProfileImageMetadata;
 
   get() {
-    return this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data)
+    return this._mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
   }
 
 
@@ -83,24 +86,8 @@ export class ProfilePhotoComponent implements OnInit {
   get Rotate() {
     return this.imageProperty.get('rotate');
   }
-
+  
   //====================================
-  //========= zoom and rotate ==========
-  //====================================
-
-  setRotatePropertyValue() {
-    const rotateElement = document.querySelector('.profile-photo')
-    this._renderer.setStyle(rotateElement, 'transform', 'rotate(' + this.Rotate.value + 'deg)')
-    this.button()
-  }
-
-  setZoomPropertyValue() {
-    const zoomElement = document.querySelector('.photo-container')
-    this._renderer.setStyle(zoomElement, 'transform', 'scale(' + this.Zoom.value + ',' + this.Zoom.value + ')')
-    this.button()
-  }
-
-    //====================================
   //============ On Change =============
   //====================================
 
@@ -175,12 +162,16 @@ export class ProfilePhotoComponent implements OnInit {
       const imageSetting: imageFileData = {
         rotate: this.Rotate.value,
         zoom: this.Zoom.value,
-        schemaType: 'profile_photo',
+        schemaType: 'profilePhoto',
         imageProperty: this.property
       }
 
-      //Send A post Request
-      this._headerEditorService.saveImageSetting(imageSetting).subscribe(res => {const data = res})
+      //send a post request to a server
+      this._headerEditorService.saveImageSetting(imageSetting).subscribe(res => {
+        if(res['statusCode'] === 200) {///<<<<<<<<<< if response is 200 update the profile image
+          this._profileCoverComponent.updateProfile();
+        }
+      });
       this.dialogRef.close();
     }
   }
@@ -205,6 +196,22 @@ export class ProfilePhotoComponent implements OnInit {
     const saveBtn : HTMLElement = document.querySelector('.save')
     this._renderer.setStyle(saveBtn, 'pointer-events', 'auto');
     this._renderer.setStyle(saveBtn, 'opacity', '1.0');
+  }
+
+  //================================================
+  //========= zoom and rotate of an image ==========
+  //================================================
+
+  setRotatePropertyValue() {
+    const rotateElement = document.querySelector('.profile-photo')
+    this._renderer.setStyle(rotateElement, 'transform', 'rotate(' + this.Rotate.value + 'deg)')
+    this.button()
+  }
+
+  setZoomPropertyValue() {
+    const zoomElement = document.querySelector('.photo-container')
+    this._renderer.setStyle(zoomElement, 'transform', 'scale(' + this.Zoom.value + ',' + this.Zoom.value + ')')
+    this.button()
   }
 
   ngOnInit() {
