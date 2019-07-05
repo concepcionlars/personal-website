@@ -13,7 +13,7 @@ router.post('/imageSettingHandler', (req, res) => {
     const imageZoom = req.body.zoom;
     const schema = req.body.schemaType;
 
-    /*GENERATE A 32BIT NAME TO BE SAVE IN MONGODB*/
+    /*GENERATE A 32BIT NAME TO BE SAVE IN MONGODB DATABASE*/
     function makeid() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -33,6 +33,7 @@ router.post('/imageSettingHandler', (req, res) => {
     var writeFile = fs.writeFileSync(path, buff);
 
     //create a function to upload files in mongodb gridfsbucket
+    //connect node server to mongodb instance
     const test = require('assert');
     m0ng0db.connect('mongodb://localhost:27017', {useNewUrlParser: true}, (err, client) => {
         const db = client.db('mydb');
@@ -86,19 +87,10 @@ router.post('/imageSettingHandler', (req, res) => {
                                         if(err) {
                                             throw err;
                                         } else {
-                                            if(schema == 'profile_photo'){
-                                                foundSchema.profilePhoto = newImage._id;
-                                                foundSchema.save();
-                                                console.log('profile photo')
-                                            } else if(schema == 'cover_photo') {
-                                                foundSchema.coverPhoto = newImage._id;
-                                                foundSchema.save();
-                                                console.log('cover photo')
-                                            } else if(schema == 'logo') {
-                                                foundSchema.logo = newImage._id;
-                                                foundSchema.save();
-                                                console.log('logo')
-                                            }
+                                            foundSchema[schema] = newImage._id;
+                                            foundSchema.save();
+                                            res.send({'statusCode' : res.statusCode, 'statusMessage' : 'success', 'data' : newImage});
+                                            console.log('preloading image')
                                         }
                                     })
                                 }

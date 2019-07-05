@@ -22,7 +22,7 @@ const m0ng0db                       = require('mongodb');
                 // foundSchema.address.region = data.address.region;
                 foundSchema.address.zip = data.zip;
                 foundSchema.save()
-                console.log(foundSchema);
+                res.send({'statusCode' : res.statusCode, 'statusMessage' : 'success'});
             }
         })
     })
