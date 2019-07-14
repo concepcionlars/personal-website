@@ -1,13 +1,3 @@
-<div class ="header">
-  <div class ="header-container">
-    <h5>Add Education</h5>
-  </div>
-  <div class ="removeBtn_container">
-    <span><i class ="fas fa-times remove-icon" (click) ="openAlertBox()"></i></span>
-  </div>
-</div>
-
-<ng-scrollbar class ="custom-scrollbar" thumbClass ="white-scrollbars">
   <div class ="educationInputField">
 
     <form [formGroup] ="educationInformation" (ngSubmit) ="value()">
@@ -59,15 +49,12 @@
   
       <div class ="ng-ghozt">
         <input type="submit" #save>
-        <button mat-dialog-close #cancel></button>
-        <button (click) ="openAlertBox()" #cancel></button>
       </div>
     </form>
 
     <div class ="span_button">
       <span class ="btn" (click) ="save.click()">save</span>
-      <span class ="btn cancel" (click) ="openAlertBox()">cancel</span>    
+      <span class ="btn cancel" data-dismiss ="modal">cancel</span>    
     </div>
     
   </div>
-</ng-scrollbar>

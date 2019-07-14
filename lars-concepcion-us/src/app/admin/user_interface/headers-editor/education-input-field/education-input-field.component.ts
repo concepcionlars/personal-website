@@ -16,8 +16,7 @@ export class EducationInputFieldComponent implements OnInit {
 
   educationInformation: FormGroup;
 
-  constructor(private educationInputService: EducationInputFieldService, private alertservice: AlertBoxService, private dialogRef: MatDialogRef<EducationInputFieldComponent>) {
-    dialogRef.disableClose = true;
+  constructor(private educationInputService: EducationInputFieldService, private alertservice: AlertBoxService) {
     this.educationInformation = this.createFormGroup();
   }
 
