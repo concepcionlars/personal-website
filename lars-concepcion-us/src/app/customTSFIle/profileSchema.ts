@@ -1,3 +1,18 @@
+type educationArray = Array<{
+    _id: String,
+    schoolname: String,
+    degree: String,
+    fieldOfStudy: String,
+    selected: Boolean,
+    expectedYear: {
+        fromYear: Number,
+        toYear: Number
+    },
+    description: String,
+    activityAndSociety: String,
+    dateCreated: String
+}>
+
 export class profileSchema {
     firstname : String;
     lastname : String;
@@ -7,8 +22,9 @@ export class profileSchema {
     summary : String;
     country : String;
     zip : Number;
-    education : Object;
+    education : educationArray;
     profilePhoto : Object;
     coverPhoto : Object;
     logo : Object
 }
+
