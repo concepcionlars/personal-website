@@ -23,7 +23,9 @@ export class ProfileCoverComponent implements OnInit {
   metadata : ProfileImageMetadata;
 
   get() {
-    this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
+    this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => {
+      this.metadata = data
+    });
   };
 
   //set the zoom and rotation of an element dynamically
