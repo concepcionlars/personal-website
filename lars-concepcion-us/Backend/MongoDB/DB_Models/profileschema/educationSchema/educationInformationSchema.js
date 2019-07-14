@@ -4,7 +4,10 @@ const educationInfoSchema = {
     schoolname: String,
     degree: String,
     fieldOfStudy: String,
-    selected: Boolean,
+    selected: {
+        type: Boolean,
+        default: false
+    },
     expectedYear: {
         fromYear: Number,
         toYear: Number
@@ -14,7 +17,7 @@ const educationInfoSchema = {
     dateCreated: {
         type: Date,
         default: Date.now
-    }
+    },
 }
 
 module.exports = m0ng00se.model('educationInfoSchema', educationInfoSchema);
