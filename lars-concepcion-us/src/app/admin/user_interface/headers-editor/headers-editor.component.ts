@@ -9,6 +9,7 @@ import { profileSchema } from '../../../customTSFIle/profileSchema';
 //==============================================
 //============= Injected Component =============
 //==============================================
+// import { EducationInputFieldComponent } from 'src/app/admin/user_interface/headers-editor/education-input-field/education-input-field.component';
 import { ProfilePhotoComponent } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.component';
 import { CoverPhotoComponent } from 'src/app/admin/user_interface/headers-editor/cover-photo/cover-photo.component';
 import { PersonalBrandComponent } from 'src/app/admin/user_interface/headers-editor/personal-brand/personal-brand.component';
@@ -23,6 +24,7 @@ import { HeadersEditorService } from './headers-editor.service';
 import { AlertBoxService } from 'src/app/popup_module/alert-box/alert-box.service';
 import { ProfilePhotoService } from 'src/app/admin/user_interface/headers-editor/profile-photo/profile-photo.service';
 import { ImageStyleService } from '../../../customTSFIle/image_setter/image-style.service';
+import { Data } from 'src/app/customTSFIle/contactFormValue';
 
 
 @Component({
@@ -56,12 +58,14 @@ export class HeadersEditorComponent implements OnInit {
     this.mainService.getHeaderImage().subscribe((data: ProfileImageMetadata) => this.metadata = data);
   };
 
-  logo = 'src/assets/l.png'
-
   //==========================================================================
   //========================= SERVER REQUEST HANDLER =========================
   //==========================================================================
   redoValue: profileSchema;
+  selected = {
+    _id: '',
+    schoolname: '',
+  }
   prof: profileSchema = {
     firstname : '',
     lastname : '',
@@ -78,7 +82,16 @@ export class HeadersEditorComponent implements OnInit {
   };
 
   getMetadata() {
-    return this._headersService.getData().subscribe((data: profileSchema) => this.prof = data)
+    return this._headersService.getData().subscribe((data: profileSchema) => {
+      this.prof = data;
+
+      for(var i = 0; i < this.prof.education.length; i++) {
+        if(this.prof.education[i].selected === true) {
+          this.selected._id = this.prof.education[i]._id.toString();
+          this.selected.schoolname = this.prof.education[i].schoolname.toString();
+        }
+      }
+    })
   }
 
   getRedoValue() {
@@ -87,21 +100,22 @@ export class HeadersEditorComponent implements OnInit {
 
   //when the user click cancel or close the modal
   //run this function
-  onRedo(f) {
+  onRedo(f, c) {
     this.sharedData.emit(this.redoValue);
     f.resetForm(this.redoValue);
+    c.click()
   }
 
-  validateOnSubmit(s, f) {
+  validateOnSubmit(s, c, f) {
     if(!f.valid) {
       alert('something wrong with your form')
       f.controls.firstname.markAsTouched();
       f.controls.lastname.markAsTouched();
       f.controls.headline.markAsTouched();
-      f.controls.schoolname.markAsTouched();
-      // console.log(f.value);
+      f.controls.selectedSchool.markAsTouched();
     } else {
       s.click();
+      c.click();
     }
   }
 
@@ -153,6 +167,14 @@ export class HeadersEditorComponent implements OnInit {
       panelClass: 'personal-brand-uploader'
     })
   }
+
+  // educationInputField(): void{
+  //   const education = this.dialog.open(EducationInputFieldComponent, {
+  //     width: '700px',
+  //     height: '500px',
+  //     panelClass: 'education-input-field'
+  //   })
+  // }
 
   ngOnInit() {
     this.getMetadata()

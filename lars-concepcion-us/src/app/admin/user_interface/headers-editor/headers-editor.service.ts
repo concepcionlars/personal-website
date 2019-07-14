@@ -26,10 +26,6 @@ export class HeadersEditorService {
     return this._http.get<profileSchema>(this.getURL)
   }
 
-  getConfigResponse(): Observable<HttpResponse<Config>> {
-    return this._http.get<Config>(this.getURL, { observe: 'response'})
-  }
-
   //==================================================
   //======== SEND A POST REQUEST TO A SERVER =========
   //==================================================

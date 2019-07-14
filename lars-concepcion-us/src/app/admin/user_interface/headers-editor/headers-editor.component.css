@@ -273,13 +273,8 @@ input[type=number] {
 /* ================ Education Modal StyleSheet ==================== */
 /* ================================================================ */
 /* modal */
-.modal {
-    background-color: rgba(000, 000, 000, 0.6);
-    z-index: 2;
-}
-
-/* .modal-dialog {
-    border: 1px solid red;
+/* .modal {
+    overflow-y: auto;
 } */
 
 .modal-body {
