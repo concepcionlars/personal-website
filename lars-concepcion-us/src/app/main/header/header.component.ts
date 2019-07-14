@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
       zip: Number,
     },
     introduction: String,
+    education: Array,
     schoolname: String,
     summary: String,
   };
