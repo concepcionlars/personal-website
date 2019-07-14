@@ -6,6 +6,7 @@ const m0ng0db                       = require('mongodb');
 //===============================================================
 //==================== timeline post handler ====================
 //===============================================================
+//personal information handler
     router.post('/headersFormHandler', (req, res) => {
         const data = req.body;
 
@@ -20,20 +21,38 @@ const m0ng0db                       = require('mongodb');
                 foundSchema.summary = data.summary;
                 foundSchema.address.country = data.country;
                 // foundSchema.address.region = data.address.region;
-                foundSchema.address.zip = data.zip;
+                // foundSchema.address.zip = data.zip;
                 foundSchema.save()
-                res.send({'statusCode' : res.statusCode, 'statusMessage' : 'success'});
+
+                educationInfoSchema.find((err, result) => {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        result.forEach((x) => {
+                            x.selected = false
+                            x.save();
+                            console.log('before')
+                            console.log(x.selected);
+                        })
+
+                        educationInfoSchema.findOne({_id: data.selectedSchool}, (err, x) => {
+                            x.selected = true;
+                            x.save();
+                            res.send({'statusCode' : res.statusCode, 'statusMessage' : 'success'});
+                        })
+                    }
+                })
             }
         })
     })
 
+    //education input handler
     router.post('/educationFormHandler', (req, res) => {
         const data = req.body;
         const information = {
             schoolname: data.schoolname,
             degree: data.degree,
             fieldOfStudy: data.fieldOfStudy,
-            selected: false,
             expectedYear: {
                 fromYear: data.expectedYear.fromYear,
                 toYear: data.expectedYear.toYear
@@ -56,6 +75,7 @@ const m0ng0db                       = require('mongodb');
                         foundSchema.education.push(newSchema._id);
                         foundSchema.save();
                         console.log('successfuly merge to main schema')
+                        res.send({'statusCode' : res.statusCode, 'statusMessage' : 'success'});
                     }
                 })
             }
