@@ -1,7 +1,7 @@
 const router                        = require('express').Router();
 
 router.get('/timeline/node._src', (req, res) => {
-    profileSchema.findOne({primary: true}).populate('education').populate('profilePhoto').exec((err, foundSchema) => {
+    profileSchema.findOne({primary: true}).populate('education').populate('profilePhoto').populate('education').exec((err, foundSchema) => {
         if(err) {
             throw err;
         } else {
@@ -11,6 +11,7 @@ router.get('/timeline/node._src', (req, res) => {
                 primary : foundSchema.primary,
                 headline : foundSchema.headline,
                 introduction : foundSchema.introduction,
+                education: foundSchema.education,
                 summary : foundSchema.summary,
                 country : foundSchema.address.country,
                 zip : foundSchema.address.zip,
