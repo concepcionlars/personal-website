@@ -69,6 +69,7 @@ router.post('/imageSettingHandler', (req, res) => {
                     filesColl.listIndexes().toArray(function(error, indexes) {
         
                         chunksColl.listIndexes().toArray(function(error, indexes) {
+                          // get all metadata and save to json schema before pushing to mongodb instance
                             var image = {
                                 filename: files.filename,
                                 md5: files.md5,
@@ -79,16 +80,21 @@ router.post('/imageSettingHandler', (req, res) => {
                                 zoom: imageZoom,
                                 uploadDate: files.uploadDate
                             }
+                            // creating a new instance in image file schema a mongodb collection
+                            // callback function is not yet created in this fill <<<================ noted callback is not yet created
                             imageFileSchema.create(image, (err, newImage) => {
                                 if(err) {
                                     throw err;
                                 } else {
+                                  //after creating a new image in mongodb collections the created image will be push
+                                  // IN profile schema collections.
                                     profileSchema.findOne({primary: true}, (err, foundSchema) => {
                                         if(err) {
                                             throw err;
                                         } else {
                                             foundSchema[schema] = newImage._id;
                                             foundSchema.save();
+                                          //when the request is success send a status code to client/front end side.
                                             res.send({'statusCode' : res.statusCode, 'statusMessage' : 'success', 'data' : newImage});
                                             console.log('preloading image')
                                         }
