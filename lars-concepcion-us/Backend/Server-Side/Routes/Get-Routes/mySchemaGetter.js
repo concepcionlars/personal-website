@@ -1,5 +1,7 @@
 const router                        = require('express').Router();
 
+
+//timeline data preloader
 router.get('/timeline/node._src', (req, res) => {
     profileSchema.findOne({primary: true}).populate('education').populate('profilePhoto').populate('education').exec((err, foundSchema) => {
         if(err) {
@@ -21,6 +23,7 @@ router.get('/timeline/node._src', (req, res) => {
     })
 })
 
+//headers data preloader
 router.get('/headers/node._src', (req, res) => {
     profileSchema.findOne({primary: true}).populate('profilePhoto').populate('coverPhoto').populate('logo').exec(function(err, result) {
         if(err) throw err;
