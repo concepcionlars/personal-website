@@ -28,7 +28,7 @@
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "mongodb": "^3.1.12",
-    "mongoose": "^5.4.4",
+    "mongoose": "^5.7.5",
     "ngx-scrollbar": "^3.3.4",
     "nodemailer": "^4.7.0",
     "popper.js": "^1.14.6",
